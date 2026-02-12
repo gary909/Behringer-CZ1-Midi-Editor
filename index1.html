@@ -160,11 +160,11 @@
         <div class="control-box vertical-sliders noisy">
             <h3>DCO PARAMS</h3>
             <div class="parameter-row" title="DCO 1 Waveform 1 Line-offset">
-                <label for="dco1-wf1-lineoffset">WF1<br>LINEOFFSET</label>
+                <label for="dco1-wf1-lineoffset">WF1 LINE<br>OFFSET</label>
                 <input type="range" id="dco1-wf1-lineoffset" min="0" max="127" value="0">
             </div>
             <div class="parameter-row" title="DCO 1 Waveform 2 Line-offset">
-                <label for="dco1-wf2-lineoffset">WF2<br>LINEOFFSET</label>
+                <label for="dco1-wf2-lineoffset">WF2 LINE<br>OFFSET</label>
                 <input type="range" id="dco1-wf2-lineoffset" min="0" max="127" value="0">
             </div>
         </div>
@@ -216,248 +216,440 @@
         </div>
 
         <!-- DCA LEVEL -->
-        <div class="control-box noisy">
+        <div class="control-box vertical-sliders noisy">
             <h3>DCA LEVEL</h3>
-            <div class="parameter-row">
-                <label for="dca-sustain-point">DCA SUSTAIN POINT</label>
+            <div class="parameter-row" title="DCA Sustain Point">
+                <label for="dca-sustain-point">SUSTAIN<br>POINT</label>
                 <input type="range" id="dca-sustain-point" min="0" max="127" value="0">
             </div>
-            <div class="parameter-row">
-                <label for="dca-end-point">DCA END POINT</label>
+            <div class="parameter-row" title="DCA End Point">
+                <label for="dca-end-point">END<br>POINT</label>
                 <input type="range" id="dca-end-point" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dca-level-0">DCA LEVEL 0</label>
-                <input type="range" id="dca-level-0" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dca-level-1">DCA LEVEL 1</label>
-                <input type="range" id="dca-level-1" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dca-level-2">DCA LEVEL 2</label>
-                <input type="range" id="dca-level-2" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dca-level-3">DCA LEVEL 3</label>
-                <input type="range" id="dca-level-3" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dca-level-4">DCA LEVEL 4</label>
-                <input type="range" id="dca-level-4" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dca-level-5">DCA LEVEL 5</label>
-                <input type="range" id="dca-level-5" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dca-level-6">DCA LEVEL 6</label>
-                <input type="range" id="dca-level-6" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dca-level-7">DCA LEVEL 7</label>
-                <input type="range" id="dca-level-7" min="0" max="127" value="0">
             </div>
         </div>
 
         <!-- DCA RATE -->
         <div class="control-box vertical-sliders noisy">
             <h3>DCA RATE</h3>
-            <div class="parameter-row" title="DCA Rate 0">
-                <label for="dca-rate-0">RATE 0</label>
-                <input type="range" id="dca-rate-0" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCA Rate 0">
+                    <label for="dca-rate-0">RATE 0</label>
+                    <input type="range" id="dca-rate-0" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCA Level 0">
+                    <label for="dca-level-0">LVL 0</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dca-level-0" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCA Rate 1">
-                <label for="dca-rate-1">RATE 1</label>
-                <input type="range" id="dca-rate-1" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCA Rate 1">
+                    <label for="dca-rate-1">RATE 1</label>
+                    <input type="range" id="dca-rate-1" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCA Level 1">
+                    <label for="dca-level-1">LVL 1</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dca-level-1" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCA Rate 2">
-                <label for="dca-rate-2">RATE 2</label>
-                <input type="range" id="dca-rate-2" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCA Rate 2">
+                    <label for="dca-rate-2">RATE 2</label>
+                    <input type="range" id="dca-rate-2" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCA Level 2">
+                    <label for="dca-level-2">LVL 2</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dca-level-2" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCA Rate 3">
-                <label for="dca-rate-3">RATE 3</label>
-                <input type="range" id="dca-rate-3" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCA Rate 3">
+                    <label for="dca-rate-3">RATE 3</label>
+                    <input type="range" id="dca-rate-3" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCA Level 3">
+                    <label for="dca-level-3">LVL 3</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dca-level-3" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCA Rate 4">
-                <label for="dca-rate-4">RATE 4</label>
-                <input type="range" id="dca-rate-4" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCA Rate 4">
+                    <label for="dca-rate-4">RATE 4</label>
+                    <input type="range" id="dca-rate-4" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCA Level 4">
+                    <label for="dca-level-4">LVL 4</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dca-level-4" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCA Rate 5">
-                <label for="dca-rate-5">RATE 5</label>
-                <input type="range" id="dca-rate-5" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCA Rate 5">
+                    <label for="dca-rate-5">RATE 5</label>
+                    <input type="range" id="dca-rate-5" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCA Level 5">
+                    <label for="dca-level-5">LVL 5</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dca-level-5" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCA Rate 6">
-                <label for="dca-rate-6">RATE 6</label>
-                <input type="range" id="dca-rate-6" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCA Rate 6">
+                    <label for="dca-rate-6">RATE 6</label>
+                    <input type="range" id="dca-rate-6" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCA Level 6">
+                    <label for="dca-level-6">LVL 6</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dca-level-6" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCA Rate 7">
-                <label for="dca-rate-7">RATE 7</label>
-                <input type="range" id="dca-rate-7" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCA Rate 7">
+                    <label for="dca-rate-7">RATE 7</label>
+                    <input type="range" id="dca-rate-7" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCA Level 7">
+                    <label for="dca-level-7">LVL 7</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dca-level-7" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- PITCH LEVEL -->
-        <div class="control-box noisy">
+        <div class="control-box vertical-sliders noisy">
             <h3>PITCH LEVEL</h3>
-            <div class="parameter-row">
-                <label for="pitch-sustain-point">PITCH SUSTAIN POINT</label>
+            <div class="parameter-row" title="Pitch Sustain Point">
+                <label for="pitch-sustain-point">SUSTAIN<br>POINT</label>
                 <input type="range" id="pitch-sustain-point" min="0" max="127" value="0">
             </div>
-            <div class="parameter-row">
-                <label for="pitch-end-point">PITCH END POINT</label>
+            <div class="parameter-row" title="Pitch End Point">
+                <label for="pitch-end-point">END<br>POINT</label>
                 <input type="range" id="pitch-end-point" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="pitch-level-0">PITCH LEVEL 0</label>
-                <input type="range" id="pitch-level-0" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="pitch-level-1">PITCH LEVEL 1</label>
-                <input type="range" id="pitch-level-1" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="pitch-level-2">PITCH LEVEL 2</label>
-                <input type="range" id="pitch-level-2" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="pitch-level-3">PITCH LEVEL 3</label>
-                <input type="range" id="pitch-level-3" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="pitch-level-4">PITCH LEVEL 4</label>
-                <input type="range" id="pitch-level-4" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="pitch-level-5">PITCH LEVEL 5</label>
-                <input type="range" id="pitch-level-5" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="pitch-level-6">PITCH LEVEL 6</label>
-                <input type="range" id="pitch-level-6" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="pitch-level-7">PITCH LEVEL 7</label>
-                <input type="range" id="pitch-level-7" min="0" max="127" value="0">
             </div>
         </div>
 
         <!-- PITCH RATE -->
         <div class="control-box vertical-sliders noisy">
             <h3>PITCH RATE</h3>
-            <div class="parameter-row" title="Pitch Rate 0">
-                <label for="pitch-rate-0">RATE 0</label>
-                <input type="range" id="pitch-rate-0" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="Pitch Rate 0">
+                    <label for="pitch-rate-0">RATE 0</label>
+                    <input type="range" id="pitch-rate-0" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="Pitch Level 0">
+                    <label for="pitch-level-0">LVL 0</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="pitch-level-0" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="Pitch Rate 1">
-                <label for="pitch-rate-1">RATE 1</label>
-                <input type="range" id="pitch-rate-1" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="Pitch Rate 1">
+                    <label for="pitch-rate-1">RATE 1</label>
+                    <input type="range" id="pitch-rate-1" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="Pitch Level 1">
+                    <label for="pitch-level-1">LVL 1</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="pitch-level-1" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="Pitch Rate 2">
-                <label for="pitch-rate-2">RATE 2</label>
-                <input type="range" id="pitch-rate-2" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="Pitch Rate 2">
+                    <label for="pitch-rate-2">RATE 2</label>
+                    <input type="range" id="pitch-rate-2" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="Pitch Level 2">
+                    <label for="pitch-level-2">LVL 2</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="pitch-level-2" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="Pitch Rate 3">
-                <label for="pitch-rate-3">RATE 3</label>
-                <input type="range" id="pitch-rate-3" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="Pitch Rate 3">
+                    <label for="pitch-rate-3">RATE 3</label>
+                    <input type="range" id="pitch-rate-3" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="Pitch Level 3">
+                    <label for="pitch-level-3">LVL 3</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="pitch-level-3" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="Pitch Rate 4">
-                <label for="pitch-rate-4">RATE 4</label>
-                <input type="range" id="pitch-rate-4" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="Pitch Rate 4">
+                    <label for="pitch-rate-4">RATE 4</label>
+                    <input type="range" id="pitch-rate-4" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="Pitch Level 4">
+                    <label for="pitch-level-4">LVL 4</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="pitch-level-4" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="Pitch Rate 5">
-                <label for="pitch-rate-5">RATE 5</label>
-                <input type="range" id="pitch-rate-5" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="Pitch Rate 5">
+                    <label for="pitch-rate-5">RATE 5</label>
+                    <input type="range" id="pitch-rate-5" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="Pitch Level 5">
+                    <label for="pitch-level-5">LVL 5</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="pitch-level-5" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="Pitch Rate 6">
-                <label for="pitch-rate-6">RATE 6</label>
-                <input type="range" id="pitch-rate-6" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="Pitch Rate 6">
+                    <label for="pitch-rate-6">RATE 6</label>
+                    <input type="range" id="pitch-rate-6" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="Pitch Level 6">
+                    <label for="pitch-level-6">LVL 6</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="pitch-level-6" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="Pitch Rate 7">
-                <label for="pitch-rate-7">RATE 7</label>
-                <input type="range" id="pitch-rate-7" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="Pitch Rate 7">
+                    <label for="pitch-rate-7">RATE 7</label>
+                    <input type="range" id="pitch-rate-7" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="Pitch Level 7">
+                    <label for="pitch-level-7">LVL 7</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="pitch-level-7" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- DCW LEVEL -->
-        <div class="control-box noisy">
+        <div class="control-box vertical-sliders noisy">
             <h3>DCW LEVEL</h3>
-            <div class="parameter-row">
-                <label for="dcw-sustain-point">DCW SUSTAIN POINT</label>
+            <div class="parameter-row" title="DCW Sustain Point">
+                <label for="dcw-sustain-point">SUSTAIN<br>POINT</label>
                 <input type="range" id="dcw-sustain-point" min="0" max="127" value="0">
             </div>
-            <div class="parameter-row">
-                <label for="dcw-end-point">DCW END POINT</label>
+            <div class="parameter-row" title="DCW End Point">
+                <label for="dcw-end-point">END<br>POINT</label>
                 <input type="range" id="dcw-end-point" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dcw-level-0">DCW LEVEL 0</label>
-                <input type="range" id="dcw-level-0" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dcw-level-1">DCW LEVEL 1</label>
-                <input type="range" id="dcw-level-1" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dcw-level-2">DCW LEVEL 2</label>
-                <input type="range" id="dcw-level-2" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dcw-level-3">DCW LEVEL 3</label>
-                <input type="range" id="dcw-level-3" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dcw-level-4">DCW LEVEL 4</label>
-                <input type="range" id="dcw-level-4" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dcw-level-5">DCW LEVEL 5</label>
-                <input type="range" id="dcw-level-5" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dcw-level-6">DCW LEVEL 6</label>
-                <input type="range" id="dcw-level-6" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row">
-                <label for="dcw-level-7">DCW LEVEL 7</label>
-                <input type="range" id="dcw-level-7" min="0" max="127" value="0">
             </div>
         </div>
 
         <!-- DCW RATE -->
         <div class="control-box vertical-sliders noisy">
             <h3>DCW RATE</h3>
-            <div class="parameter-row" title="DCW Rate 0">
-                <label for="dcw-rate-0">RATE 0</label>
-                <input type="range" id="dcw-rate-0" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 0">
+                    <label for="dcw-rate-0">RATE 0</label>
+                    <input type="range" id="dcw-rate-0" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 0">
+                    <label for="dcw-level-0">LVL 0</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-0" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCW Rate 1">
-                <label for="dcw-rate-1">RATE 1</label>
-                <input type="range" id="dcw-rate-1" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 1">
+                    <label for="dcw-rate-1">RATE 1</label>
+                    <input type="range" id="dcw-rate-1" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 1">
+                    <label for="dcw-level-1">LVL 1</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-1" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCW Rate 2">
-                <label for="dcw-rate-2">RATE 2</label>
-                <input type="range" id="dcw-rate-2" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 2">
+                    <label for="dcw-rate-2">RATE 2</label>
+                    <input type="range" id="dcw-rate-2" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 2">
+                    <label for="dcw-level-2">LVL 2</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-2" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCW Rate 3">
-                <label for="dcw-rate-3">RATE 3</label>
-                <input type="range" id="dcw-rate-3" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 3">
+                    <label for="dcw-rate-3">RATE 3</label>
+                    <input type="range" id="dcw-rate-3" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 3">
+                    <label for="dcw-level-3">LVL 3</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-3" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCW Rate 4">
-                <label for="dcw-rate-4">RATE 4</label>
-                <input type="range" id="dcw-rate-4" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 4">
+                    <label for="dcw-rate-4">RATE 4</label>
+                    <input type="range" id="dcw-rate-4" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 4">
+                    <label for="dcw-level-4">LVL 4</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-4" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCW Rate 5">
-                <label for="dcw-rate-5">RATE 5</label>
-                <input type="range" id="dcw-rate-5" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 5">
+                    <label for="dcw-rate-5">RATE 5</label>
+                    <input type="range" id="dcw-rate-5" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 5">
+                    <label for="dcw-level-5">LVL 5</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-5" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCW Rate 6">
-                <label for="dcw-rate-6">RATE 6</label>
-                <input type="range" id="dcw-rate-6" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 6">
+                    <label for="dcw-rate-6">RATE 6</label>
+                    <input type="range" id="dcw-rate-6" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 6">
+                    <label for="dcw-level-6">LVL 6</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-6" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCW Rate 7">
-                <label for="dcw-rate-7">RATE 7</label>
-                <input type="range" id="dcw-rate-7" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 7">
+                    <label for="dcw-rate-7">RATE 7</label>
+                    <input type="range" id="dcw-rate-7" min="0" max="127" value="0">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 7">
+                    <label for="dcw-level-7">LVL 7</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-7" min="0" max="127" value="0">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <div class="pot-value">0</div>
+                    </div>
+                </div>
             </div>
         </div>
 

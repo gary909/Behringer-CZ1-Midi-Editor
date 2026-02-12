@@ -329,8 +329,44 @@ function onMIDISuccess(midiAccess) {
         }
     });
 
+    // Initialize pot controls
+    initPotControls();
+
     document.getElementById('init-patch-button')?.addEventListener('click', initPatch);
     document.getElementById('random-patch-button')?.addEventListener('click', randomPatch);
+}
+
+// --- POT CONTROL INITIALIZATION ---
+function initPotControls() {
+    const potControls = document.querySelectorAll('.pot-control');
+    
+    potControls.forEach(potControl => {
+        const input = potControl.querySelector('input[type="range"]');
+        const knob = potControl.querySelector('.pot-knob');
+        const valueDisplay = potControl.querySelector('.pot-value');
+        
+        if (!input || !knob || !valueDisplay) return;
+        
+        // Function to update pot rotation and value display
+        const updatePot = () => {
+            const value = parseInt(input.value);
+            const min = parseInt(input.min);
+            const max = parseInt(input.max);
+            
+            // Calculate rotation (270 degrees range: -135 to +135)
+            const percent = (value - min) / (max - min);
+            const rotation = (percent * 270) - 135;
+            
+            knob.style.transform = `rotate(${rotation}deg)`;
+            valueDisplay.textContent = value;
+        };
+        
+        // Initialize pot position
+        updatePot();
+        
+        // Update on input change
+        input.addEventListener('input', updatePot);
+    });
 }
 
 // --- MIDI UTILITIES ---
