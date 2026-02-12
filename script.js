@@ -154,54 +154,6 @@ function getLineName(val) {
     return 'UNKNOWN';
 }
 
-// DCW 1 (Digital Controlled Wave/Filter)
-const CC_DCW1_CUTOFF = 89;  // Standard filter cutoff
-const CC_DCW1_RESONANCE = 71;  // Standard filter resonance
-const CC_DCW1_ENV_DEPTH = 22;
-
-// DCW 2
-const CC_DCW2_CUTOFF = 23;
-const CC_DCW2_RESONANCE = 24;
-const CC_DCW2_ENV_DEPTH = 25;
-
-// DCA (Digital Controlled Amplifier)
-const CC_DCA_LEVEL = 7;  // Standard volume
-const CC_DCA_ENV_DEPTH = 26;
-
-// Envelope 1 (DCW 1)
-const CC_ENV1_ATTACK = 73;
-const CC_ENV1_DECAY = 75;
-const CC_ENV1_SUSTAIN = 79;
-const CC_ENV1_RELEASE = 72;
-
-// Envelope 2 (DCW 2)
-const CC_ENV2_ATTACK = 80;
-const CC_ENV2_DECAY = 81;
-const CC_ENV2_SUSTAIN = 82;
-const CC_ENV2_RELEASE = 83;
-
-// Envelope 3 (DCA)
-const CC_ENV3_ATTACK = 85;
-const CC_ENV3_DECAY = 86;
-const CC_ENV3_SUSTAIN = 87;
-const CC_ENV3_RELEASE = 88;
-
-// LFO
-const CC_LFO_WAVE = 27;
-const CC_LFO_RATE = 28;
-const CC_LFO_DELAY = 29;
-const CC_LFO_DEPTH = 30;
-
-// Modulation
-const CC_MOD_WHEEL = 1;  // Standard mod wheel
-const CC_AFTERTOUCH = 2;
-const CC_PORTAMENTO = 5;  // Standard portamento time
-
-// Global
-const CC_MASTER_TUNE = 31;
-const CC_TRANSPOSE = 32;
-const CC_VOLUME = 7;  // Master volume
-
 // --- PATCH DEFAULTS ---
 const ALL_PATCH_CONTROLS = [
     // DCO
@@ -325,55 +277,7 @@ const ALL_PATCH_CONTROLS = [
     
     // Chorus
     { id: 'chorus-rate', cc: CC_CHORUS_RATE, value: 0 },
-    { id: 'chorus-depth', cc: CC_CHORUS_DEPTH, value: 0 },
-    
-    // DCW 1
-    { id: 'dcw1-cutoff', cc: CC_DCW1_CUTOFF, value: 127 },
-    { id: 'dcw1-resonance', cc: CC_DCW1_RESONANCE, value: 0 },
-    { id: 'dcw1-env-depth', cc: CC_DCW1_ENV_DEPTH, value: 64 },
-    
-    // DCW 2
-    { id: 'dcw2-cutoff', cc: CC_DCW2_CUTOFF, value: 127 },
-    { id: 'dcw2-resonance', cc: CC_DCW2_RESONANCE, value: 0 },
-    { id: 'dcw2-env-depth', cc: CC_DCW2_ENV_DEPTH, value: 64 },
-    
-    // DCA
-    { id: 'dca-level', cc: CC_DCA_LEVEL, value: 127 },
-    { id: 'dca-env-depth', cc: CC_DCA_ENV_DEPTH, value: 127 },
-    
-    // Envelope 1
-    { id: 'env1-attack', cc: CC_ENV1_ATTACK, value: 0 },
-    { id: 'env1-decay', cc: CC_ENV1_DECAY, value: 64 },
-    { id: 'env1-sustain', cc: CC_ENV1_SUSTAIN, value: 127 },
-    { id: 'env1-release', cc: CC_ENV1_RELEASE, value: 64 },
-    
-    // Envelope 2
-    { id: 'env2-attack', cc: CC_ENV2_ATTACK, value: 0 },
-    { id: 'env2-decay', cc: CC_ENV2_DECAY, value: 64 },
-    { id: 'env2-sustain', cc: CC_ENV2_SUSTAIN, value: 127 },
-    { id: 'env2-release', cc: CC_ENV2_RELEASE, value: 64 },
-    
-    // Envelope 3
-    { id: 'env3-attack', cc: CC_ENV3_ATTACK, value: 0 },
-    { id: 'env3-decay', cc: CC_ENV3_DECAY, value: 64 },
-    { id: 'env3-sustain', cc: CC_ENV3_SUSTAIN, value: 127 },
-    { id: 'env3-release', cc: CC_ENV3_RELEASE, value: 64 },
-    
-    // LFO
-    { id: 'lfo-wave', cc: CC_LFO_WAVE, value: 0 },
-    { id: 'lfo-rate', cc: CC_LFO_RATE, value: 64 },
-    { id: 'lfo-delay', cc: CC_LFO_DELAY, value: 0 },
-    { id: 'lfo-depth', cc: CC_LFO_DEPTH, value: 0 },
-    
-    // Modulation
-    { id: 'mod-wheel', cc: CC_MOD_WHEEL, value: 0 },
-    { id: 'aftertouch', cc: CC_AFTERTOUCH, value: 0 },
-    { id: 'portamento', cc: CC_PORTAMENTO, value: 0 },
-    
-    // Global
-    { id: 'master-tune', cc: CC_MASTER_TUNE, value: 64 },
-    { id: 'transpose', cc: CC_TRANSPOSE, value: 64 },
-    { id: 'volume', cc: CC_VOLUME, value: 100 }
+    { id: 'chorus-depth', cc: CC_CHORUS_DEPTH, value: 0 }
 ];
 
 // --- INITIALIZATION ---
