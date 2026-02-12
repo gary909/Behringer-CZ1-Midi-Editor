@@ -1,9 +1,6 @@
 // Variable to store the selected MIDI output port
 let midiOutput = null;
 
-// Variable to store the MIDI access object
-let midiAccess = null;
-
 // Variable to store the original text of the MIDI status element
 let originalMidiStatusText = '';
 
@@ -292,16 +289,10 @@ function onMIDIFailure() {
     console.log("Could not access MIDI devices.");
 }
 
-function onMIDISuccess(midiAccessObj) {
-    midiAccess = midiAccessObj;
+function onMIDISuccess(midiAccess) {
     const statusElement = document.getElementById('midi-output-select');
     populateOutputDevices(midiAccess);
     midiAccess.addEventListener('statechange', () => populateOutputDevices(midiAccess));
-    
-    // Add change listener for MIDI device selection
-    statusElement.addEventListener('change', (e) => {
-        connectToSelectedOutput(e.target.value, midiAccess);
-    });
 
     const attachSlider = (ccNumber, elementId, helperFn = null) => {
         const slider = document.getElementById(elementId);
