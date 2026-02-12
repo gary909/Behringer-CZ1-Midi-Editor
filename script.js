@@ -28,6 +28,23 @@ const CC_DETUNE_OCT = 10;
 const CC_DETUNE_NOTE = 11;
 const CC_DETUNE_FINE = 12;
 
+// DCO Params
+const CC_DCO1_WF1_LINEOFFSET = 16;
+const CC_DCO1_WF2_LINEOFFSET = 17;
+
+// DCW Params
+const CC_DCO1_DCW_LINEOFFSET = 18;
+const CC_DCO1_DCW_KEYFOLLOW = 19;
+const CC_DCO1_DCW_KEYFOLLOW_RANGE = 20;
+const CC_DCO1_DCW_KEYFOLLOW_LINEOFFSET = 23;
+const CC_DCO1_DCW_KEYFOLLOW_RANGE_LINEOFFSET = 24;
+
+// DCA Params
+const CC_DCO1_DCA_KEYFOLLOW = 21;
+const CC_DCO1_DCA_KEYFOLLOW_RANGE = 22;
+const CC_DCO1_DCA_KEYFOLLOW_LINEOFFSET = 25;
+const CC_DCO1_DCA_KEYFOLLOW_RANGE_LINEOFFSET = 26;
+
 // --- HELPER FUNCTIONS ---
 // Map waveform slider values to waveform names
 function getWaveformName(val) {
@@ -120,6 +137,23 @@ const ALL_PATCH_CONTROLS = [
     { id: 'detune-oct', cc: CC_DETUNE_OCT, value: 0 },
     { id: 'detune-note', cc: CC_DETUNE_NOTE, value: 0 },
     { id: 'detune-fine', cc: CC_DETUNE_FINE, value: 0 },
+    
+    // DCO Params
+    { id: 'dco1-wf1-lineoffset', cc: CC_DCO1_WF1_LINEOFFSET, value: 0 },
+    { id: 'dco1-wf2-lineoffset', cc: CC_DCO1_WF2_LINEOFFSET, value: 0 },
+    
+    // DCW Params
+    { id: 'dco1-dcw-lineoffset', cc: CC_DCO1_DCW_LINEOFFSET, value: 0 },
+    { id: 'dco1-dcw-keyfollow', cc: CC_DCO1_DCW_KEYFOLLOW, value: 0 },
+    { id: 'dco1-dcw-keyfollow-range', cc: CC_DCO1_DCW_KEYFOLLOW_RANGE, value: 0 },
+    { id: 'dco1-dcw-keyfollow-lineoffset', cc: CC_DCO1_DCW_KEYFOLLOW_LINEOFFSET, value: 0 },
+    { id: 'dco1-dcw-keyfollow-range-lineoffset', cc: CC_DCO1_DCW_KEYFOLLOW_RANGE_LINEOFFSET, value: 0 },
+    
+    // DCA Params
+    { id: 'dco1-dca-keyfollow', cc: CC_DCO1_DCA_KEYFOLLOW, value: 0 },
+    { id: 'dco1-dca-keyfollow-range', cc: CC_DCO1_DCA_KEYFOLLOW_RANGE, value: 0 },
+    { id: 'dco1-dca-keyfollow-lineoffset', cc: CC_DCO1_DCA_KEYFOLLOW_LINEOFFSET, value: 0 },
+    { id: 'dco1-dca-keyfollow-range-lineoffset', cc: CC_DCO1_DCA_KEYFOLLOW_RANGE_LINEOFFSET, value: 0 },
     
     // DCW 1
     { id: 'dcw1-cutoff', cc: CC_DCW1_CUTOFF, value: 127 },
