@@ -45,6 +45,72 @@ const CC_DCO1_DCA_KEYFOLLOW_RANGE = 22;
 const CC_DCO1_DCA_KEYFOLLOW_LINEOFFSET = 25;
 const CC_DCO1_DCA_KEYFOLLOW_RANGE_LINEOFFSET = 26;
 
+// DCA Level
+const CC_DCA_SUSTAIN_POINT = 27;
+const CC_DCA_END_POINT = 28;
+const CC_DCA_LEVEL_0 = 29;
+const CC_DCA_LEVEL_1 = 30;
+const CC_DCA_LEVEL_2 = 31;
+const CC_DCA_LEVEL_3 = 32;
+const CC_DCA_LEVEL_4 = 33;
+const CC_DCA_LEVEL_5 = 34;
+const CC_DCA_LEVEL_6 = 35;
+const CC_DCA_LEVEL_7 = 36;
+
+// DCA Rate
+const CC_DCA_RATE_0 = 37;
+const CC_DCA_RATE_1 = 38;
+const CC_DCA_RATE_2 = 39;
+const CC_DCA_RATE_3 = 40;
+const CC_DCA_RATE_4 = 41;
+const CC_DCA_RATE_5 = 42;
+const CC_DCA_RATE_6 = 43;
+const CC_DCA_RATE_7 = 44;
+
+// Pitch Level
+const CC_PITCH_SUSTAIN_POINT = 45;
+const CC_PITCH_END_POINT = 46;
+const CC_PITCH_LEVEL_0 = 47;
+const CC_PITCH_LEVEL_1 = 48;
+const CC_PITCH_LEVEL_2 = 49;
+const CC_PITCH_LEVEL_3 = 50;
+const CC_PITCH_LEVEL_4 = 51;
+const CC_PITCH_LEVEL_5 = 52;
+const CC_PITCH_LEVEL_6 = 53;
+const CC_PITCH_LEVEL_7 = 54;
+
+// Pitch Rate
+const CC_PITCH_RATE_0 = 55;
+const CC_PITCH_RATE_1 = 56;
+const CC_PITCH_RATE_2 = 57;
+const CC_PITCH_RATE_3 = 58;
+const CC_PITCH_RATE_4 = 59;
+const CC_PITCH_RATE_5 = 60;
+const CC_PITCH_RATE_6 = 61;
+const CC_PITCH_RATE_7 = 62;
+
+// DCW Level
+const CC_DCW_SUSTAIN_POINT = 63;
+const CC_DCW_END_POINT = 64;
+const CC_DCW_LEVEL_0 = 65;
+const CC_DCW_LEVEL_1 = 66;
+const CC_DCW_LEVEL_2 = 67;
+const CC_DCW_LEVEL_3 = 68;
+const CC_DCW_LEVEL_4 = 69;
+const CC_DCW_LEVEL_5 = 70;
+const CC_DCW_LEVEL_6 = 71;
+const CC_DCW_LEVEL_7 = 72;
+
+// DCW Rate
+const CC_DCW_RATE_0 = 73;
+const CC_DCW_RATE_1 = 74;
+const CC_DCW_RATE_2 = 75;
+const CC_DCW_RATE_3 = 76;
+const CC_DCW_RATE_4 = 77;
+const CC_DCW_RATE_5 = 78;
+const CC_DCW_RATE_6 = 79;
+const CC_DCW_RATE_7 = 80;
+
 // --- HELPER FUNCTIONS ---
 // Map waveform slider values to waveform names
 function getWaveformName(val) {
@@ -154,6 +220,72 @@ const ALL_PATCH_CONTROLS = [
     { id: 'dco1-dca-keyfollow-range', cc: CC_DCO1_DCA_KEYFOLLOW_RANGE, value: 0 },
     { id: 'dco1-dca-keyfollow-lineoffset', cc: CC_DCO1_DCA_KEYFOLLOW_LINEOFFSET, value: 0 },
     { id: 'dco1-dca-keyfollow-range-lineoffset', cc: CC_DCO1_DCA_KEYFOLLOW_RANGE_LINEOFFSET, value: 0 },
+    
+    // DCA Level
+    { id: 'dca-sustain-point', cc: CC_DCA_SUSTAIN_POINT, value: 0 },
+    { id: 'dca-end-point', cc: CC_DCA_END_POINT, value: 0 },
+    { id: 'dca-level-0', cc: CC_DCA_LEVEL_0, value: 0 },
+    { id: 'dca-level-1', cc: CC_DCA_LEVEL_1, value: 0 },
+    { id: 'dca-level-2', cc: CC_DCA_LEVEL_2, value: 0 },
+    { id: 'dca-level-3', cc: CC_DCA_LEVEL_3, value: 0 },
+    { id: 'dca-level-4', cc: CC_DCA_LEVEL_4, value: 0 },
+    { id: 'dca-level-5', cc: CC_DCA_LEVEL_5, value: 0 },
+    { id: 'dca-level-6', cc: CC_DCA_LEVEL_6, value: 0 },
+    { id: 'dca-level-7', cc: CC_DCA_LEVEL_7, value: 0 },
+    
+    // DCA Rate
+    { id: 'dca-rate-0', cc: CC_DCA_RATE_0, value: 0 },
+    { id: 'dca-rate-1', cc: CC_DCA_RATE_1, value: 0 },
+    { id: 'dca-rate-2', cc: CC_DCA_RATE_2, value: 0 },
+    { id: 'dca-rate-3', cc: CC_DCA_RATE_3, value: 0 },
+    { id: 'dca-rate-4', cc: CC_DCA_RATE_4, value: 0 },
+    { id: 'dca-rate-5', cc: CC_DCA_RATE_5, value: 0 },
+    { id: 'dca-rate-6', cc: CC_DCA_RATE_6, value: 0 },
+    { id: 'dca-rate-7', cc: CC_DCA_RATE_7, value: 0 },
+    
+    // Pitch Level
+    { id: 'pitch-sustain-point', cc: CC_PITCH_SUSTAIN_POINT, value: 0 },
+    { id: 'pitch-end-point', cc: CC_PITCH_END_POINT, value: 0 },
+    { id: 'pitch-level-0', cc: CC_PITCH_LEVEL_0, value: 0 },
+    { id: 'pitch-level-1', cc: CC_PITCH_LEVEL_1, value: 0 },
+    { id: 'pitch-level-2', cc: CC_PITCH_LEVEL_2, value: 0 },
+    { id: 'pitch-level-3', cc: CC_PITCH_LEVEL_3, value: 0 },
+    { id: 'pitch-level-4', cc: CC_PITCH_LEVEL_4, value: 0 },
+    { id: 'pitch-level-5', cc: CC_PITCH_LEVEL_5, value: 0 },
+    { id: 'pitch-level-6', cc: CC_PITCH_LEVEL_6, value: 0 },
+    { id: 'pitch-level-7', cc: CC_PITCH_LEVEL_7, value: 0 },
+    
+    // Pitch Rate
+    { id: 'pitch-rate-0', cc: CC_PITCH_RATE_0, value: 0 },
+    { id: 'pitch-rate-1', cc: CC_PITCH_RATE_1, value: 0 },
+    { id: 'pitch-rate-2', cc: CC_PITCH_RATE_2, value: 0 },
+    { id: 'pitch-rate-3', cc: CC_PITCH_RATE_3, value: 0 },
+    { id: 'pitch-rate-4', cc: CC_PITCH_RATE_4, value: 0 },
+    { id: 'pitch-rate-5', cc: CC_PITCH_RATE_5, value: 0 },
+    { id: 'pitch-rate-6', cc: CC_PITCH_RATE_6, value: 0 },
+    { id: 'pitch-rate-7', cc: CC_PITCH_RATE_7, value: 0 },
+    
+    // DCW Level
+    { id: 'dcw-sustain-point', cc: CC_DCW_SUSTAIN_POINT, value: 0 },
+    { id: 'dcw-end-point', cc: CC_DCW_END_POINT, value: 0 },
+    { id: 'dcw-level-0', cc: CC_DCW_LEVEL_0, value: 0 },
+    { id: 'dcw-level-1', cc: CC_DCW_LEVEL_1, value: 0 },
+    { id: 'dcw-level-2', cc: CC_DCW_LEVEL_2, value: 0 },
+    { id: 'dcw-level-3', cc: CC_DCW_LEVEL_3, value: 0 },
+    { id: 'dcw-level-4', cc: CC_DCW_LEVEL_4, value: 0 },
+    { id: 'dcw-level-5', cc: CC_DCW_LEVEL_5, value: 0 },
+    { id: 'dcw-level-6', cc: CC_DCW_LEVEL_6, value: 0 },
+    { id: 'dcw-level-7', cc: CC_DCW_LEVEL_7, value: 0 },
+    
+    // DCW Rate
+    { id: 'dcw-rate-0', cc: CC_DCW_RATE_0, value: 0 },
+    { id: 'dcw-rate-1', cc: CC_DCW_RATE_1, value: 0 },
+    { id: 'dcw-rate-2', cc: CC_DCW_RATE_2, value: 0 },
+    { id: 'dcw-rate-3', cc: CC_DCW_RATE_3, value: 0 },
+    { id: 'dcw-rate-4', cc: CC_DCW_RATE_4, value: 0 },
+    { id: 'dcw-rate-5', cc: CC_DCW_RATE_5, value: 0 },
+    { id: 'dcw-rate-6', cc: CC_DCW_RATE_6, value: 0 },
+    { id: 'dcw-rate-7', cc: CC_DCW_RATE_7, value: 0 },
     
     // DCW 1
     { id: 'dcw1-cutoff', cc: CC_DCW1_CUTOFF, value: 127 },
