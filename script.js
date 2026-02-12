@@ -111,6 +111,26 @@ const CC_DCW_RATE_5 = 78;
 const CC_DCW_RATE_6 = 79;
 const CC_DCW_RATE_7 = 80;
 
+// LFO 1
+const CC_LFO1_WAVE = 81;
+const CC_LFO1_AMOUNT = 82;
+const CC_LFO1_RATE = 83;
+
+// Filter EG
+const CC_FILTER_ATTACK = 84;
+const CC_FILTER_DECAY = 85;
+const CC_FILTER_SUSTAIN = 86;
+const CC_FILTER_RELEASE = 87;
+
+// Filter
+const CC_FILTER_ENV_AMOUNT = 88;
+const CC_FILTER_CUTOFF = 89;
+const CC_FILTER_RESONANCE = 90;
+
+// Chorus
+const CC_CHORUS_RATE = 91;
+const CC_CHORUS_DEPTH = 92;
+
 // --- HELPER FUNCTIONS ---
 // Map waveform slider values to waveform names
 function getWaveformName(val) {
@@ -286,6 +306,26 @@ const ALL_PATCH_CONTROLS = [
     { id: 'dcw-rate-5', cc: CC_DCW_RATE_5, value: 0 },
     { id: 'dcw-rate-6', cc: CC_DCW_RATE_6, value: 0 },
     { id: 'dcw-rate-7', cc: CC_DCW_RATE_7, value: 0 },
+    
+    // LFO 1
+    { id: 'lfo1-wave', cc: CC_LFO1_WAVE, value: 0 },
+    { id: 'lfo1-amount', cc: CC_LFO1_AMOUNT, value: 0 },
+    { id: 'lfo1-rate', cc: CC_LFO1_RATE, value: 0 },
+    
+    // Filter EG
+    { id: 'filter-attack', cc: CC_FILTER_ATTACK, value: 0 },
+    { id: 'filter-decay', cc: CC_FILTER_DECAY, value: 0 },
+    { id: 'filter-sustain', cc: CC_FILTER_SUSTAIN, value: 0 },
+    { id: 'filter-release', cc: CC_FILTER_RELEASE, value: 0 },
+    
+    // Filter
+    { id: 'filter-cutoff', cc: CC_FILTER_CUTOFF, value: 0 },
+    { id: 'filter-resonance', cc: CC_FILTER_RESONANCE, value: 0 },
+    { id: 'filter-env-amount', cc: CC_FILTER_ENV_AMOUNT, value: 0 },
+    
+    // Chorus
+    { id: 'chorus-rate', cc: CC_CHORUS_RATE, value: 0 },
+    { id: 'chorus-depth', cc: CC_CHORUS_DEPTH, value: 0 },
     
     // DCW 1
     { id: 'dcw1-cutoff', cc: CC_DCW1_CUTOFF, value: 127 },
