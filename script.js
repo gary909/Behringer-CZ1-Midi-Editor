@@ -12,6 +12,7 @@ let originalMidiStatusText = '';
 const CC_DCO1_WF1 = 13;
 const CC_DCO2_WF2 = 14;
 const CC_DCO1_DCW = 15;
+const CC_LINE_SELECT = 8;
 
 // --- HELPER FUNCTIONS ---
 // Map waveform slider values to waveform names
@@ -24,6 +25,15 @@ function getWaveformName(val) {
     if (val >= 91 && val <= 108) return 'RESONANCE I SAW';
     if (val >= 109 && val <= 126) return 'RESONANCE II TRI';
     if (val === 127) return 'RESONANCE III TRAP';
+    return 'UNKNOWN';
+}
+
+// Map line select values to line names
+function getLineName(val) {
+    if (val >= 0 && val <= 42) return 'Line 1';
+    if (val >= 43 && val <= 84) return 'Line 2';
+    if (val >= 85 && val <= 126) return 'Line 1+2';
+    if (val === 127) return 'Line 1+1';
     return 'UNKNOWN';
 }
 
@@ -81,6 +91,7 @@ const ALL_PATCH_CONTROLS = [
     { id: 'dco1-wf1', cc: CC_DCO1_WF1, value: 0 },
     { id: 'dco2-wf2', cc: CC_DCO2_WF2, value: 0 },
     { id: 'dco1-dcw', cc: CC_DCO1_DCW, value: 0 },
+    { id: 'line-select', cc: CC_LINE_SELECT, value: 0 },
     
     // DCW 1
     { id: 'dcw1-cutoff', cc: CC_DCW1_CUTOFF, value: 127 },
@@ -173,6 +184,8 @@ function onMIDISuccess(midiAccess) {
             attachSlider(control.cc, control.id, (val) => `DCO 1 WF1: ${getWaveformName(val)}`);
         } else if (control.id === 'dco2-wf2') {
             attachSlider(control.cc, control.id, (val) => `DCO 2 WF2: ${getWaveformName(val)}`);
+        } else if (control.id === 'line-select') {
+            attachSlider(control.cc, control.id, (val) => `LINE SELECT: ${getLineName(val)}`);
         } else {
             attachSlider(control.cc, control.id);
         }
