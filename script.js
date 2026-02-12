@@ -14,6 +14,20 @@ const CC_DCO2_WF2 = 14;
 const CC_DCO1_DCW = 15;
 const CC_LINE_SELECT = 8;
 
+// Vibrato
+const CC_VIBRATO_WAVE = 2;
+const CC_VIBRATO_RATE = 3;
+const CC_VIBRATO_SYNC = 4;
+const CC_VIBRATO_SYNC_RATE = 5;
+const CC_VIBRATO_DEPTH = 6;
+const CC_VIBRATO_DELAY = 7;
+
+// Detune
+const CC_DETUNE_POLARITY = 9;
+const CC_DETUNE_OCT = 10;
+const CC_DETUNE_NOTE = 11;
+const CC_DETUNE_FINE = 12;
+
 // --- HELPER FUNCTIONS ---
 // Map waveform slider values to waveform names
 function getWaveformName(val) {
@@ -92,6 +106,20 @@ const ALL_PATCH_CONTROLS = [
     { id: 'dco2-wf2', cc: CC_DCO2_WF2, value: 0 },
     { id: 'dco1-dcw', cc: CC_DCO1_DCW, value: 0 },
     { id: 'line-select', cc: CC_LINE_SELECT, value: 0 },
+    
+    // Vibrato
+    { id: 'vibrato-wave', cc: CC_VIBRATO_WAVE, value: 0 },
+    { id: 'vibrato-rate', cc: CC_VIBRATO_RATE, value: 0 },
+    { id: 'vibrato-sync', cc: CC_VIBRATO_SYNC, value: 0 },
+    { id: 'vibrato-sync-rate', cc: CC_VIBRATO_SYNC_RATE, value: 0 },
+    { id: 'vibrato-depth', cc: CC_VIBRATO_DEPTH, value: 0 },
+    { id: 'vibrato-delay', cc: CC_VIBRATO_DELAY, value: 0 },
+    
+    // Detune
+    { id: 'detune-polarity', cc: CC_DETUNE_POLARITY, value: 0 },
+    { id: 'detune-oct', cc: CC_DETUNE_OCT, value: 0 },
+    { id: 'detune-note', cc: CC_DETUNE_NOTE, value: 0 },
+    { id: 'detune-fine', cc: CC_DETUNE_FINE, value: 0 },
     
     // DCW 1
     { id: 'dcw1-cutoff', cc: CC_DCW1_CUTOFF, value: 127 },
