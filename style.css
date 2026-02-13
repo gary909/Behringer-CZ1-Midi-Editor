@@ -503,7 +503,11 @@ input[type="range"] {
 }
 
 #line-select {
-    height: 80px !important;
+    height: 65px !important;
+}
+
+.control-box:has(#line-select) {
+    max-width: 130px;
 }
 
 .vertical-sliders h3 {
@@ -663,6 +667,23 @@ input[type="range"] {
 .circle.active {
     background-color: #ff0000;
     color: #ff0000;
+}
+
+.circle-labels {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 4px;
+    gap: 12px;
+}
+
+.circle-labels span {
+    flex: 1;
+    text-align: center;
+    flex-shrink: 0;
+    color: #EAEDEC;
+    font-size: 10px;
 } 
 
 /* --- NEW MEDIA QUERY FOR MOBILE VIEW --- */
