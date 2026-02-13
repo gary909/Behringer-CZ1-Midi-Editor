@@ -309,10 +309,6 @@ function onMIDISuccess(midiAccess) {
             statusElement.options[statusElement.selectedIndex].textContent = 
                 helperFn ? helperFn(val) : `${elementId.toUpperCase().replace('-', ' ')}: ${val}`;
         });
-
-        slider.addEventListener('mouseup', () => {
-            statusElement.options[statusElement.selectedIndex].textContent = originalMidiStatusText;
-        });
     };
 
     // Attach all sliders
