@@ -77,7 +77,7 @@
 
         <div id="header-spacer"></div>
     </div>
-    
+    <!-- *******************************Start of Controls Here*************************** -->
     <div id="controls">
         
         <!-- DCO -->
@@ -101,8 +101,20 @@
         <div class="control-box vertical-sliders noisy">
             <h3>LINE SELECT</h3>
             <div class="parameter-row">
+                <div class="line-indicator-circles">
+                    <div class="circle" data-value="0"></div>
+                    <div class="circle" data-value="42"></div>
+                    <div class="circle" data-value="85"></div>
+                    <div class="circle" data-value="127"></div>
+                </div>
                 <label for="line-select">LINE</label>
-                <input type="range" id="line-select" min="0" max="127" value="0">
+                <input type="range" id="line-select" min="0" max="127" value="0" list="line-select-list">
+                <datalist id="line-select-list">
+                    <option value="0" label="1">"1"</option>
+                    <option value="42" label="2">2</option>
+                    <option value="85" label="1+2">1+2</option>
+                    <option value="127" label="1+1">1+1</option>
+                </datalist>
             </div>
         </div>
 

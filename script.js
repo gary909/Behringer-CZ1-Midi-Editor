@@ -332,8 +332,46 @@ function onMIDISuccess(midiAccess) {
     // Initialize pot controls
     initPotControls();
 
+    // Initialize line select indicator circles
+    initLineIndicator();
+
     document.getElementById('init-patch-button')?.addEventListener('click', initPatch);
     document.getElementById('random-patch-button')?.addEventListener('click', randomPatch);
+}
+
+// --- LINE SELECT INDICATOR INITIALIZATION ---
+function initLineIndicator() {
+    const lineSelect = document.getElementById('line-select');
+    const circles = document.querySelectorAll('.line-indicator-circles .circle');
+    
+    if (!lineSelect || circles.length === 0) return;
+    
+    // Function to update active circle
+    const updateIndicator = () => {
+        const value = parseInt(lineSelect.value);
+        circles.forEach(circle => {
+            const circleValue = parseInt(circle.getAttribute('data-value'));
+            
+            // Determine which circle should be active based on value ranges
+            let shouldBeActive = false;
+            if (circleValue === 0 && value <= 21) shouldBeActive = true;
+            else if (circleValue === 42 && value > 21 && value <= 63) shouldBeActive = true;
+            else if (circleValue === 85 && value > 63 && value <= 106) shouldBeActive = true;
+            else if (circleValue === 127 && value > 106) shouldBeActive = true;
+            
+            if (shouldBeActive) {
+                circle.classList.add('active');
+            } else {
+                circle.classList.remove('active');
+            }
+        });
+    };
+    
+    // Update on page load
+    updateIndicator();
+    
+    // Update on slider change
+    lineSelect.addEventListener('input', updateIndicator);
 }
 
 // --- POT CONTROL INITIALIZATION ---
