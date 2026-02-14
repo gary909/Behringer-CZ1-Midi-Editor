@@ -318,6 +318,10 @@ p {
     background-color: #380454;
 }
 
+.control-box:has(#pitch-sustain-point) {
+    width: 130px;
+}
+
 .parameter-row {
     display: flex;
     justify-content: space-between;

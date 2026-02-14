@@ -154,6 +154,45 @@ function getLineName(val) {
     return 'UNKNOWN';
 }
 
+// Map sustain point values to point numbers (0-7)
+function getSustainPointNumber(val) {
+    if (val >= 0 && val <= 9) return '0';
+    if (val >= 10 && val <= 28) return '1';
+    if (val >= 29 && val <= 46) return '2';
+    if (val >= 47 && val <= 64) return '3';
+    if (val >= 65 && val <= 82) return '4';
+    if (val >= 83 && val <= 100) return '5';
+    if (val >= 101 && val <= 118) return '6';
+    if (val >= 119 && val <= 127) return '7';
+    return 'UNKNOWN';
+}
+
+// Map end point values to point numbers (0-8)
+function getEndPointNumber(val) {
+    if (val >= 0 && val <= 8) return '0';
+    if (val >= 9 && val <= 24) return '1';
+    if (val >= 25 && val <= 41) return '2';
+    if (val >= 42 && val <= 59) return '3';
+    if (val >= 60 && val <= 73) return '4';
+    if (val >= 74 && val <= 88) return '5';
+    if (val >= 89 && val <= 104) return '6';
+    if (val >= 105 && val <= 120) return '7';
+    if (val >= 121 && val <= 127) return '8';
+    return 'UNKNOWN';
+}
+
+// Map pitch end point values to point numbers (2-8)
+function getPitchEndPointNumber(val) {
+    if (val >= 0 && val <= 13) return '2';
+    if (val >= 14 && val <= 29) return '3';
+    if (val >= 30 && val <= 45) return '4';
+    if (val >= 46 && val <= 61) return '5';
+    if (val >= 62 && val <= 77) return '6';
+    if (val >= 78 && val <= 93) return '7';
+    if (val >= 94 && val <= 127) return '8';
+    return 'UNKNOWN';
+}
+
 // --- PATCH DEFAULTS ---
 const ALL_PATCH_CONTROLS = [
     // DCO
@@ -320,6 +359,18 @@ function onMIDISuccess(midiAccess) {
             attachSlider(control.cc, control.id, (val) => `DCO 2 WF2: ${getWaveformName(val)}`);
         } else if (control.id === 'line-select') {
             attachSlider(control.cc, control.id, (val) => `LINE SELECT: ${getLineName(val)}`);
+        } else if (control.id === 'pitch-sustain-point') {
+            attachSlider(control.cc, control.id, (val) => `PITCH SUSTAIN: ${getSustainPointNumber(val)}`);
+        } else if (control.id === 'pitch-end-point') {
+            attachSlider(control.cc, control.id, (val) => `PITCH END: ${getPitchEndPointNumber(val)}`);
+        } else if (control.id === 'dca-sustain-point') {
+            attachSlider(control.cc, control.id, (val) => `DCA SUSTAIN: ${getSustainPointNumber(val)}`);
+        } else if (control.id === 'dca-end-point') {
+            attachSlider(control.cc, control.id, (val) => `DCA END: ${getEndPointNumber(val)}`);
+        } else if (control.id === 'dcw-sustain-point') {
+            attachSlider(control.cc, control.id, (val) => `DCW SUSTAIN: ${getSustainPointNumber(val)}`);
+        } else if (control.id === 'dcw-end-point') {
+            attachSlider(control.cc, control.id, (val) => `DCW END: ${getEndPointNumber(val)}`);
         } else {
             attachSlider(control.cc, control.id);
         }
