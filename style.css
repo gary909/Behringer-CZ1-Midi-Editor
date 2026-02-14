@@ -723,7 +723,49 @@ input[type="range"] {
     flex-shrink: 0;
     color: #EAEDEC;
     font-size: 10px;
-} 
+}
+
+/* *****************Start of Waveform display ***************** */
+.waveform-display {
+    position: relative;
+    width: 200px;
+    margin: 10px auto 15px;
+}
+
+.waveform-grid {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.waveform-indicators {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.waveform-indicator {
+    position: absolute;
+    height: 2px;
+    width: 25%; /* Each waveform is 1/4 of the width */
+    transition: left 0.2s ease, top 0.2s ease;
+}
+
+/* DCO 1 indicator - white, slightly higher */
+.waveform-indicator.wf-dco1 {
+    background: white;
+    bottom: -3px; /* Slightly above the bottom */
+}
+
+/* DCO 2 indicator - purple, at the bottom */
+.waveform-indicator.wf-dco2 {
+    background: #A855F7; /* Purple color */
+    bottom: -6px;
+}
+/* *****************End of Waveform display ***************** */
 
 /* --- NEW MEDIA QUERY FOR MOBILE VIEW --- */
 @media (max-width: 768px) {
@@ -798,5 +840,4 @@ input[type="range"] {
         margin: 0; 
         width: auto; /* Allow content to dictate width */
     }
-
 }

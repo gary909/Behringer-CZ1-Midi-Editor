@@ -325,6 +325,15 @@ function onMIDISuccess(midiAccess) {
         }
     });
 
+    // Add waveform indicator updates
+    document.getElementById('dco1-wf1').addEventListener('input', (e) => {
+        updateWaveformIndicator(1, parseInt(e.target.value));
+    });
+
+    document.getElementById('dco2-wf2').addEventListener('input', (e) => {
+        updateWaveformIndicator(2, parseInt(e.target.value));
+    });
+
     // Initialize pot controls
     initPotControls();
 
@@ -447,6 +456,32 @@ function randomPatch() {
         el.value = val;
         sendMidiCC(p.cc, val);
     });
+}
+
+// Function to get waveform index (0-7) from MIDI value
+function getWaveformIndex(val) {
+    if (val >= 0 && val <= 18) return 0; // SAWTOOTH
+    if (val >= 19 && val <= 36) return 1; // SQUARE
+    if (val >= 37 && val <= 54) return 2; // PULSE
+    if (val >= 55 && val <= 72) return 3; // DOUBLESINE
+    if (val >= 73 && val <= 90) return 4; // SAW-PULSE
+    if (val >= 91 && val <= 108) return 5; // RESONANCE I
+    if (val >= 109 && val <= 126) return 6; // RESONANCE II
+    return 7; // RESONANCE III (127)
+}
+
+// Function to update waveform indicator position
+function updateWaveformIndicator(dcoNumber, value) {
+    const waveformIndex = getWaveformIndex(value);
+    const row = waveformIndex < 4 ? 0 : 1; // Top or bottom row
+    const col = waveformIndex % 4; // Column (0-3)
+    
+    const indicator = document.querySelector(`.wf-dco${dcoNumber}`);
+    if (indicator) {
+        // Position indicator under the correct waveform
+        indicator.style.left = `${col * 25}%`;
+        indicator.style.top = `${row * 50}%`;
+    }
 }
 
 // --- HAMBURGER MENU LOGIC ---
