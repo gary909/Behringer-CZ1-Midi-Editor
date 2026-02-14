@@ -729,9 +729,20 @@ input[type="range"] {
 .waveform-display {
     position: relative;
     width: 200px;
-    margin: 15px 25px 10px 0px;
+    margin: 32px 20px 10px 0px;
 }
-
+.waveform-label {
+    display: block;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #EAEDEC;
+    font-size: 10px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 10;
+}
 .waveform-grid {
     width: 100%;
     height: auto;
@@ -756,7 +767,7 @@ input[type="range"] {
 
 /* DCO 1 indicator - white, slightly higher */
 .waveform-indicator.wf-dco1 {
-    background: white;
+    background: #380454;
 }
 
 /* DCO 2 indicator - purple, at the bottom */

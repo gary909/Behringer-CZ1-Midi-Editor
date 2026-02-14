@@ -84,6 +84,7 @@
         <div class="control-box vertical-sliders noisy">
             <h3>DCO</h3>
             <div class="waveform-display">
+                <span class="waveform-label">WAVEFORMS</span>
                 <img src="media/waveforms.svg" alt="Waveforms" class="waveform-grid">
                 <div class="waveform-indicators">
                     <div class="waveform-indicator wf-dco1" data-waveform="0"></div>
@@ -91,15 +92,35 @@
                 </div>
             </div>
             <div class="parameter-row" title="Selects the waveforms used by the DCO">
-                <label for="dco1-wf1">DCO 1<br>WF1</label>
-                <input type="range" id="dco1-wf1" min="0" max="127" value="0">
+                <label for="dco1-wf1">WF1</label>
+                <input type="range" id="dco1-wf1" min="0" max="127" value="0" list="dco1-wf1-list">
+                <datalist id="dco1-wf1-list">
+                    <option value="0" label="Sawtooth"></option>
+                    <option value="19" label="Square"></option>
+                    <option value="37" label="Pulse"></option>
+                    <option value="55" label="DoubleSine"></option>
+                    <option value="73" label="Saw-Pulse"></option>
+                    <option value="91" label="Resonance I"></option>
+                    <option value="109" label="Resonance II"></option>
+                    <option value="127" label="Resonance III"></option>
+                </datalist>
             </div>
             <div class="parameter-row" title="Selects the waveforms used by the DCO">
-                <label for="dco2-wf2">DCO 2<br>WF2</label>
-                <input type="range" id="dco2-wf2" min="0" max="127" value="0">
+                <label for="dco2-wf2">WF2</label>
+                <input type="range" id="dco2-wf2" min="0" max="127" value="0" list="dco2-wf2-list">
+                <datalist id="dco2-wf2-list">
+                    <option value="0" label="Sawtooth"></option>
+                    <option value="19" label="Square"></option>
+                    <option value="37" label="Pulse"></option>
+                    <option value="55" label="DoubleSine"></option>
+                    <option value="73" label="Saw-Pulse"></option>
+                    <option value="91" label="Resonance I"></option>
+                    <option value="109" label="Resonance II"></option>
+                    <option value="127" label="Resonance III"></option>
+                </datalist>
             </div>
             <div class="parameter-row" title="Adjusts the harmonic content produced by the DCO waveshape">
-                <label for="dco1-dcw">DCO 1<br>DCW</label>
+                <label for="dco1-dcw">DCW</label>
                 <input type="range" id="dco1-dcw" min="0" max="127" value="0">
             </div>
         </div>
