@@ -480,7 +480,11 @@ function updateWaveformIndicator(dcoNumber, value) {
     if (indicator) {
         // Position indicator under the correct waveform
         indicator.style.left = `${col * 25}%`;
-        indicator.style.top = `${row * 50}%`;
+        // Top row at 146px, bottom row at 296px
+        const topPosition = row === 0 ? 48 : 96; // change this for line indicator position   
+        // DCO 1 slightly higher than DCO 2
+        const offset = dcoNumber === 1 ? 0 : -4;
+        indicator.style.top = `${topPosition + offset}px`;
     }
 }
 
