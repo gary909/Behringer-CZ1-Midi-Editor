@@ -183,13 +183,13 @@ function getEndPointNumber(val) {
 
 // Map pitch end point values to point numbers (2-8)
 function getPitchEndPointNumber(val) {
-    if (val >= 0 && val <= 13) return '2';
-    if (val >= 14 && val <= 29) return '3';
-    if (val >= 30 && val <= 45) return '4';
-    if (val >= 46 && val <= 61) return '5';
-    if (val >= 62 && val <= 77) return '6';
-    if (val >= 78 && val <= 93) return '7';
-    if (val >= 94 && val <= 127) return '8';
+    if (val >= 0 && val <= 21) return '2';
+    if (val >= 22 && val <= 42) return '3';
+    if (val >= 43 && val <= 63) return '4';
+    if (val >= 64 && val <= 84) return '5';
+    if (val >= 85 && val <= 105) return '6';
+    if (val >= 106 && val <= 126) return '7';
+    if (val >= 127 && val <= 127) return '8';
     return 'UNKNOWN';
 }
 
