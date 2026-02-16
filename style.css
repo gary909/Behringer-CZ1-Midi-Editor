@@ -544,24 +544,24 @@ input[type="range"] {
     accent-color: #380454; 
 }
 
-/* Make LINE SELECT sliders smaller */
+/* LINE SELECT slider size */
 #line-select {
     height: 65px !important;
 }
 
-/* Make LINE SELECT sliders smaller */
-.control-box:has(#line-select) {
-    max-width: 130px;
-}
-
-/* Make PITCH RATE sliders smaller */
+/* PITCH RATE sliders size */
 .pitch-rate-small .pitch-rate-slider {
     height: 60px !important; /* Reduce slider height */
 }
 
-/* Limit max width and center PITCH RATE control box */
-.pitch-rate-small {
-    max-width: 480px;
+/* DCA RATE sliders size */
+.dca-rate-small .dca-rate-slider {
+    height: 60px !important;
+}
+
+/* DCW RATE sliders size */
+.dcw-rate-small .dcw-rate-slider {
+    height: 60px !important;
 }
 
 .vertical-sliders h3 {
@@ -630,6 +630,85 @@ input[type="range"] {
     width: 8px;
 }
 /* ******************END OF VERTICAL SLIDERS ******************** */
+
+/* *************** START OF BOX SIZES ******************************* */
+
+/* LINE SELECT box size */
+.control-box:has(#line-select) {
+    max-width: 130px;
+}
+
+/* PITCH RATE box size */
+.pitch-rate-small {
+    max-width: 480px;
+}
+
+/* DETUNE cbox size */
+.detune-max-width {
+    max-width: 200px;
+}
+
+/* DCO PARAMS box size */
+.dco-params-max-width {
+    max-width: 140px;
+}
+
+/* DCW PARAMS box size */
+.dcw-params-max-width {
+    max-width: 300px;
+}
+
+/* DCA PARAMS box size */
+.dca-params-max-width {
+    max-width: 250px;
+}
+
+/* DCA LEVEL box size */
+.dca-level-max-width {
+    max-width: 120px;
+}
+
+/* DCA RATE box size */
+.dca-rate-small {
+    max-width: 480px;
+}
+
+/* DCW LEVEL box size */
+.dcw-level-max-width {
+    max-width: 120px;
+}
+
+/* LFO 1 box size */
+.lfo1-max-width {
+    max-width: 160px;
+}
+
+/* FILTER EG box size */
+.filter-eg-max-width {
+    max-width: 180px;
+}
+
+/* FILTER control box size */
+.filter-max-width {
+    max-width: 170px;
+}
+
+
+/* VIBRATO box size */
+.vibrato-max-width {
+    max-width: 280px;
+}
+
+/* DCW RATE box size */
+.dcw-rate-small {
+    max-width: 480px;
+}
+
+/* CHORUS box size */
+.chorus-max-width {
+    max-width: 110px;
+}
+/* *************** END OF BOX SIZES ******************************* */
 
 /* ******************POT/KNOB CONTROL STYLING ******************** */
 .pot-control {
