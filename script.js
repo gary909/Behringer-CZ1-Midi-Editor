@@ -156,14 +156,14 @@ function getLineName(val) {
 
 // Map sustain point values to point numbers (0-7)
 function getSustainPointNumber(val) {
-    if (val >= 0 && val <= 9) return '0';
-    if (val >= 10 && val <= 28) return '1';
-    if (val >= 29 && val <= 46) return '2';
-    if (val >= 47 && val <= 64) return '3';
-    if (val >= 65 && val <= 82) return '4';
-    if (val >= 83 && val <= 100) return '5';
-    if (val >= 101 && val <= 118) return '6';
-    if (val >= 119 && val <= 127) return '7';
+    if (val >= 0 && val <= 18) return '0';
+    if (val >= 19 && val <= 36) return '1';
+    if (val >= 37 && val <= 54) return '2';
+    if (val >= 55 && val <= 72) return '3';
+    if (val >= 73 && val <= 90) return '4';
+    if (val >= 91 && val <= 108) return '5';
+    if (val >= 109 && val <= 126) return '6';
+    if (val >= 127 && val <= 127) return '7';
     return 'UNKNOWN';
 }
 
