@@ -873,6 +873,16 @@ input[type="range"] {
 .waveform-indicator.wf-dco2 {
     background: #380454; /* see line js 484 for positioning */
 }
+
+/* DCO 2 section - first indicator (WF1) */
+.waveform-indicator.wf-dco3 {
+    background: #380454;
+}
+
+/* DCO 2 section - second indicator (WF2) */
+.waveform-indicator.wf-dco4 {
+    background: #380454;
+}
 /* *****************End of Waveform display ***************** */
 
 /* --- NEW MEDIA QUERY FOR MOBILE VIEW --- */
