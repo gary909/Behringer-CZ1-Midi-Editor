@@ -95,11 +95,15 @@ p {
 }
 
 @media (min-width: 1201px) {
-  #footer-disclaimer {
-    position: fixed;
-    bottom: 20px;
-    z-index: 999;
-  }
+    #footer-disclaimer {
+        position: relative;
+        margin: 10px auto 0;
+        margin-bottom: 5px;
+        left: auto;
+        transform: none;
+        z-index: auto;
+        bottom: auto;
+    }
 }
 /* ********** END OF FOOTER DISCLAIMER STYLING ********** */
 
