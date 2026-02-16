@@ -544,12 +544,24 @@ input[type="range"] {
     accent-color: #380454; 
 }
 
+/* Make LINE SELECT sliders smaller */
 #line-select {
     height: 65px !important;
 }
 
+/* Make LINE SELECT sliders smaller */
 .control-box:has(#line-select) {
     max-width: 130px;
+}
+
+/* Make PITCH RATE sliders smaller */
+.pitch-rate-small .pitch-rate-slider {
+    height: 60px !important; /* Reduce slider height */
+}
+
+/* Limit max width and center PITCH RATE control box */
+.pitch-rate-small {
+    max-width: 480px;
 }
 
 .vertical-sliders h3 {
