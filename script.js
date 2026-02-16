@@ -410,11 +410,11 @@ function initLineIndicator() {
             
             // Determine which circle should be active based on value ranges
             let shouldBeActive = false;
-            if (circleValue === 0 && value <= 21) shouldBeActive = true;
-            else if (circleValue === 42 && value > 21 && value <= 63) shouldBeActive = true;
-            else if (circleValue === 85 && value > 63 && value <= 106) shouldBeActive = true;
-            else if (circleValue === 127 && value > 106) shouldBeActive = true;
-            
+            if (circleValue === 0 && value >= 0 && value <= 42) shouldBeActive = true;
+            else if (circleValue === 42 && value >= 43 && value <= 84) shouldBeActive = true;
+            else if (circleValue === 85 && value >= 85 && value <= 126) shouldBeActive = true;
+            else if (circleValue === 127 && value === 127) shouldBeActive = true;
+
             if (shouldBeActive) {
                 circle.classList.add('active');
             } else {
