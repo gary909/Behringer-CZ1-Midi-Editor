@@ -8,7 +8,10 @@ let originalMidiStatusText = '';
 // Note: These are typical CC assignments for phase distortion synthesizers
 // Adjust based on actual CZ-1 Mini MIDI implementation
 
-// DCO
+// Bank Select
+const CC_BANK_SELECT = 0;
+
+// DCO 1
 const CC_DCO1_WF1 = 13;
 const CC_DCO2_WF2 = 14;
 const CC_DCO1_DCW = 15;
@@ -28,7 +31,7 @@ const CC_DETUNE_OCT = 10;
 const CC_DETUNE_NOTE = 11;
 const CC_DETUNE_FINE = 12;
 
-// DCO Params
+// DCO 2
 const CC_DCO1_WF1_LINEOFFSET = 16;
 const CC_DCO1_WF2_LINEOFFSET = 17;
 
@@ -195,7 +198,7 @@ function getPitchEndPointNumber(val) {
 
 // --- PATCH DEFAULTS ---
 const ALL_PATCH_CONTROLS = [
-    // DCO
+    // DCO 1
     { id: 'dco1-wf1', cc: CC_DCO1_WF1, value: 0 },
     { id: 'dco2-wf2', cc: CC_DCO2_WF2, value: 0 },
     { id: 'dco1-dcw', cc: CC_DCO1_DCW, value: 0 },
@@ -215,7 +218,7 @@ const ALL_PATCH_CONTROLS = [
     { id: 'detune-note', cc: CC_DETUNE_NOTE, value: 0 },
     { id: 'detune-fine', cc: CC_DETUNE_FINE, value: 0 },
     
-    // DCO Params
+    // DCO 2
     { id: 'dco1-wf1-lineoffset', cc: CC_DCO1_WF1_LINEOFFSET, value: 0 },
     { id: 'dco1-wf2-lineoffset', cc: CC_DCO1_WF2_LINEOFFSET, value: 0 },
     
@@ -357,8 +360,35 @@ function onMIDISuccess(midiAccess) {
             attachSlider(control.cc, control.id, (val) => `DCO 1 WF1: ${getWaveformName(val)}`);
         } else if (control.id === 'dco2-wf2') {
             attachSlider(control.cc, control.id, (val) => `DCO 2 WF2: ${getWaveformName(val)}`);
+        } else if (control.id === 'dco1-wf1-lineoffset') {
+            attachSlider(control.cc, control.id, (val) => `DCO 2 WF1: ${getWaveformName(val)}`);
+        } else if (control.id === 'dco1-wf2-lineoffset') {
+            attachSlider(control.cc, control.id, (val) => `DCO 2 WF2: ${getWaveformName(val)}`);
         } else if (control.id === 'line-select') {
-            attachSlider(control.cc, control.id, (val) => `LINE SELECT: ${getLineName(val)}`);
+            // Line select needs special handling to send both CC 8 and CC 0 (BANK SELECT)
+            const slider = document.getElementById(control.id);
+            if (slider) {
+                slider.addEventListener('mousedown', () => {
+                    originalMidiStatusText = statusElement.options[statusElement.selectedIndex].textContent;
+                    statusElement.options[statusElement.selectedIndex].textContent = '';
+                });
+                slider.addEventListener('input', (e) => {
+                    const val = parseInt(e.target.value);
+                    // Send CC 8 with the actual value
+                    sendMidiCC(CC_LINE_SELECT, val);
+                    // Send CC 0 (BANK SELECT) based on active line
+                    // 0-42: Line 1 (CC 0 = 0), 43-84: Line 2 (CC 0 = 1)
+                    // 85-126: Line 1+2 (CC 0 = 0), 127: Line 1+1 (CC 0 = 0)
+                    const bankSelect = (val >= 43 && val <= 84) ? 1 : 0;
+                    sendMidiCC(CC_BANK_SELECT, bankSelect);
+                    statusElement.options[statusElement.selectedIndex].textContent = `LINE SELECT: ${getLineName(val)}`;
+                });
+                slider.addEventListener('mouseup', () => {
+                    setTimeout(() => {
+                        statusElement.options[statusElement.selectedIndex].textContent = originalMidiStatusText;
+                    }, 1500);
+                });
+            }
         } else if (control.id === 'pitch-sustain-point') {
             attachSlider(control.cc, control.id, (val) => `PITCH SUSTAIN: ${getSustainPointNumber(val)}`);
         } else if (control.id === 'pitch-end-point') {
@@ -383,6 +413,14 @@ function onMIDISuccess(midiAccess) {
 
     document.getElementById('dco2-wf2').addEventListener('input', (e) => {
         updateWaveformIndicator(2, parseInt(e.target.value));
+    });
+
+    document.getElementById('dco1-wf1-lineoffset').addEventListener('input', (e) => {
+        updateWaveformIndicator(3, parseInt(e.target.value));
+    });
+
+    document.getElementById('dco1-wf2-lineoffset').addEventListener('input', (e) => {
+        updateWaveformIndicator(4, parseInt(e.target.value));
     });
 
     // Initialize pot controls
@@ -533,8 +571,14 @@ function updateWaveformIndicator(dcoNumber, value) {
         indicator.style.left = `${col * 25}%`;
         // Top row at 146px, bottom row at 296px
         const topPosition = row === 0 ? 48 : 96; // change this for line indicator position   
-        // DCO 1 slightly higher than DCO 2
-        const offset = dcoNumber === 1 ? -4 : -2;
+        // DCO 1 section: dcoNumber 1 slightly higher than 2
+        // DCO 2 section: dcoNumber 3 slightly higher than 4
+        let offset;
+        if (dcoNumber === 1 || dcoNumber === 3) {
+            offset = -4;
+        } else {
+            offset = -2;
+        }
         indicator.style.top = `${topPosition + offset}px`;
     }
 }

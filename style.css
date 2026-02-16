@@ -652,9 +652,9 @@ input[type="range"] {
     max-width: 200px;
 }
 
-/* DCO PARAMS box size */
-.dco-params-max-width {
-    max-width: 140px;
+/* DCO 2 box size */
+.dco2-max-width {
+    max-width: 460px;
 }
 
 /* DCW PARAMS box size */

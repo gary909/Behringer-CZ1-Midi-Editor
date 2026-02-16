@@ -80,9 +80,9 @@
     <!-- *******************************Start of Controls Here*************************** -->
     <div id="controls">
         
-        <!-- DCO -->
+        <!-- DCO 1 -->
         <div class="control-box vertical-sliders noisy">
-            <h3>DCO</h3>
+            <h3>DCO 1</h3>
             <div class="waveform-display">
                 <span class="waveform-label">WAVEFORMS</span>
                 <img src="media/waveforms.svg" alt="Waveforms" class="waveform-grid">
@@ -367,26 +367,54 @@
             </div>
         </div>
 
-        <!-- DCO PARAMS -->
-        <div class="control-box vertical-sliders noisy dco-params-max-width">
-            <h3>DCO PARAMS</h3>
-            <div class="parameter-row" title="DCO 1 Waveform 1 Line-offset">
-                <label for="dco1-wf1-lineoffset">WF1 LINE<br>OFFSET</label>
-                <input type="range" id="dco1-wf1-lineoffset" min="0" max="127" value="0">
+        <!-- DCO 2 -->
+        <div class="control-box vertical-sliders noisy dco2-max-width">
+            <h3>DCO 2</h3>
+            <div class="waveform-display">
+                <span class="waveform-label">WAVEFORMS</span>
+                <img src="media/waveforms.svg" alt="Waveforms" class="waveform-grid">
+                <div class="waveform-indicators">
+                    <div class="waveform-indicator wf-dco3" data-waveform="0"></div>
+                    <div class="waveform-indicator wf-dco4" data-waveform="0"></div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCO 1 Waveform 2 Line-offset">
-                <label for="dco1-wf2-lineoffset">WF2 LINE<br>OFFSET</label>
-                <input type="range" id="dco1-wf2-lineoffset" min="0" max="127" value="0">
+            <div class="parameter-row" title="DCO 2 Waveform 1 Selection">
+                <label for="dco1-wf1-lineoffset">WF1</label>
+                <input type="range" id="dco1-wf1-lineoffset" min="0" max="127" value="0" list="dco1-wf1-lineoffset-list">
+                <datalist id="dco1-wf1-lineoffset-list">
+                    <option value="0" label="Sawtooth"></option>
+                    <option value="19" label="Square"></option>
+                    <option value="37" label="Pulse"></option>
+                    <option value="55" label="DoubleSine"></option>
+                    <option value="73" label="Saw-Pulse"></option>
+                    <option value="91" label="Resonance I"></option>
+                    <option value="109" label="Resonance II"></option>
+                    <option value="127" label="Resonance III"></option>
+                </datalist>
+            </div>
+            <div class="parameter-row" title="DCO 2 Waveform 2 Selection">
+                <label for="dco1-wf2-lineoffset">WF2</label>
+                <input type="range" id="dco1-wf2-lineoffset" min="0" max="127" value="0" list="dco1-wf2-lineoffset-list">
+                <datalist id="dco1-wf2-lineoffset-list">
+                    <option value="0" label="Sawtooth"></option>
+                    <option value="19" label="Square"></option>
+                    <option value="37" label="Pulse"></option>
+                    <option value="55" label="DoubleSine"></option>
+                    <option value="73" label="Saw-Pulse"></option>
+                    <option value="91" label="Resonance I"></option>
+                    <option value="109" label="Resonance II"></option>
+                    <option value="127" label="Resonance III"></option>
+                </datalist>
+            </div>
+            <div class="parameter-row" title="DCO 2 DCW Line-offset">
+                <label for="dco1-dcw-lineoffset">DCW</label>
+                <input type="range" id="dco1-dcw-lineoffset" min="0" max="127" value="0">
             </div>
         </div>
 
         <!-- DCW PARAMS -->
         <div class="control-box vertical-sliders noisy dcw-params-max-width">
             <h3>DCW PARAMS</h3>
-            <div class="parameter-row" title="DCO 1 DCW Line-offset">
-                <label for="dco1-dcw-lineoffset">LINE<br>OFFSET</label>
-                <input type="range" id="dco1-dcw-lineoffset" min="0" max="127" value="0">
-            </div>
             <div class="parameter-row" title="DCO 1 DCW Keyfollow">
                 <label for="dco1-dcw-keyfollow">KEY<br>FOLLOW</label>
                 <input type="range" id="dco1-dcw-keyfollow" min="0" max="127" value="0">
