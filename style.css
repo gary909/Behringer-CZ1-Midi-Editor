@@ -322,9 +322,9 @@ p {
     background-color: #380454;
 }
 
-.control-box:has(#pitch-sustain-point) {
+/* .control-box:has(#pitch-sustain-point) {
     width: 130px;
-}
+} */
 
 .parameter-row {
     display: flex;
@@ -644,7 +644,7 @@ input[type="range"] {
 
 /* PITCH RATE box size */
 .pitch-rate-small {
-    max-width: 480px;
+    max-width: 570px;
 }
 
 /* DETUNE cbox size */
@@ -872,16 +872,6 @@ input[type="range"] {
 /* DCO 2 indicator - purple, at the bottom */
 .waveform-indicator.wf-dco2 {
     background: #380454; /* see line js 484 for positioning */
-}
-
-/* DCO 2 section - first indicator (WF1) */
-.waveform-indicator.wf-dco3 {
-    background: #380454;
-}
-
-/* DCO 2 section - second indicator (WF2) */
-.waveform-indicator.wf-dco4 {
-    background: #380454;
 }
 /* *****************End of Waveform display ***************** */
 
