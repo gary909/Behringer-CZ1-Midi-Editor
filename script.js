@@ -503,6 +503,42 @@ function onMIDISuccess(midiAccess) {
         }
     });
 
+    // Add sustain point indicator for DCW RATE
+    document.getElementById('dcw-sustain-point').addEventListener('input', (e) => {
+        const susValue = parseInt(e.target.value);
+        const susNumber = getSustainPointNumber(susValue);
+        
+        // Remove active class from all dcw sustain indicators
+        document.querySelectorAll('.dcw-sustain-indicator').forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        
+        // Add active class to the corresponding rate indicator (if sus is 1-7)
+        if (susNumber !== '0') {
+            const activeIndicator = document.querySelector(`.dcw-sustain-indicator[data-rate="${susNumber}"]`);
+            if (activeIndicator) {
+                activeIndicator.classList.add('active');
+            }
+        }
+    });
+
+    // Add end point indicator for DCW RATE
+    document.getElementById('dcw-end-point').addEventListener('input', (e) => {
+        const endValue = parseInt(e.target.value);
+        const endNumber = getPitchEndPointNumber(endValue);
+        
+        // Remove active class from all dcw end indicators
+        document.querySelectorAll('.dcw-end-indicator').forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        
+        // Add active class to the corresponding rate indicator (rates 2-8)
+        const activeIndicator = document.querySelector(`.dcw-end-indicator[data-rate="${endNumber}"]`);
+        if (activeIndicator) {
+            activeIndicator.classList.add('active');
+        }
+    });
+
     // Initialize pot controls
     initPotControls();
 

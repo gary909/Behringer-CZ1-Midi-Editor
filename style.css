@@ -681,6 +681,39 @@ input[type="range"] {
     margin-top: -2px;
 }
 
+.dcw-sustain-indicator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-top: 2px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.dcw-sustain-indicator.active {
+    background-color: #380454;
+    opacity: 1;
+}
+
+.dcw-end-indicator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-top: 2px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.dcw-end-indicator.active {
+    background-color: #ffffff;
+    opacity: 1;
+}
+
+/* When DCW end indicator follows sustain indicator, remove extra margin */
+.dcw-sustain-indicator + .dcw-end-indicator {
+    margin-top: -2px;
+}
+
 .vertical-sliders .parameter-row input[type="range"] {
     -webkit-appearance: slider-vertical;
     appearance: slider-vertical;
