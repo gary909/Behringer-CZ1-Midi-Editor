@@ -172,15 +172,22 @@ function getSustainPointNumber(val) {
 
 // Map end point values to point numbers (0-8)
 function getEndPointNumber(val) {
-    if (val >= 0 && val <= 8) return '0';
-    if (val >= 9 && val <= 24) return '1';
-    if (val >= 25 && val <= 41) return '2';
-    if (val >= 42 && val <= 59) return '3';
-    if (val >= 60 && val <= 73) return '4';
-    if (val >= 74 && val <= 88) return '5';
-    if (val >= 89 && val <= 104) return '6';
-    if (val >= 105 && val <= 120) return '7';
-    if (val >= 121 && val <= 127) return '8';
+    // if (val >= 0 && val <= 8) return '0';
+    // if (val >= 9 && val <= 24) return '1';
+    // if (val >= 25 && val <= 41) return '2';
+    // if (val >= 42 && val <= 59) return '3';
+    // if (val >= 60 && val <= 73) return '4';
+    // if (val >= 74 && val <= 88) return '5';
+    // if (val >= 89 && val <= 104) return '6';
+    // if (val >= 105 && val <= 120) return '7';
+    // if (val >= 121 && val <= 127) return '8';
+    if (val >= 0 && val <= 21) return '2';
+    if (val >= 22 && val <= 42) return '3';
+    if (val >= 43 && val <= 63) return '4';
+    if (val >= 64 && val <= 84) return '5';
+    if (val >= 85 && val <= 105) return '6';
+    if (val >= 106 && val <= 126) return '7';
+    if (val >= 127 && val <= 127) return '8';
     return 'UNKNOWN';
 }
 
