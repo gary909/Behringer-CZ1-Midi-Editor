@@ -466,6 +466,43 @@ function onMIDISuccess(midiAccess) {
         }
     });
 
+    // Add sustain point indicator for DCA RATE
+    document.getElementById('dca-sustain-point').addEventListener('input', (e) => {
+        const susValue = parseInt(e.target.value);
+        const susNumber = getSustainPointNumber(susValue);
+        
+        // Remove active class from all dca sustain indicators
+        document.querySelectorAll('.dca-sustain-indicator').forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        
+        // Add active class to the corresponding rate indicator (if sus is 1-7 for DCA)
+        // DCA sustain point returns 0-6 in the datalist, so we need to check if it maps correctly
+        if (susNumber !== '0') {
+            const activeIndicator = document.querySelector(`.dca-sustain-indicator[data-rate="${susNumber}"]`);
+            if (activeIndicator) {
+                activeIndicator.classList.add('active');
+            }
+        }
+    });
+
+    // Add end point indicator for DCA RATE
+    document.getElementById('dca-end-point').addEventListener('input', (e) => {
+        const endValue = parseInt(e.target.value);
+        const endNumber = getPitchEndPointNumber(endValue);
+        
+        // Remove active class from all dca end indicators
+        document.querySelectorAll('.dca-end-indicator').forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        
+        // Add active class to the corresponding rate indicator (rates 2-8)
+        const activeIndicator = document.querySelector(`.dca-end-indicator[data-rate="${endNumber}"]`);
+        if (activeIndicator) {
+            activeIndicator.classList.add('active');
+        }
+    });
+
     // Initialize pot controls
     initPotControls();
 

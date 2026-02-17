@@ -629,6 +629,20 @@ input[type="range"] {
     opacity: 1;
 }
 
+.dca-sustain-indicator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-top: 2px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.dca-sustain-indicator.active {
+    background-color: #380454;
+    opacity: 1;
+}
+
 .end-sustain-indicator {
     display: block;
     width: 100%;
@@ -641,6 +655,30 @@ input[type="range"] {
 .end-sustain-indicator.active {
     background-color: #ffffff;
     opacity: 1;
+}
+
+/* When end indicator follows sustain indicator, remove extra margin */
+.rate-sustain-indicator + .end-sustain-indicator {
+    margin-top: -2px;
+}
+
+.dca-end-indicator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-top: 2px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.dca-end-indicator.active {
+    background-color: #ffffff;
+    opacity: 1;
+}
+
+/* When DCA end indicator follows sustain indicator, remove extra margin */
+.dca-sustain-indicator + .dca-end-indicator {
+    margin-top: -2px;
 }
 
 .vertical-sliders .parameter-row input[type="range"] {
