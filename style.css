@@ -657,9 +657,11 @@ input[type="range"] {
     opacity: 1;
 }
 
-/* When end indicator follows sustain indicator, remove extra margin */
+/* When end indicator follows sustain indicator, collapse margin but offset visually */
 .rate-sustain-indicator + .end-sustain-indicator {
     margin-top: -2px;
+    position: relative;
+    top: 4px;
 }
 
 .dca-end-indicator {
@@ -676,9 +678,11 @@ input[type="range"] {
     opacity: 1;
 }
 
-/* When DCA end indicator follows sustain indicator, remove extra margin */
+/* When DCA end indicator follows sustain indicator, collapse margin but offset visually */
 .dca-sustain-indicator + .dca-end-indicator {
     margin-top: -2px;
+    position: relative;
+    top: 4px;
 }
 
 .dcw-sustain-indicator {
@@ -709,9 +713,11 @@ input[type="range"] {
     opacity: 1;
 }
 
-/* When DCW end indicator follows sustain indicator, remove extra margin */
+/* When DCW end indicator follows sustain indicator, collapse margin but offset visually */
 .dcw-sustain-indicator + .dcw-end-indicator {
     margin-top: -2px;
+    position: relative;
+    top: 4px;
 }
 
 .vertical-sliders .parameter-row input[type="range"] {
