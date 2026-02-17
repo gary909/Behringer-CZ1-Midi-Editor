@@ -568,6 +568,31 @@ input[type="range"] {
     height: 60px !important;
 }
 
+/* Updated slider sizes for SUS and END sliders only */
+#pitch-sustain-point {
+    height: 107px !important; /* Increased slider height for SUS */
+}
+
+#pitch-end-point {
+    height: 107px !important; /* Increased slider height for END */
+}
+
+#dca-sustain-point {
+    height: 107px !important; /* Increased slider height for SUS */
+}
+
+#dca-end-point {
+    height: 107px !important; /* Increased slider height for END */
+}
+
+#dcw-sustain-point {
+    height: 107px !important; /* Increased slider height for SUS */
+}
+
+#dcw-end-point {
+    height: 107px !important; /* Increased slider height for END */
+}
+
 .vertical-sliders h3 {
     width: 100%;
     text-align: center;
