@@ -668,13 +668,13 @@ input[type="range"] {
 }
 
 /* DCA LEVEL box size */
-.dca-level-max-width {
+/* .dca-level-max-width {
     max-width: 120px;
-}
+} */
 
 /* DCA RATE box size */
 .dca-rate-small {
-    max-width: 480px;
+    max-width: 570px;
 }
 
 /* DCW LEVEL box size */
@@ -705,7 +705,7 @@ input[type="range"] {
 
 /* DCW RATE box size */
 .dcw-rate-small {
-    max-width: 480px;
+    max-width: 570px;
 }
 
 /* CHORUS box size */

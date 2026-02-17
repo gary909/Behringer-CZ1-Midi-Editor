@@ -468,7 +468,7 @@
         </div>
 
         <!-- DCA LEVEL -->
-        <div class="control-box vertical-sliders noisy dca-level-max-width">
+        <!-- <div class="control-box vertical-sliders noisy dca-level-max-width">
             <h3>DCA LEVEL</h3>
             <div class="parameter-row" title="DCA Sustain Point">
                 <label for="dca-sustain-point">SUS</label>
@@ -498,11 +498,39 @@
                     <option value="127" label="8"></option>
                 </datalist>
             </div>
-        </div>
+        </div> -->
 
         <!-- DCA RATE -->
         <div class="control-box vertical-sliders noisy dca-rate-small">
             <h3>DCA RATE</h3>
+                        <div class="parameter-row" title="DCA Sustain Point">
+                <label for="dca-sustain-point">SUS</label>
+                <input type="range" id="dca-sustain-point" min="0" max="127" value="0" list="dca-sustain-point-list">
+                <datalist id="dca-sustain-point-list">
+                    <option value="0" label="0"></option>
+                    <option value="21" label="1"></option>
+                    <option value="43" label="2"></option>
+                    <option value="64" label="3"></option>
+                    <option value="85" label="4"></option>
+                    <option value="106" label="5"></option>
+                    <option value="127" label="6"></option>
+                </datalist>
+            </div>
+            <div class="parameter-row" title="DCA End Point">
+                <label for="dca-end-point">END</label>
+                <input type="range" id="dca-end-point" min="0" max="127" value="0" list="dca-end-point-list">
+                <datalist id="dca-end-point-list">
+                    <option value="0" label="0"></option>
+                    <option value="16" label="1"></option>
+                    <option value="32" label="2"></option>
+                    <option value="48" label="3"></option>
+                    <option value="64" label="4"></option>
+                    <option value="80" label="5"></option>
+                    <option value="96" label="6"></option>
+                    <option value="112" label="7"></option>
+                    <option value="127" label="8"></option>
+                </datalist>
+            </div>
             <div class="parameter-column">
                 <div class="parameter-row" title="DCA Rate 1">
                     <label for="dca-rate-1">RATE 1</label>
@@ -634,7 +662,7 @@
         </div>
 
         <!-- DCW LEVEL -->
-        <div class="control-box vertical-sliders noisy dcw-level-max-width">
+        <!-- <div class="control-box vertical-sliders noisy dcw-level-max-width">
             <h3>DCW LEVEL</h3>
             <div class="parameter-row" title="DCW Sustain Point">
                 <label for="dcw-sustain-point">SUS</label>
@@ -664,11 +692,39 @@
                     <option value="127" label="8"></option>
                 </datalist>
             </div>
-        </div>
+        </div> -->
 
         <!-- DCW RATE -->
         <div class="control-box vertical-sliders noisy dcw-rate-small">
             <h3>DCW RATE</h3>
+                        <div class="parameter-row" title="DCW Sustain Point">
+                <label for="dcw-sustain-point">SUS</label>
+                <input type="range" id="dcw-sustain-point" min="0" max="127" value="0" list="dcw-sustain-point-list">
+                <datalist id="dcw-sustain-point-list">
+                    <option value="0" label="0"></option>
+                    <option value="21" label="1"></option>
+                    <option value="43" label="2"></option>
+                    <option value="64" label="3"></option>
+                    <option value="85" label="4"></option>
+                    <option value="106" label="5"></option>
+                    <option value="127" label="6"></option>
+                </datalist>
+            </div>
+            <div class="parameter-row" title="DCW End Point">
+                <label for="dcw-end-point">END</label>
+                <input type="range" id="dcw-end-point" min="0" max="127" value="0" list="dcw-end-point-list">
+                <datalist id="dcw-end-point-list">
+                    <option value="0" label="0"></option>
+                    <option value="16" label="1"></option>
+                    <option value="32" label="2"></option>
+                    <option value="48" label="3"></option>
+                    <option value="64" label="4"></option>
+                    <option value="80" label="5"></option>
+                    <option value="96" label="6"></option>
+                    <option value="112" label="7"></option>
+                    <option value="127" label="8"></option>
+                </datalist>
+            </div>
             <div class="parameter-column">
                 <div class="parameter-row" title="DCW Rate 1">
                     <label for="dcw-rate-1">RATE 1</label>
