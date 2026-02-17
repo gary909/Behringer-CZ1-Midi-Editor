@@ -153,8 +153,26 @@
         </div>
 
         <!-- PITCH LEVEL -->
-        <div class="control-box vertical-sliders noisy">
+        <!-- <div class="control-box vertical-sliders noisy">
             <h3>PITCH LEVEL</h3>
+            <div class="parameter-row" title="Pitch End Point">
+                <label for="pitch-end-point">END</label>
+                <input type="range" id="pitch-end-point" min="0" max="127" value="0" list="pitch-end-point-list">
+                <datalist id="pitch-end-point-list">
+                    <option value="0" label="2"></option>
+                    <option value="22" label="3"></option>
+                    <option value="43" label="4"></option>
+                    <option value="64" label="5"></option>
+                    <option value="85" label="6"></option>
+                    <option value="106" label="7"></option>
+                    <option value="127" label="8"></option>
+                </datalist>
+            </div>
+        </div> -->
+        
+        <!-- PITCH RATE -->
+        <div class="control-box vertical-sliders noisy pitch-rate-small">
+            <h3>PITCH RATE</h3>
             <div class="parameter-row" title="Pitch Sustain Point">
                 <label for="pitch-sustain-point">SUS</label>
                 <input type="range" id="pitch-sustain-point" min="0" max="127" value="0" list="pitch-sustain-point-list">
@@ -169,7 +187,7 @@
                     <option value="127" label="7"></option>
                 </datalist>
             </div>
-            <div class="parameter-row" title="Pitch End Point">
+                        <div class="parameter-row" title="Pitch End Point">
                 <label for="pitch-end-point">END</label>
                 <input type="range" id="pitch-end-point" min="0" max="127" value="0" list="pitch-end-point-list">
                 <datalist id="pitch-end-point-list">
@@ -182,11 +200,6 @@
                     <option value="127" label="8"></option>
                 </datalist>
             </div>
-        </div>
-        
-        <!-- PITCH RATE -->
-        <div class="control-box vertical-sliders noisy pitch-rate-small">
-            <h3>PITCH RATE</h3>
             <div class="parameter-column">
                 <div class="parameter-row" title="Pitch Rate 1">
                     <label for="pitch-rate-1">RATE 1</label>
