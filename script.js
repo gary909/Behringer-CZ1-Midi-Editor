@@ -477,7 +477,7 @@ function initPotControls() {
         const knob = potControl.querySelector('.pot-knob');
         const valueDisplay = potControl.querySelector('.pot-value');
         
-        if (!input || !knob || !valueDisplay) return;
+        if (!input || !knob) return;
         
         // Function to update pot rotation and value display
         const updatePot = () => {
@@ -490,7 +490,9 @@ function initPotControls() {
             const rotation = (percent * 270) - 135;
             
             knob.style.transform = `rotate(${rotation}deg)`;
-            valueDisplay.textContent = value;
+            if (valueDisplay) {
+                valueDisplay.textContent = value;
+            }
         };
         
         // Initialize pot position
