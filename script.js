@@ -708,28 +708,36 @@ const closeBtn = document.getElementById('close-btn');
 const aboutBtn = document.getElementById('about-btn');
 
 // Open Menu
-hamburger.addEventListener('click', () => {
-    sideNav.style.width = "280px";
-});
+if (hamburger && sideNav) {
+    hamburger.addEventListener('click', () => {
+        sideNav.style.width = "280px";
+    });
+}
 
 // Close Menu
-closeBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    sideNav.style.width = "0";
-});
+if (closeBtn && sideNav) {
+    closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        sideNav.style.width = "0";
+    });
+}
 
 // About Alert
-aboutBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    alert('CZ-1 MINI MIDI Editor\nVersion 1.0\nCreated for Behringer CZ-1 Mini\n\nCommunity project - use at your own risk!');
-});
+if (aboutBtn) {
+    aboutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('CZ-1 MINI MIDI Editor\nVersion 1.0\nCreated for Behringer CZ-1 Mini\n\nCommunity project - use at your own risk!');
+    });
+}
 
 // Close menu if clicking anywhere outside the side-nav
-window.addEventListener('click', (e) => {
-    if (e.target !== hamburger && !hamburger.contains(e.target) && e.target !== sideNav && !sideNav.contains(e.target)) {
-        sideNav.style.width = "0";
-    }
-});
+if (hamburger && sideNav) {
+    window.addEventListener('click', (e) => {
+        if (e.target !== hamburger && !hamburger.contains(e.target) && e.target !== sideNav && !sideNav.contains(e.target)) {
+            sideNav.style.width = "0";
+        }
+    });
+}
 
 // --- ACCORDION LOGIC ---
 const acc = document.getElementsByClassName("accordion-header");
