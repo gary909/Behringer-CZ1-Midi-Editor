@@ -336,6 +336,25 @@ p {
     background-color: #380454;
 }
 
+body.privacy-page #controls {
+    max-width: 1280px;
+    margin: 0 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+body.privacy-page #controls .control-box {
+    width: min(360px, 100%);
+    height: 250px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    padding: 12px;
+    outline: 1px solid rgba(255, 255, 255, 0.2);
+    outline-offset: -6px;
+}
+
 /* .control-box:has(#pitch-sustain-point) {
     width: 130px;
 } */
