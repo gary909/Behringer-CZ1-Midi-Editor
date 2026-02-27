@@ -193,6 +193,51 @@
                 </datalist>
             </div>
         </div> -->
+
+        <!-- DCO 2 -->
+        <div class="control-box vertical-sliders noisy dco2-max-width">
+            <h3>DCO 2</h3>
+            <div class="waveform-display">
+                <span class="waveform-label">WAVEFORMS</span>
+                <img src="media/waveforms.svg" alt="Waveforms" class="waveform-grid">
+                <div class="waveform-indicators">
+                    <div class="waveform-indicator wf-dco3" data-waveform="0"></div>
+                    <div class="waveform-indicator wf-dco4" data-waveform="0"></div>
+                </div>
+            </div>
+            <div class="parameter-row" title="DCO 2 Waveform 1 Selection">
+                <label for="dco1-wf1-lineoffset">WF1</label>
+                <input type="range" id="dco1-wf1-lineoffset" min="0" max="127" value="0" list="dco1-wf1-lineoffset-list">
+                <datalist id="dco1-wf1-lineoffset-list">
+                    <option value="0" label="Sawtooth"></option>
+                    <option value="19" label="Square"></option>
+                    <option value="37" label="Pulse"></option>
+                    <option value="55" label="DoubleSine"></option>
+                    <option value="73" label="Saw-Pulse"></option>
+                    <option value="91" label="Resonance I"></option>
+                    <option value="109" label="Resonance II"></option>
+                    <option value="127" label="Resonance III"></option>
+                </datalist>
+            </div>
+            <div class="parameter-row" title="DCO 2 Waveform 2 Selection">
+                <label for="dco1-wf2-lineoffset">WF2</label>
+                <input type="range" id="dco1-wf2-lineoffset" min="0" max="127" value="0" list="dco1-wf2-lineoffset-list">
+                <datalist id="dco1-wf2-lineoffset-list">
+                    <option value="0" label="Sawtooth"></option>
+                    <option value="19" label="Square"></option>
+                    <option value="37" label="Pulse"></option>
+                    <option value="55" label="DoubleSine"></option>
+                    <option value="73" label="Saw-Pulse"></option>
+                    <option value="91" label="Resonance I"></option>
+                    <option value="109" label="Resonance II"></option>
+                    <option value="127" label="Resonance III"></option>
+                </datalist>
+            </div>
+            <div class="parameter-row" title="DCO 2 DCW Line-offset">
+                <label for="dco1-dcw-lineoffset">DCW</label>
+                <input type="range" id="dco1-dcw-lineoffset" min="0" max="127" value="0">
+            </div>
+        </div>
         
         <!-- PITCH RATE -->
         <div class="control-box vertical-sliders noisy pitch-rate-small">
@@ -354,92 +399,211 @@
             </div>
         </div>        
 
-
-
-        <!-- DCO 2 -->
-        <div class="control-box vertical-sliders noisy dco2-max-width">
-            <h3>DCO 2</h3>
-            <div class="waveform-display">
-                <span class="waveform-label">WAVEFORMS</span>
-                <img src="media/waveforms.svg" alt="Waveforms" class="waveform-grid">
-                <div class="waveform-indicators">
-                    <div class="waveform-indicator wf-dco3" data-waveform="0"></div>
-                    <div class="waveform-indicator wf-dco4" data-waveform="0"></div>
+        <!-- DCW RATE -->
+        <div class="control-box vertical-sliders noisy dcw-rate-small">
+            <h3>DCW RATE</h3>
+                        <div class="parameter-row" title="DCW Sustain Point">
+                <label for="dcw-sustain-point">SUS</label>
+                <input type="range" id="dcw-sustain-point" min="0" max="127" value="0" list="dcw-sustain-point-list">
+                <datalist id="dcw-sustain-point-list">
+                    <option value="0" label="0"></option>
+                    <option value="21" label="1"></option>
+                    <option value="43" label="2"></option>
+                    <option value="64" label="3"></option>
+                    <option value="85" label="4"></option>
+                    <option value="106" label="5"></option>
+                    <option value="127" label="6"></option>
+                </datalist>
+            </div>
+            <div class="parameter-row" title="DCW End Point">
+                <label for="dcw-end-point">END</label>
+                <input type="range" id="dcw-end-point" min="0" max="127" value="0" list="dcw-end-point-list">
+                <datalist id="dcw-end-point-list">
+                    <!-- <option value="0" label="0"></option>
+                    <option value="16" label="1"></option>
+                    <option value="32" label="2"></option>
+                    <option value="48" label="3"></option>
+                    <option value="64" label="4"></option>
+                    <option value="80" label="5"></option>
+                    <option value="96" label="6"></option>
+                    <option value="112" label="7"></option>
+                    <option value="127" label="8"></option> -->
+                    <option value="0" label="2"></option>
+                    <option value="22" label="3"></option>
+                    <option value="43" label="4"></option>
+                    <option value="64" label="5"></option>
+                    <option value="85" label="6"></option>
+                    <option value="106" label="7"></option>
+                    <option value="127" label="8"></option>
+                </datalist>
+            </div>
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 1">
+                    <label for="dcw-rate-1">RATE 1<span class="dcw-sustain-indicator" data-rate="1"></span></label>
+                    <input type="range" id="dcw-rate-1" min="0" max="127" value="0" class="dcw-rate-slider">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 1">
+                    <label for="dcw-level-1">LVL 1</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-1" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <!-- <div class="pot-value">0</div> -->
+                    </div>
                 </div>
             </div>
-            <div class="parameter-row" title="DCO 2 Waveform 1 Selection">
-                <label for="dco1-wf1-lineoffset">WF1</label>
-                <input type="range" id="dco1-wf1-lineoffset" min="0" max="127" value="0" list="dco1-wf1-lineoffset-list">
-                <datalist id="dco1-wf1-lineoffset-list">
-                    <option value="0" label="Sawtooth"></option>
-                    <option value="19" label="Square"></option>
-                    <option value="37" label="Pulse"></option>
-                    <option value="55" label="DoubleSine"></option>
-                    <option value="73" label="Saw-Pulse"></option>
-                    <option value="91" label="Resonance I"></option>
-                    <option value="109" label="Resonance II"></option>
-                    <option value="127" label="Resonance III"></option>
-                </datalist>
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 2">
+                    <label for="dcw-rate-2">RATE 2<span class="dcw-sustain-indicator" data-rate="2"></span><span class="dcw-end-indicator" data-rate="2"></span></label>
+                    <input type="range" id="dcw-rate-2" min="0" max="127" value="0" class="dcw-rate-slider">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 2">
+                    <label for="dcw-level-2">LVL 2</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-2" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <!-- <div class="pot-value">0</div> -->
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCO 2 Waveform 2 Selection">
-                <label for="dco1-wf2-lineoffset">WF2</label>
-                <input type="range" id="dco1-wf2-lineoffset" min="0" max="127" value="0" list="dco1-wf2-lineoffset-list">
-                <datalist id="dco1-wf2-lineoffset-list">
-                    <option value="0" label="Sawtooth"></option>
-                    <option value="19" label="Square"></option>
-                    <option value="37" label="Pulse"></option>
-                    <option value="55" label="DoubleSine"></option>
-                    <option value="73" label="Saw-Pulse"></option>
-                    <option value="91" label="Resonance I"></option>
-                    <option value="109" label="Resonance II"></option>
-                    <option value="127" label="Resonance III"></option>
-                </datalist>
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 3">
+                    <label for="dcw-rate-3">RATE 3<span class="dcw-sustain-indicator" data-rate="3"></span><span class="dcw-end-indicator" data-rate="3"></span></label>
+                    <input type="range" id="dcw-rate-3" min="0" max="127" value="0" class="dcw-rate-slider">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 3">
+                    <label for="dcw-level-3">LVL 3</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-3" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <!-- <div class="pot-value">0</div> -->
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCO 2 DCW Line-offset">
-                <label for="dco1-dcw-lineoffset">DCW</label>
-                <input type="range" id="dco1-dcw-lineoffset" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 4">
+                    <label for="dcw-rate-4">RATE 4<span class="dcw-sustain-indicator" data-rate="4"></span><span class="dcw-end-indicator" data-rate="4"></span></label>
+                    <input type="range" id="dcw-rate-4" min="0" max="127" value="0" class="dcw-rate-slider">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 4">
+                    <label for="dcw-level-4">LVL 4</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-4" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <!-- <div class="pot-value">0</div> -->
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <!-- DCW PARAMS -->
-        <div class="control-box vertical-sliders noisy dcw-params-max-width">
-            <h3>DCW PARAMS</h3>
-            <div class="parameter-row" title="DCO 1 DCW Keyfollow">
-                <label for="dco1-dcw-keyfollow">KEY<br>FOLLOW</label>
-                <input type="range" id="dco1-dcw-keyfollow" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 5">
+                    <label for="dcw-rate-5">RATE 5<span class="dcw-sustain-indicator" data-rate="5"></span><span class="dcw-end-indicator" data-rate="5"></span></label>
+                    <input type="range" id="dcw-rate-5" min="0" max="127" value="0" class="dcw-rate-slider">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 5">
+                    <label for="dcw-level-5">LVL 5</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-5" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <!-- <div class="pot-value">0</div> -->
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCO 1 DCW Keyfollow Range">
-                <label for="dco1-dcw-keyfollow-range">KEYF<br>RANGE</label>
-                <input type="range" id="dco1-dcw-keyfollow-range" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 6">
+                    <label for="dcw-rate-6">RATE 6<span class="dcw-sustain-indicator" data-rate="6"></span><span class="dcw-end-indicator" data-rate="6"></span></label>
+                    <input type="range" id="dcw-rate-6" min="0" max="127" value="0" class="dcw-rate-slider">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 6">
+                    <label for="dcw-level-6">LVL 6</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-6" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <!-- <div class="pot-value">0</div> -->
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCO 1 DCW Keyfollow Line-offset">
-                <label for="dco1-dcw-keyfollow-lineoffset">KF LINE<br>OFFSET</label>
-                <input type="range" id="dco1-dcw-keyfollow-lineoffset" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 7">
+                    <label for="dcw-rate-7">RATE 7<span class="dcw-sustain-indicator" data-rate="7"></span><span class="dcw-end-indicator" data-rate="7"></span></label>
+                    <input type="range" id="dcw-rate-7" min="0" max="127" value="0" class="dcw-rate-slider">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 7">
+                    <label for="dcw-level-7">LVL 7</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-7" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <!-- <div class="pot-value">0</div> -->
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCO 1 DCW Keyfollow Range Line-offset">
-                <label for="dco1-dcw-keyfollow-range-lineoffset">K-FOL<br>R-OFS</label>
-                <input type="range" id="dco1-dcw-keyfollow-range-lineoffset" min="0" max="127" value="0">
+            <div class="parameter-column">
+                <div class="parameter-row" title="DCW Rate 8">
+                    <label for="dcw-rate-8">RATE 8<span class="dcw-end-indicator" data-rate="8"></span></label>
+                    <input type="range" id="dcw-rate-8" min="0" max="127" value="0" class="dcw-rate-slider">
+                </div>
+                <div class="parameter-row pot-control" title="DCW LEVEL 8">
+                    <label for="dcw-level-8">LVL 8</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dcw-level-8" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                        <!-- <div class="pot-value">0</div> -->
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <!-- DCA PARAMS -->
-        <div class="control-box vertical-sliders noisy dca-params-max-width">
-            <h3>DCA PARAMS</h3>
-            <div class="parameter-row" title="DCO 1 DCA Keyfollow">
-                <label for="dco1-dca-keyfollow">KEY<br>FOLLOW</label>
-                <input type="range" id="dco1-dca-keyfollow" min="0" max="127" value="0">
+            <div class="parameter-column moved-params-pot-group">
+                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow">
+                    <label for="dco1-dcw-keyfollow">KEY<br>FOLLOW</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dcw-keyfollow" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow Range">
+                    <label for="dco1-dcw-keyfollow-range">KEYF<br>RANGE</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dcw-keyfollow-range" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="parameter-row" title="DCO 1 DCA Keyfollow Range">
-                <label for="dco1-dca-keyfollow-range">KEYF<br>RANGE</label>
-                <input type="range" id="dco1-dca-keyfollow-range" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row" title="DCO 1 DCA Keyfollow Line-offset">
-                <label for="dco1-dca-keyfollow-lineoffset">KF LINE<br>OFFSET</label>
-                <input type="range" id="dco1-dca-keyfollow-lineoffset" min="0" max="127" value="0">
-            </div>
-            <div class="parameter-row" title="DCO 1 DCA Keyfollow Range Line-offset">
-                <label for="dco1-dca-keyfollow-range-lineoffset">K-FOL<br>R-OFS</label>
-                <input type="range" id="dco1-dca-keyfollow-range-lineoffset" min="0" max="127" value="0">
+            <div class="parameter-column moved-params-pot-group">
+                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow Line-offset">
+                    <label for="dco1-dcw-keyfollow-lineoffset">KF LINE<br>OFFSET</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dcw-keyfollow-lineoffset" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow Range Line-offset">
+                    <label for="dco1-dcw-keyfollow-range-lineoffset">K-FOL<br>R-OFS</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dcw-keyfollow-range-lineoffset" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -633,6 +797,46 @@
                     </div>
                 </div>
             </div>
+            <div class="parameter-column moved-params-pot-group">
+                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow">
+                    <label for="dco1-dca-keyfollow">KEY<br>FOLLOW</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dca-keyfollow" min="0" max="127" value="0" class="dca-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow Range">
+                    <label for="dco1-dca-keyfollow-range">KEYF<br>RANGE</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dca-keyfollow-range" min="0" max="127" value="0" class="dca-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="parameter-column moved-params-pot-group">
+                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow Line-offset">
+                    <label for="dco1-dca-keyfollow-lineoffset">KF LINE<br>OFFSET</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dca-keyfollow-lineoffset" min="0" max="127" value="0" class="dca-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow Range Line-offset">
+                    <label for="dco1-dca-keyfollow-range-lineoffset">K-FOL<br>R-OFS</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dca-keyfollow-range-lineoffset" min="0" max="127" value="0" class="dca-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- DCW LEVEL -->
@@ -668,173 +872,7 @@
             </div>
         </div> -->
 
-        <!-- DCW RATE -->
-        <div class="control-box vertical-sliders noisy dcw-rate-small">
-            <h3>DCW RATE</h3>
-                        <div class="parameter-row" title="DCW Sustain Point">
-                <label for="dcw-sustain-point">SUS</label>
-                <input type="range" id="dcw-sustain-point" min="0" max="127" value="0" list="dcw-sustain-point-list">
-                <datalist id="dcw-sustain-point-list">
-                    <option value="0" label="0"></option>
-                    <option value="21" label="1"></option>
-                    <option value="43" label="2"></option>
-                    <option value="64" label="3"></option>
-                    <option value="85" label="4"></option>
-                    <option value="106" label="5"></option>
-                    <option value="127" label="6"></option>
-                </datalist>
-            </div>
-            <div class="parameter-row" title="DCW End Point">
-                <label for="dcw-end-point">END</label>
-                <input type="range" id="dcw-end-point" min="0" max="127" value="0" list="dcw-end-point-list">
-                <datalist id="dcw-end-point-list">
-                    <!-- <option value="0" label="0"></option>
-                    <option value="16" label="1"></option>
-                    <option value="32" label="2"></option>
-                    <option value="48" label="3"></option>
-                    <option value="64" label="4"></option>
-                    <option value="80" label="5"></option>
-                    <option value="96" label="6"></option>
-                    <option value="112" label="7"></option>
-                    <option value="127" label="8"></option> -->
-                    <option value="0" label="2"></option>
-                    <option value="22" label="3"></option>
-                    <option value="43" label="4"></option>
-                    <option value="64" label="5"></option>
-                    <option value="85" label="6"></option>
-                    <option value="106" label="7"></option>
-                    <option value="127" label="8"></option>
-                </datalist>
-            </div>
-            <div class="parameter-column">
-                <div class="parameter-row" title="DCW Rate 1">
-                    <label for="dcw-rate-1">RATE 1<span class="dcw-sustain-indicator" data-rate="1"></span></label>
-                    <input type="range" id="dcw-rate-1" min="0" max="127" value="0" class="dcw-rate-slider">
-                </div>
-                <div class="parameter-row pot-control" title="DCW LEVEL 1">
-                    <label for="dcw-level-1">LVL 1</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dcw-level-1" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                        <!-- <div class="pot-value">0</div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="parameter-column">
-                <div class="parameter-row" title="DCW Rate 2">
-                    <label for="dcw-rate-2">RATE 2<span class="dcw-sustain-indicator" data-rate="2"></span><span class="dcw-end-indicator" data-rate="2"></span></label>
-                    <input type="range" id="dcw-rate-2" min="0" max="127" value="0" class="dcw-rate-slider">
-                </div>
-                <div class="parameter-row pot-control" title="DCW LEVEL 2">
-                    <label for="dcw-level-2">LVL 2</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dcw-level-2" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                        <!-- <div class="pot-value">0</div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="parameter-column">
-                <div class="parameter-row" title="DCW Rate 3">
-                    <label for="dcw-rate-3">RATE 3<span class="dcw-sustain-indicator" data-rate="3"></span><span class="dcw-end-indicator" data-rate="3"></span></label>
-                    <input type="range" id="dcw-rate-3" min="0" max="127" value="0" class="dcw-rate-slider">
-                </div>
-                <div class="parameter-row pot-control" title="DCW LEVEL 3">
-                    <label for="dcw-level-3">LVL 3</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dcw-level-3" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                        <!-- <div class="pot-value">0</div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="parameter-column">
-                <div class="parameter-row" title="DCW Rate 4">
-                    <label for="dcw-rate-4">RATE 4<span class="dcw-sustain-indicator" data-rate="4"></span><span class="dcw-end-indicator" data-rate="4"></span></label>
-                    <input type="range" id="dcw-rate-4" min="0" max="127" value="0" class="dcw-rate-slider">
-                </div>
-                <div class="parameter-row pot-control" title="DCW LEVEL 4">
-                    <label for="dcw-level-4">LVL 4</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dcw-level-4" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                        <!-- <div class="pot-value">0</div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="parameter-column">
-                <div class="parameter-row" title="DCW Rate 5">
-                    <label for="dcw-rate-5">RATE 5<span class="dcw-sustain-indicator" data-rate="5"></span><span class="dcw-end-indicator" data-rate="5"></span></label>
-                    <input type="range" id="dcw-rate-5" min="0" max="127" value="0" class="dcw-rate-slider">
-                </div>
-                <div class="parameter-row pot-control" title="DCW LEVEL 5">
-                    <label for="dcw-level-5">LVL 5</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dcw-level-5" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                        <!-- <div class="pot-value">0</div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="parameter-column">
-                <div class="parameter-row" title="DCW Rate 6">
-                    <label for="dcw-rate-6">RATE 6<span class="dcw-sustain-indicator" data-rate="6"></span><span class="dcw-end-indicator" data-rate="6"></span></label>
-                    <input type="range" id="dcw-rate-6" min="0" max="127" value="0" class="dcw-rate-slider">
-                </div>
-                <div class="parameter-row pot-control" title="DCW LEVEL 6">
-                    <label for="dcw-level-6">LVL 6</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dcw-level-6" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                        <!-- <div class="pot-value">0</div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="parameter-column">
-                <div class="parameter-row" title="DCW Rate 7">
-                    <label for="dcw-rate-7">RATE 7<span class="dcw-sustain-indicator" data-rate="7"></span><span class="dcw-end-indicator" data-rate="7"></span></label>
-                    <input type="range" id="dcw-rate-7" min="0" max="127" value="0" class="dcw-rate-slider">
-                </div>
-                <div class="parameter-row pot-control" title="DCW LEVEL 7">
-                    <label for="dcw-level-7">LVL 7</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dcw-level-7" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                        <!-- <div class="pot-value">0</div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="parameter-column">
-                <div class="parameter-row" title="DCW Rate 8">
-                    <label for="dcw-rate-8">RATE 8<span class="dcw-end-indicator" data-rate="8"></span></label>
-                    <input type="range" id="dcw-rate-8" min="0" max="127" value="0" class="dcw-rate-slider">
-                </div>
-                <div class="parameter-row pot-control" title="DCW LEVEL 8">
-                    <label for="dcw-level-8">LVL 8</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dcw-level-8" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                        <!-- <div class="pot-value">0</div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <!-- VIBRATO -->
         <div class="control-box vertical-sliders noisy vibrato-max-width">

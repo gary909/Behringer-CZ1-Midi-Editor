@@ -820,16 +820,6 @@ input[type="range"] {
     max-width: 460px;
 }
 
-/* DCW PARAMS box size */
-.dcw-params-max-width {
-    max-width: 300px;
-}
-
-/* DCA PARAMS box size */
-.dca-params-max-width {
-    max-width: 250px;
-}
-
 /* DCA LEVEL box size */
 /* .dca-level-max-width {
     max-width: 120px;
@@ -837,7 +827,7 @@ input[type="range"] {
 
 /* DCA RATE box size */
 .dca-rate-small {
-    max-width: 570px;
+    max-width: 700px;
 }
 
 /* DCW LEVEL box size */
@@ -868,7 +858,7 @@ input[type="range"] {
 
 /* DCW RATE box size */
 .dcw-rate-small {
-    max-width: 570px;
+    max-width: 700px;
 }
 
 /* CHORUS box size */
@@ -916,6 +906,10 @@ input[type="range"] {
         inset 0 -2px 4px rgba(0, 0, 0, 0.3); */
     position: relative;
     transition: transform 0.1s ease;
+}
+
+.moved-params-pot-group .pot-knob {
+    background: linear-gradient(145deg, #9b98a3, #d8caef);
 }
 
 .pot-indicator {
