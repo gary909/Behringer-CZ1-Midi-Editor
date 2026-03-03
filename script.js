@@ -706,6 +706,25 @@ const hamburger = document.getElementById('hamburger-menu');
 const sideNav = document.getElementById('side-nav');
 const closeBtn = document.getElementById('close-btn');
 const aboutBtn = document.getElementById('about-btn');
+const versionNumber = document.getElementById('version-number');
+const aboutModal = document.getElementById('about-modal');
+const aboutModalContent = document.getElementById('about-modal-content');
+const aboutModalClose = document.getElementById('about-modal-close');
+const footerDisclaimer = document.getElementById('footer-disclaimer');
+const footerDisclaimerClose = document.getElementById('footer-disclaimer-close');
+const showFooterDisclaimer = document.getElementById('show-footer-disclaimer');
+
+function openAboutModal() {
+    if (!aboutModal) return;
+    aboutModal.classList.remove('modal-hidden');
+    aboutModal.setAttribute('aria-hidden', 'false');
+}
+
+function closeAboutModal() {
+    if (!aboutModal) return;
+    aboutModal.classList.add('modal-hidden');
+    aboutModal.setAttribute('aria-hidden', 'true');
+}
 
 // Open Menu
 if (hamburger && sideNav) {
@@ -722,11 +741,49 @@ if (closeBtn && sideNav) {
     });
 }
 
-// About Alert
+// About Modal
 if (aboutBtn) {
     aboutBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        alert('CZ-1 MINI MIDI Editor\nVersion 1.0\nCreated for Behringer CZ-1 Mini\n\nCommunity project - use at your own risk!');
+        openAboutModal();
+        if (sideNav) {
+            sideNav.style.width = "0";
+        }
+    });
+}
+
+if (versionNumber) {
+    versionNumber.addEventListener('click', openAboutModal);
+}
+
+if (aboutModalClose) {
+    aboutModalClose.addEventListener('click', closeAboutModal);
+}
+
+if (aboutModal) {
+    aboutModal.addEventListener('click', (e) => {
+        if (!aboutModalContent || !aboutModalContent.contains(e.target)) {
+            closeAboutModal();
+        }
+    });
+}
+
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && aboutModal && !aboutModal.classList.contains('modal-hidden')) {
+        closeAboutModal();
+    }
+});
+
+if (footerDisclaimer && footerDisclaimerClose) {
+    footerDisclaimerClose.addEventListener('click', () => {
+        footerDisclaimer.style.display = 'none';
+    });
+}
+
+if (footerDisclaimer && showFooterDisclaimer) {
+    showFooterDisclaimer.addEventListener('click', (e) => {
+        e.preventDefault();
+        footerDisclaimer.style.display = 'block';
     });
 }
 
