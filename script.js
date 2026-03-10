@@ -556,6 +556,9 @@ function initLineIndicator() {
     
     if (!lineSelect || circles.length === 0) return;
     
+    // Map circle data-values to exact slider snap values
+    const snapValues = [0, 43, 85, 127];
+
     // Function to update active circle
     const updateIndicator = () => {
         const value = parseInt(lineSelect.value);
@@ -577,6 +580,15 @@ function initLineIndicator() {
         });
     };
     
+    // Make each circle clickable — snaps slider to its value
+    circles.forEach((circle, i) => {
+        circle.addEventListener('click', () => {
+            const snapVal = snapValues[i];
+            lineSelect.value = snapVal;
+            lineSelect.dispatchEvent(new Event('input'));
+        });
+    });
+
     // Update on page load
     updateIndicator();
     

@@ -1107,7 +1107,7 @@ input[type="range"] {
     background-color: #262B30;
     color: #262B30;
     transition: background-color 0.2s ease;
-    /* cursor: pointer; */
+    cursor: pointer;
 }
 
 .circle.active {
