@@ -926,7 +926,21 @@
             </div>
             <div class="parameter-row" title="Detune Note">
                 <label for="detune-note">NOTE</label>
-                <input type="range" id="detune-note" min="0" max="127" value="0">
+                <input type="range" id="detune-note" min="0" max="127" value="0" list="detune-note-list">
+                <datalist id="detune-note-list">
+                    <option value="0"></option>
+                    <option value="12"></option>
+                    <option value="24"></option>
+                    <option value="36"></option>
+                    <option value="47"></option>
+                    <option value="58"></option>
+                    <option value="70"></option>
+                    <option value="81"></option>
+                    <option value="93"></option>
+                    <option value="104"></option>
+                    <option value="116"></option>
+                    <option value="127"></option>
+                </datalist>
             </div>
             <div class="parameter-row" title="Detune Fine">
                 <label for="detune-fine">FINE</label>
@@ -936,7 +950,7 @@
 
         <!-- LFO 1 -->
         <div class="control-box vertical-sliders noisy lfo1-max-width">
-            <h3>LFO 1</h3>
+            <h3>LFO</h3>
             <div class="lfo1-wave-display">
                 <img src="media/cz1_wav_lfo.svg" alt="LFO1 Wave" class="wav-lfo1-icon">
                 <div class="lfo1-wave-indicator" id="lfo1-wave-indicator"></div>

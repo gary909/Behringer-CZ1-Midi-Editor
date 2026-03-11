@@ -210,6 +210,23 @@ function getLfo1WaveName(val) {
     return 'UNKNOWN';
 }
 
+// Map detune note values to semitone numbers (0-11)
+function getDetuneNoteName(val) {
+    if (val >= 0 && val <= 11) return "0'";
+    if (val >= 12 && val <= 23) return "1'";
+    if (val >= 24 && val <= 35) return "2'";
+    if (val >= 36 && val <= 46) return "3'";
+    if (val >= 47 && val <= 57) return "4'";
+    if (val >= 58 && val <= 69) return "5'";
+    if (val >= 70 && val <= 80) return "6'";
+    if (val >= 81 && val <= 92) return "7'";
+    if (val >= 93 && val <= 103) return "8'";
+    if (val >= 104 && val <= 115) return "9'";
+    if (val >= 116 && val <= 126) return "10'";
+    if (val === 127) return "11'";
+    return 'UNKNOWN';
+}
+
 // Map pitch end point values to point numbers (2-8)
 function getPitchEndPointNumber(val) {
     if (val >= 0 && val <= 21) return '2';
@@ -431,6 +448,8 @@ function onMIDISuccess(midiAccess) {
             attachSlider(control.cc, control.id, (val) => `DCW END: ${getEndPointNumber(val)}`);
         } else if (control.id === 'lfo1-wave') {
             attachSlider(control.cc, control.id, (val) => `LFO WAVE: ${getLfo1WaveName(val)}`);
+        } else if (control.id === 'detune-note') {
+            attachSlider(control.cc, control.id, (val) => `DETUNE: ${getDetuneNoteName(val)}`);
         } else {
             attachSlider(control.cc, control.id);
         }
