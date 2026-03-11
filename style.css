@@ -1083,11 +1083,28 @@ input[type="range"] {
     /* opacity: 0.5; */
 }
 
-.wav-vibr-icon {
+.vibr-wave-display {
+    position: relative;
+    display: inline-block;
     width: 10%;
+    margin: 5px;
+    margin-top: 15px;
+}
+
+.wav-vibr-icon {
+    width: 100%;
     height: auto;
     display: block;
-    margin: 5px;
+}
+
+.vibr-wave-indicator {
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    background: rgba(200, 200, 200, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    transition: top 0.15s ease;
 }
 
 /* --- LINE INDICATOR CIRCLES --- */

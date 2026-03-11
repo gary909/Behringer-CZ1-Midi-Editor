@@ -877,7 +877,10 @@
         <!-- VIBRATO -->
         <div class="control-box vertical-sliders noisy vibrato-max-width">
             <h3>VIBRATO</h3>
-            <img src="media/cz1_wav_vibr.svg" alt="Vibrato Wave" class="wav-vibr-icon">
+            <div class="vibr-wave-display">
+                <img src="media/cz1_wav_vibr.svg" alt="Vibrato Wave" class="wav-vibr-icon">
+                <div class="vibr-wave-indicator" id="vibr-wave-indicator"></div>
+            </div>
             <div class="parameter-row" title="Vibrato Wave">
                 <label for="vibrato-wave">WVE</label>
                 <input type="range" id="vibrato-wave" min="0" max="127" value="0" list="vibrato-wave-list">

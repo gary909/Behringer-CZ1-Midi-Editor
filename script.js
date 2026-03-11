@@ -437,6 +437,33 @@ function onMIDISuccess(midiAccess) {
     });
 
     // Add waveform indicator updates
+    // Add vibrato wave indicator update
+    const vibrWaveIndicator = document.getElementById('vibr-wave-indicator');
+    const vibrWaveSlider = document.getElementById('vibrato-wave');
+    const vibrWaveImg = document.querySelector('.wav-vibr-icon');
+    function updateVibrWaveIndicator(val) {
+        if (!vibrWaveIndicator || !vibrWaveImg) return;
+        const imgHeight = vibrWaveImg.offsetHeight;
+        const zoneHeight = imgHeight / 4;
+        const inset = 2;
+        let zone;
+        if (val <= 42) zone = 3;        // TRI (bottom)
+        else if (val <= 84) zone = 2;   // SAW RMP UP
+        else if (val <= 126) zone = 1;  // SAW RMP DWN
+        else zone = 0;                  // SQR (top)
+        vibrWaveIndicator.style.height = (zoneHeight - inset * 2) + 'px';
+        vibrWaveIndicator.style.top = (zone * zoneHeight + inset) + 'px';
+    }
+    if (vibrWaveSlider) {
+        vibrWaveSlider.addEventListener('input', (e) => updateVibrWaveIndicator(parseInt(e.target.value)));
+        // Wait for image to load before initializing position
+        if (vibrWaveImg.complete) {
+            updateVibrWaveIndicator(parseInt(vibrWaveSlider.value));
+        } else {
+            vibrWaveImg.addEventListener('load', () => updateVibrWaveIndicator(parseInt(vibrWaveSlider.value)));
+        }
+    }
+
     document.getElementById('dco1-wf1').addEventListener('input', (e) => {
         updateWaveformIndicator(1, parseInt(e.target.value));
     });
