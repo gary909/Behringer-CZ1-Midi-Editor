@@ -589,6 +589,33 @@ function onMIDISuccess(midiAccess) {
         }
     });
 
+    // Add LFO1 wave indicator update
+    const lfo1WaveIndicator = document.getElementById('lfo1-wave-indicator');
+    const lfo1WaveSlider = document.getElementById('lfo1-wave');
+    const lfo1WaveImg = document.querySelector('.wav-lfo1-icon');
+    function updateLfo1WaveIndicator(val) {
+        if (!lfo1WaveIndicator || !lfo1WaveImg) return;
+        const imgHeight = lfo1WaveImg.offsetHeight;
+        const zoneHeight = imgHeight / 5;
+        const inset = 2;
+        let zone;
+        if (val <= 25) zone = 4;        // TRI (bottom)
+        else if (val <= 50) zone = 3;   // SQR
+        else if (val <= 76) zone = 2;   // SAW
+        else if (val <= 101) zone = 1;  // RMP
+        else zone = 0;                  // S&H (top)
+        lfo1WaveIndicator.style.height = (zoneHeight - inset * 2) + 'px';
+        lfo1WaveIndicator.style.top = (zone * zoneHeight + inset) + 'px';
+    }
+    if (lfo1WaveSlider) {
+        lfo1WaveSlider.addEventListener('input', (e) => updateLfo1WaveIndicator(parseInt(e.target.value)));
+        if (lfo1WaveImg.complete) {
+            updateLfo1WaveIndicator(parseInt(lfo1WaveSlider.value));
+        } else {
+            lfo1WaveImg.addEventListener('load', () => updateLfo1WaveIndicator(parseInt(lfo1WaveSlider.value)));
+        }
+    }
+
     // Initialize pot controls
     initPotControls();
 

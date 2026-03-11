@@ -981,7 +981,7 @@ input[type="range"] {
 
 /* LFO 1 box size */
 .lfo1-max-width {
-    max-width: 160px;
+    max-width: 220px;
 }
 
 /* FILTER EG box size */
@@ -1098,6 +1098,30 @@ input[type="range"] {
 }
 
 .vibr-wave-indicator {
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    background: rgba(200, 200, 200, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    transition: top 0.15s ease;
+}
+
+.lfo1-wave-display {
+    position: relative;
+    display: inline-block;
+    width: 31px;
+    margin: 5px;
+    margin-top: 15px;
+}
+
+.wav-lfo1-icon {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lfo1-wave-indicator {
     position: absolute;
     left: 2px;
     right: 2px;
