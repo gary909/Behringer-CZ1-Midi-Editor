@@ -191,6 +191,16 @@ function getEndPointNumber(val) {
     return 'UNKNOWN';
 }
 
+// Map LFO1 wave values to wave names
+function getLfo1WaveName(val) {
+    if (val >= 0 && val <= 25) return 'TRI';
+    if (val >= 26 && val <= 50) return 'SQR';
+    if (val >= 51 && val <= 76) return 'SAW';
+    if (val >= 77 && val <= 101) return 'RMP';
+    if (val >= 102 && val <= 127) return 'S&H';
+    return 'UNKNOWN';
+}
+
 // Map pitch end point values to point numbers (2-8)
 function getPitchEndPointNumber(val) {
     if (val >= 0 && val <= 21) return '2';
@@ -408,6 +418,8 @@ function onMIDISuccess(midiAccess) {
             attachSlider(control.cc, control.id, (val) => `DCW SUSTAIN: ${getSustainPointNumber(val)}`);
         } else if (control.id === 'dcw-end-point') {
             attachSlider(control.cc, control.id, (val) => `DCW END: ${getEndPointNumber(val)}`);
+        } else if (control.id === 'lfo1-wave') {
+            attachSlider(control.cc, control.id, (val) => `LFO WAVE: ${getLfo1WaveName(val)}`);
         } else {
             attachSlider(control.cc, control.id);
         }
