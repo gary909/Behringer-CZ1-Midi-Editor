@@ -191,6 +191,15 @@ function getEndPointNumber(val) {
     return 'UNKNOWN';
 }
 
+// Map Vibrato wave values to wave names
+function getVibratoWaveName(val) {
+    if (val >= 0 && val <= 42) return 'TRI';
+    if (val >= 43 && val <= 84) return 'SAW RMP UP';
+    if (val >= 85 && val <= 126) return 'SAW RMP DWN';
+    if (val === 127) return 'SQR';
+    return 'UNKNOWN';
+}
+
 // Map LFO1 wave values to wave names
 function getLfo1WaveName(val) {
     if (val >= 0 && val <= 25) return 'TRI';
@@ -373,7 +382,9 @@ function onMIDISuccess(midiAccess) {
     // Attach all sliders
     ALL_PATCH_CONTROLS.forEach(control => {
         // Use waveform name helper for waveform sliders
-        if (control.id === 'dco1-wf1') {
+        if (control.id === 'vibrato-wave') {
+            attachSlider(control.cc, control.id, (val) => `VIB WAVE: ${getVibratoWaveName(val)}`);
+        } else if (control.id === 'dco1-wf1') {
             attachSlider(control.cc, control.id, (val) => `DCO 1 WF1: ${getWaveformName(val)}`);
         } else if (control.id === 'dco2-wf2') {
             attachSlider(control.cc, control.id, (val) => `DCO 2 WF2: ${getWaveformName(val)}`);

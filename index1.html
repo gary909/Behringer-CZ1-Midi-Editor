@@ -880,7 +880,13 @@
             <img src="media/cz1_wav_vibr.svg" alt="Vibrato Wave" class="wav-vibr-icon">
             <div class="parameter-row" title="Vibrato Wave">
                 <label for="vibrato-wave">WVE</label>
-                <input type="range" id="vibrato-wave" min="0" max="127" value="0">
+                <input type="range" id="vibrato-wave" min="0" max="127" value="0" list="vibrato-wave-list">
+                <datalist id="vibrato-wave-list">
+                    <option value="0" label="TRI"></option>
+                    <option value="43" label="SAW↑"></option>
+                    <option value="85" label="SAW↓"></option>
+                    <option value="127" label="SQR"></option>
+                </datalist>
             </div>
             <div class="parameter-row" title="Vibrato Rate">
                 <label for="vibrato-rate">RTE</label>
@@ -930,7 +936,15 @@
             <h3>LFO 1</h3>
             <div class="parameter-row" title="LFO1 Wave">
                 <label for="lfo1-wave">WAVE</label>
-                <input type="range" id="lfo1-wave" min="0" max="127" value="0">
+                <input type="range" id="lfo1-wave" min="0" max="127" value="0" list="lfo1-wave-list">
+                <datalist id="lfo1-wave-list">
+                    <option value="0" label="TRI"></option>
+                    <option value="26" label="SQR"></option>
+                    <option value="51" label="SAW"></option>
+                    <option value="77" label="RMP"></option>
+                    <option value="102" label="S&H"></option>
+                    <option value="127"></option>
+                </datalist>
             </div>
             <div class="parameter-row" title="LFO1 Rate">
                 <label for="lfo1-rate">RATE</label>
