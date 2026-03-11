@@ -917,12 +917,30 @@
         <div class="control-box vertical-sliders noisy detune-max-width">
             <h3>DETUNE</h3>
             <div class="parameter-row" title="Detune Polarity">
+                <div class="circle-labels">
+                    <span>DN</span>
+                    <span>UP</span>
+                </div>
+                <div class="pol-indicator-leds">
+                    <div class="circle" data-value="0"></div>
+                    <div class="circle" data-value="65"></div>
+                </div>
                 <label for="detune-polarity">POL</label>
-                <input type="range" id="detune-polarity" min="0" max="127" value="0">
+                <input type="range" id="detune-polarity" min="0" max="65" value="0" list="detune-polarity-list">
+                <datalist id="detune-polarity-list">
+                    <option value="0"></option>
+                    <option value="65"></option>
+                </datalist>
             </div>
             <div class="parameter-row" title="Detune Octave">
                 <label for="detune-oct">OCT</label>
-                <input type="range" id="detune-oct" min="0" max="127" value="0">
+                <input type="range" id="detune-oct" min="0" max="127" value="0" list="detune-oct-list">
+                <datalist id="detune-oct-list">
+                    <option value="0"></option>
+                    <option value="43"></option>
+                    <option value="85"></option>
+                    <option value="127"></option>
+                </datalist>
             </div>
             <div class="parameter-row" title="Detune Note">
                 <label for="detune-note">NOTE</label>

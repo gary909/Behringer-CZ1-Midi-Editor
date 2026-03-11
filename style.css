@@ -730,6 +730,11 @@ input[type="range"] {
     height: 65px !important;
 }
 
+/* DETUNE POLARITY slider size (reduced to accommodate LEDs) */
+#detune-polarity {
+    height: 62px !important;
+}
+
 /* PITCH RATE sliders size */
 .pitch-rate-small .pitch-rate-slider {
     height: 60px !important; /* Reduce slider height */
@@ -956,7 +961,7 @@ input[type="range"] {
 
 /* DETUNE cbox size */
 .detune-max-width {
-    max-width: 200px;
+    max-width: 220px;
 }
 
 /* DCO 2 box size */
@@ -1131,6 +1136,16 @@ input[type="range"] {
     transition: top 0.15s ease;
 }
 
+/* --- DETUNE POLARITY LED INDICATORS --- */
+.pol-indicator-leds {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+    gap: 12px;
+}
+
 /* --- LINE INDICATOR CIRCLES --- */
 .line-indicator-circles {
     display: flex;
@@ -1147,7 +1162,7 @@ input[type="range"] {
     border-radius: 50%;
     background-color: #262B30;
     color: #262B30;
-    transition: background-color 0.2s ease;
+    /* transition: background-color 0.02s ease; */
     cursor: pointer;
 }
 

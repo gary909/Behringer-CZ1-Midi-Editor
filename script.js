@@ -210,6 +210,21 @@ function getLfo1WaveName(val) {
     return 'UNKNOWN';
 }
 
+// Map detune polarity value to direction name
+function getDetunePolarityName(val) {
+    if (val >= 0 && val <= 64) return "DOWN'";
+    return "UP'";
+}
+
+// Map detune octave values to octave numbers (0-3)
+function getDetuneOctName(val) {
+    if (val >= 0 && val <= 42) return "0'";
+    if (val >= 43 && val <= 84) return "1'";
+    if (val >= 85 && val <= 126) return "2'";
+    if (val === 127) return "3'";
+    return 'UNKNOWN';
+}
+
 // Map detune note values to semitone numbers (0-11)
 function getDetuneNoteName(val) {
     if (val >= 0 && val <= 11) return "0'";
@@ -450,6 +465,10 @@ function onMIDISuccess(midiAccess) {
             attachSlider(control.cc, control.id, (val) => `LFO WAVE: ${getLfo1WaveName(val)}`);
         } else if (control.id === 'detune-note') {
             attachSlider(control.cc, control.id, (val) => `DETUNE: ${getDetuneNoteName(val)}`);
+        } else if (control.id === 'detune-oct') {
+            attachSlider(control.cc, control.id, (val) => `DETUNE OCT: ${getDetuneOctName(val)}`);
+        } else if (control.id === 'detune-polarity') {
+            attachSlider(control.cc, control.id, (val) => `DETUNE POL: ${getDetunePolarityName(val)}`);
         } else {
             attachSlider(control.cc, control.id);
         }
@@ -641,8 +660,39 @@ function onMIDISuccess(midiAccess) {
     // Initialize line select indicator circles
     initLineIndicator();
 
+    // Initialize detune polarity LED indicators
+    initDetunePolarityIndicator();
+
     document.getElementById('init-patch-button')?.addEventListener('click', initPatch);
     document.getElementById('random-patch-button')?.addEventListener('click', randomPatch);
+}
+
+// --- DETUNE POLARITY LED INDICATOR INITIALIZATION ---
+function initDetunePolarityIndicator() {
+    const slider = document.getElementById('detune-polarity');
+    const leds = document.querySelectorAll('.pol-indicator-leds .circle');
+
+    if (!slider || leds.length === 0) return;
+
+    const updateIndicator = () => {
+        const value = parseInt(slider.value);
+        leds.forEach(led => {
+            const ledValue = parseInt(led.getAttribute('data-value'));
+            const shouldBeActive = (ledValue === 0 && value <= 64) || (ledValue === 65 && value >= 65);
+            if (shouldBeActive) led.classList.add('active');
+            else led.classList.remove('active');
+        });
+    };
+
+    leds.forEach((led, i) => {
+        led.addEventListener('click', () => {
+            slider.value = i === 0 ? 0 : 65;
+            slider.dispatchEvent(new Event('input'));
+        });
+    });
+
+    updateIndicator();
+    slider.addEventListener('input', updateIndicator);
 }
 
 // --- LINE SELECT INDICATOR INITIALIZATION ---
