@@ -378,7 +378,27 @@ const ALL_PATCH_CONTROLS = [
     { id: 'dcw-rate-6', cc: CC_DCW_RATE_5, value: 0 },
     { id: 'dcw-rate-7', cc: CC_DCW_RATE_6, value: 0 },
     { id: 'dcw-rate-8', cc: CC_DCW_RATE_7, value: 0 },
-    
+
+    // DCW Env 2 (DCO 2) — same CCs as ENV 1 but sent with Bank Select = 1
+    { id: 'dcw2-sustain-point', cc: CC_DCW_SUSTAIN_POINT, value: 0 },
+    { id: 'dcw2-end-point', cc: CC_DCW_END_POINT, value: 0 },
+    { id: 'dcw2-level-1', cc: CC_DCW_LEVEL_0, value: 0 },
+    { id: 'dcw2-level-2', cc: CC_DCW_LEVEL_1, value: 0 },
+    { id: 'dcw2-level-3', cc: CC_DCW_LEVEL_2, value: 0 },
+    { id: 'dcw2-level-4', cc: CC_DCW_LEVEL_3, value: 0 },
+    { id: 'dcw2-level-5', cc: CC_DCW_LEVEL_4, value: 0 },
+    { id: 'dcw2-level-6', cc: CC_DCW_LEVEL_5, value: 0 },
+    { id: 'dcw2-level-7', cc: CC_DCW_LEVEL_6, value: 0 },
+    { id: 'dcw2-level-8', cc: CC_DCW_LEVEL_7, value: 0 },
+    { id: 'dcw2-rate-1', cc: CC_DCW_RATE_0, value: 0 },
+    { id: 'dcw2-rate-2', cc: CC_DCW_RATE_1, value: 0 },
+    { id: 'dcw2-rate-3', cc: CC_DCW_RATE_2, value: 0 },
+    { id: 'dcw2-rate-4', cc: CC_DCW_RATE_3, value: 0 },
+    { id: 'dcw2-rate-5', cc: CC_DCW_RATE_4, value: 0 },
+    { id: 'dcw2-rate-6', cc: CC_DCW_RATE_5, value: 0 },
+    { id: 'dcw2-rate-7', cc: CC_DCW_RATE_6, value: 0 },
+    { id: 'dcw2-rate-8', cc: CC_DCW_RATE_7, value: 0 },
+
     // LFO 1
     { id: 'lfo1-wave', cc: CC_LFO1_WAVE, value: 0 },
     { id: 'lfo1-amount', cc: CC_LFO1_AMOUNT, value: 0 },
@@ -512,9 +532,17 @@ function onMIDISuccess(midiAccess) {
         } else if (control.id === 'dca-end-point') {
             attachSlider(control.cc, control.id, (val) => `DCA END: ${getEndPointNumber(val)}`);
         } else if (control.id === 'dcw-sustain-point') {
-            attachSlider(control.cc, control.id, (val) => `DCW SUSTAIN: ${getSustainPointNumber(val)}`);
+            attachSliderForcedBank(0, control.cc, control.id, (val) => `DCW 1 SUSTAIN: ${getSustainPointNumber(val)}`);
         } else if (control.id === 'dcw-end-point') {
-            attachSlider(control.cc, control.id, (val) => `DCW END: ${getEndPointNumber(val)}`);
+            attachSliderForcedBank(0, control.cc, control.id, (val) => `DCW 1 END: ${getEndPointNumber(val)}`);
+        } else if (control.id === 'dcw2-sustain-point') {
+            attachSliderForcedBank(1, control.cc, control.id, (val) => `DCW 2 SUSTAIN: ${getSustainPointNumber(val)}`);
+        } else if (control.id === 'dcw2-end-point') {
+            attachSliderForcedBank(1, control.cc, control.id, (val) => `DCW 2 END: ${getEndPointNumber(val)}`);
+        } else if (control.id.startsWith('dcw-rate-') || control.id.startsWith('dcw-level-')) {
+            attachSliderForcedBank(0, control.cc, control.id);
+        } else if (control.id.startsWith('dcw2-rate-') || control.id.startsWith('dcw2-level-')) {
+            attachSliderForcedBank(1, control.cc, control.id);
         } else if (control.id === 'lfo1-wave') {
             attachSlider(control.cc, control.id, (val) => `LFO WAVE: ${getLfo1WaveName(val)}`);
         } else if (control.id === 'detune-note') {
@@ -669,40 +697,64 @@ function onMIDISuccess(midiAccess) {
         }
     });
 
-    // Add sustain point indicator for DCW RATE
+    // Add sustain point indicator for DCW ENV 1
     document.getElementById('dcw-sustain-point').addEventListener('input', (e) => {
         const susValue = parseInt(e.target.value);
         const susNumber = getSustainPointNumber(susValue);
         
-        // Remove active class from all dcw sustain indicators
-        document.querySelectorAll('.dcw-sustain-indicator').forEach(indicator => {
+        // Remove active class from all dcw1 sustain indicators
+        document.querySelectorAll('.dcw1-sustain-indicator').forEach(indicator => {
             indicator.classList.remove('active');
         });
         
         // Add active class to the corresponding rate indicator (if sus is 1-7)
         if (susNumber !== '0') {
-            const activeIndicator = document.querySelector(`.dcw-sustain-indicator[data-rate="${susNumber}"]`);
+            const activeIndicator = document.querySelector(`.dcw1-sustain-indicator[data-rate="${susNumber}"]`);
             if (activeIndicator) {
                 activeIndicator.classList.add('active');
             }
         }
     });
 
-    // Add end point indicator for DCW RATE
+    // Add end point indicator for DCW ENV 1
     document.getElementById('dcw-end-point').addEventListener('input', (e) => {
         const endValue = parseInt(e.target.value);
         const endNumber = getPitchEndPointNumber(endValue);
         
-        // Remove active class from all dcw end indicators
-        document.querySelectorAll('.dcw-end-indicator').forEach(indicator => {
+        // Remove active class from all dcw1 end indicators
+        document.querySelectorAll('.dcw1-end-indicator').forEach(indicator => {
             indicator.classList.remove('active');
         });
         
         // Add active class to the corresponding rate indicator (rates 2-8)
-        const activeIndicator = document.querySelector(`.dcw-end-indicator[data-rate="${endNumber}"]`);
+        const activeIndicator = document.querySelector(`.dcw1-end-indicator[data-rate="${endNumber}"]`);
         if (activeIndicator) {
             activeIndicator.classList.add('active');
         }
+    });
+
+    // Add sustain point indicator for DCW ENV 2
+    document.getElementById('dcw2-sustain-point').addEventListener('input', (e) => {
+        const susValue = parseInt(e.target.value);
+        const susNumber = getSustainPointNumber(susValue);
+        document.querySelectorAll('.dcw2-sustain-indicator').forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        if (susNumber !== '0') {
+            const activeIndicator = document.querySelector(`.dcw2-sustain-indicator[data-rate="${susNumber}"]`);
+            if (activeIndicator) activeIndicator.classList.add('active');
+        }
+    });
+
+    // Add end point indicator for DCW ENV 2
+    document.getElementById('dcw2-end-point').addEventListener('input', (e) => {
+        const endValue = parseInt(e.target.value);
+        const endNumber = getPitchEndPointNumber(endValue);
+        document.querySelectorAll('.dcw2-end-indicator').forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        const activeIndicator = document.querySelector(`.dcw2-end-indicator[data-rate="${endNumber}"]`);
+        if (activeIndicator) activeIndicator.classList.add('active');
     });
 
     // Add LFO1 wave indicator update
