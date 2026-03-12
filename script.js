@@ -336,7 +336,27 @@ const ALL_PATCH_CONTROLS = [
     { id: 'pitch-rate-6', cc: CC_PITCH_RATE_5, value: 0 },
     { id: 'pitch-rate-7', cc: CC_PITCH_RATE_6, value: 0 },
     { id: 'pitch-rate-8', cc: CC_PITCH_RATE_7, value: 0 },
-    
+
+    // Pitch Env 2 (DCO 2) — same CCs as ENV 1 but sent with Bank Select = 1
+    { id: 'pitch2-sustain-point', cc: CC_PITCH_SUSTAIN_POINT, value: 0 },
+    { id: 'pitch2-end-point', cc: CC_PITCH_END_POINT, value: 0 },
+    { id: 'pitch2-level-1', cc: CC_PITCH_LEVEL_0, value: 0 },
+    { id: 'pitch2-level-2', cc: CC_PITCH_LEVEL_1, value: 0 },
+    { id: 'pitch2-level-3', cc: CC_PITCH_LEVEL_2, value: 0 },
+    { id: 'pitch2-level-4', cc: CC_PITCH_LEVEL_3, value: 0 },
+    { id: 'pitch2-level-5', cc: CC_PITCH_LEVEL_4, value: 0 },
+    { id: 'pitch2-level-6', cc: CC_PITCH_LEVEL_5, value: 0 },
+    { id: 'pitch2-level-7', cc: CC_PITCH_LEVEL_6, value: 0 },
+    { id: 'pitch2-level-8', cc: CC_PITCH_LEVEL_7, value: 0 },
+    { id: 'pitch2-rate-1', cc: CC_PITCH_RATE_0, value: 0 },
+    { id: 'pitch2-rate-2', cc: CC_PITCH_RATE_1, value: 0 },
+    { id: 'pitch2-rate-3', cc: CC_PITCH_RATE_2, value: 0 },
+    { id: 'pitch2-rate-4', cc: CC_PITCH_RATE_3, value: 0 },
+    { id: 'pitch2-rate-5', cc: CC_PITCH_RATE_4, value: 0 },
+    { id: 'pitch2-rate-6', cc: CC_PITCH_RATE_5, value: 0 },
+    { id: 'pitch2-rate-7', cc: CC_PITCH_RATE_6, value: 0 },
+    { id: 'pitch2-rate-8', cc: CC_PITCH_RATE_7, value: 0 },
+
     // DCW Level
     { id: 'dcw-sustain-point', cc: CC_DCW_SUSTAIN_POINT, value: 0 },
     { id: 'dcw-end-point', cc: CC_DCW_END_POINT, value: 0 },
@@ -411,6 +431,32 @@ function onMIDISuccess(midiAccess) {
         });
     };
 
+    // Like attachSlider but forces Bank Select before sending and restores it after
+    const attachSliderForcedBank = (bankValue, ccNumber, elementId, helperFn = null) => {
+        const slider = document.getElementById(elementId);
+        if (!slider || !statusElement) return;
+
+        slider.addEventListener('mousedown', () => {
+            originalMidiStatusText = statusElement.options[statusElement.selectedIndex].textContent;
+            statusElement.options[statusElement.selectedIndex].textContent = '';
+        });
+
+        slider.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            sendMidiCC(CC_BANK_SELECT, bankValue);
+            sendMidiCC(ccNumber, val);
+            // Restore Bank Select to match current Line Select
+            const lineSelectEl = document.getElementById('line-select');
+            if (lineSelectEl) {
+                const lineVal = parseInt(lineSelectEl.value);
+                const restoredBank = (lineVal >= 43 && lineVal <= 84) ? 1 : 0;
+                sendMidiCC(CC_BANK_SELECT, restoredBank);
+            }
+            statusElement.options[statusElement.selectedIndex].textContent =
+                helperFn ? helperFn(val) : `${elementId.toUpperCase().replace(/-/g, ' ')}: ${val}`;
+        });
+    };
+
     // Attach all sliders
     ALL_PATCH_CONTROLS.forEach(control => {
         // Use waveform name helper for waveform sliders
@@ -450,9 +496,17 @@ function onMIDISuccess(midiAccess) {
                 });
             }
         } else if (control.id === 'pitch-sustain-point') {
-            attachSlider(control.cc, control.id, (val) => `PITCH SUSTAIN: ${getSustainPointNumber(val)}`);
+            attachSliderForcedBank(0, control.cc, control.id, (val) => `PITCH 1 SUSTAIN: ${getSustainPointNumber(val)}`);
         } else if (control.id === 'pitch-end-point') {
-            attachSlider(control.cc, control.id, (val) => `PITCH END: ${getPitchEndPointNumber(val)}`);
+            attachSliderForcedBank(0, control.cc, control.id, (val) => `PITCH 1 END: ${getPitchEndPointNumber(val)}`);
+        } else if (control.id === 'pitch2-sustain-point') {
+            attachSliderForcedBank(1, control.cc, control.id, (val) => `PITCH 2 SUSTAIN: ${getSustainPointNumber(val)}`);
+        } else if (control.id === 'pitch2-end-point') {
+            attachSliderForcedBank(1, control.cc, control.id, (val) => `PITCH 2 END: ${getPitchEndPointNumber(val)}`);
+        } else if (control.id.startsWith('pitch-rate-') || control.id.startsWith('pitch-level-')) {
+            attachSliderForcedBank(0, control.cc, control.id);
+        } else if (control.id.startsWith('pitch2-rate-') || control.id.startsWith('pitch2-level-')) {
+            attachSliderForcedBank(1, control.cc, control.id);
         } else if (control.id === 'dca-sustain-point') {
             attachSlider(control.cc, control.id, (val) => `DCA SUSTAIN: ${getSustainPointNumber(val)}`);
         } else if (control.id === 'dca-end-point') {
@@ -518,40 +572,64 @@ function onMIDISuccess(midiAccess) {
         updateWaveformIndicator(4, parseInt(e.target.value));
     });
 
-    // Add sustain point indicator for PITCH RATE
+    // Add sustain point indicator for PITCH ENV 1
     document.getElementById('pitch-sustain-point').addEventListener('input', (e) => {
         const susValue = parseInt(e.target.value);
         const susNumber = getSustainPointNumber(susValue);
         
-        // Remove active class from all rate indicators
-        document.querySelectorAll('.rate-sustain-indicator').forEach(indicator => {
+        // Remove active class from all pitch1 sustain indicators
+        document.querySelectorAll('.pitch1-sustain-indicator').forEach(indicator => {
             indicator.classList.remove('active');
         });
         
         // Add active class to the corresponding rate indicator (if sus is 1-7)
         if (susNumber !== '0') {
-            const activeIndicator = document.querySelector(`.rate-sustain-indicator[data-rate="${susNumber}"]`);
+            const activeIndicator = document.querySelector(`.pitch1-sustain-indicator[data-rate="${susNumber}"]`);
             if (activeIndicator) {
                 activeIndicator.classList.add('active');
             }
         }
     });
 
-    // Add end point indicator for PITCH RATE
+    // Add end point indicator for PITCH ENV 1
     document.getElementById('pitch-end-point').addEventListener('input', (e) => {
         const endValue = parseInt(e.target.value);
         const endNumber = getPitchEndPointNumber(endValue);
         
-        // Remove active class from all end indicators
-        document.querySelectorAll('.end-sustain-indicator').forEach(indicator => {
+        // Remove active class from all pitch1 end indicators
+        document.querySelectorAll('.pitch1-end-indicator').forEach(indicator => {
             indicator.classList.remove('active');
         });
         
         // Add active class to the corresponding rate indicator (rates 2-8)
-        const activeIndicator = document.querySelector(`.end-sustain-indicator[data-rate="${endNumber}"]`);
+        const activeIndicator = document.querySelector(`.pitch1-end-indicator[data-rate="${endNumber}"]`);
         if (activeIndicator) {
             activeIndicator.classList.add('active');
         }
+    });
+
+    // Add sustain point indicator for PITCH ENV 2
+    document.getElementById('pitch2-sustain-point').addEventListener('input', (e) => {
+        const susValue = parseInt(e.target.value);
+        const susNumber = getSustainPointNumber(susValue);
+        document.querySelectorAll('.pitch2-sustain-indicator').forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        if (susNumber !== '0') {
+            const activeIndicator = document.querySelector(`.pitch2-sustain-indicator[data-rate="${susNumber}"]`);
+            if (activeIndicator) activeIndicator.classList.add('active');
+        }
+    });
+
+    // Add end point indicator for PITCH ENV 2
+    document.getElementById('pitch2-end-point').addEventListener('input', (e) => {
+        const endValue = parseInt(e.target.value);
+        const endNumber = getPitchEndPointNumber(endValue);
+        document.querySelectorAll('.pitch2-end-indicator').forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        const activeIndicator = document.querySelector(`.pitch2-end-indicator[data-rate="${endNumber}"]`);
+        if (activeIndicator) activeIndicator.classList.add('active');
     });
 
     // Add sustain point indicator for DCA RATE
@@ -817,7 +895,8 @@ function randomPatch() {
     ALL_PATCH_CONTROLS.forEach(p => {
         const el = document.getElementById(p.id);
         if (!el) return;
-        const val = Math.floor(Math.random() * 128);
+        const max = parseInt(el.max) || 127;
+        const val = Math.floor(Math.random() * (max + 1));
         el.value = val;
         sendMidiCC(p.cc, val);
     });
