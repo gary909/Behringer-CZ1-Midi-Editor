@@ -792,6 +792,7 @@ input[type="range"] {
 }
 
 .vertical-sliders .parameter-row label {
+    position: relative;
     writing-mode: horizontal-tb;
     margin-bottom: 10px;
     text-align: center;
@@ -902,6 +903,48 @@ input[type="range"] {
     top: 4px;
 }
 
+/* ── Scoped ENV 1 / ENV 2 indicators (position:absolute – no layout impact) ── */
+
+.pitch1-sustain-indicator, .pitch2-sustain-indicator,
+.dcw1-sustain-indicator,   .dcw2-sustain-indicator,
+.dca1-sustain-indicator,   .dca2-sustain-indicator {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.pitch1-sustain-indicator.active, .pitch2-sustain-indicator.active,
+.dcw1-sustain-indicator.active,   .dcw2-sustain-indicator.active,
+.dca1-sustain-indicator.active,   .dca2-sustain-indicator.active {
+    background-color: #380454;
+    opacity: 1;
+}
+
+.pitch1-end-indicator, .pitch2-end-indicator,
+.dcw1-end-indicator,   .dcw2-end-indicator,
+.dca1-end-indicator,   .dca2-end-indicator {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.pitch1-end-indicator.active, .pitch2-end-indicator.active,
+.dcw1-end-indicator.active,   .dcw2-end-indicator.active,
+.dca1-end-indicator.active,   .dca2-end-indicator.active {
+    background-color: #ffffff;
+    opacity: 1;
+}
+
 .vertical-sliders .parameter-row input[type="range"] {
     -webkit-appearance: slider-vertical;
     appearance: slider-vertical;
@@ -974,9 +1017,9 @@ input[type="range"] {
     max-width: 120px;
 } */
 
-/* DCA RATE box size */
+/* DCA ENV 1 & 2 RATE box size */
 .dca-rate-small {
-    max-width: 700px;
+    max-width: 640px;
 }
 
 /* DCW LEVEL box size */
@@ -1005,9 +1048,9 @@ input[type="range"] {
     max-width: 310px;
 }
 
-/* DCW RATE box size */
+/* DCW ENV 1 & 2 RATE box size */
 .dcw-rate-small {
-    max-width: 700px;
+    max-width: 640px;
 }
 
 /* CHORUS box size */
