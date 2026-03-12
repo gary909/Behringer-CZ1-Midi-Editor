@@ -314,7 +314,27 @@ const ALL_PATCH_CONTROLS = [
     { id: 'dca-rate-6', cc: CC_DCA_RATE_5, value: 0 },
     { id: 'dca-rate-7', cc: CC_DCA_RATE_6, value: 0 },
     { id: 'dca-rate-8', cc: CC_DCA_RATE_7, value: 0 },
-    
+
+    // DCA Env 2 (DCO 2) — same CCs as ENV 1 but sent with Bank Select = 1
+    { id: 'dca2-sustain-point', cc: CC_DCA_SUSTAIN_POINT, value: 0 },
+    { id: 'dca2-end-point', cc: CC_DCA_END_POINT, value: 0 },
+    { id: 'dca2-level-1', cc: CC_DCA_LEVEL_0, value: 0 },
+    { id: 'dca2-level-2', cc: CC_DCA_LEVEL_1, value: 0 },
+    { id: 'dca2-level-3', cc: CC_DCA_LEVEL_2, value: 0 },
+    { id: 'dca2-level-4', cc: CC_DCA_LEVEL_3, value: 0 },
+    { id: 'dca2-level-5', cc: CC_DCA_LEVEL_4, value: 0 },
+    { id: 'dca2-level-6', cc: CC_DCA_LEVEL_5, value: 0 },
+    { id: 'dca2-level-7', cc: CC_DCA_LEVEL_6, value: 0 },
+    { id: 'dca2-level-8', cc: CC_DCA_LEVEL_7, value: 0 },
+    { id: 'dca2-rate-1', cc: CC_DCA_RATE_0, value: 0 },
+    { id: 'dca2-rate-2', cc: CC_DCA_RATE_1, value: 0 },
+    { id: 'dca2-rate-3', cc: CC_DCA_RATE_2, value: 0 },
+    { id: 'dca2-rate-4', cc: CC_DCA_RATE_3, value: 0 },
+    { id: 'dca2-rate-5', cc: CC_DCA_RATE_4, value: 0 },
+    { id: 'dca2-rate-6', cc: CC_DCA_RATE_5, value: 0 },
+    { id: 'dca2-rate-7', cc: CC_DCA_RATE_6, value: 0 },
+    { id: 'dca2-rate-8', cc: CC_DCA_RATE_7, value: 0 },
+
     // Pitch Level
     { id: 'pitch-sustain-point', cc: CC_PITCH_SUSTAIN_POINT, value: 0 },
     { id: 'pitch-end-point', cc: CC_PITCH_END_POINT, value: 0 },
@@ -528,9 +548,17 @@ function onMIDISuccess(midiAccess) {
         } else if (control.id.startsWith('pitch2-rate-') || control.id.startsWith('pitch2-level-')) {
             attachSliderForcedBank(1, control.cc, control.id);
         } else if (control.id === 'dca-sustain-point') {
-            attachSlider(control.cc, control.id, (val) => `DCA SUSTAIN: ${getSustainPointNumber(val)}`);
+            attachSliderForcedBank(0, control.cc, control.id, (val) => `DCA 1 SUSTAIN: ${getSustainPointNumber(val)}`);
         } else if (control.id === 'dca-end-point') {
-            attachSlider(control.cc, control.id, (val) => `DCA END: ${getEndPointNumber(val)}`);
+            attachSliderForcedBank(0, control.cc, control.id, (val) => `DCA 1 END: ${getEndPointNumber(val)}`);
+        } else if (control.id === 'dca2-sustain-point') {
+            attachSliderForcedBank(1, control.cc, control.id, (val) => `DCA 2 SUSTAIN: ${getSustainPointNumber(val)}`);
+        } else if (control.id === 'dca2-end-point') {
+            attachSliderForcedBank(1, control.cc, control.id, (val) => `DCA 2 END: ${getEndPointNumber(val)}`);
+        } else if (control.id.startsWith('dca-rate-') || control.id.startsWith('dca-level-')) {
+            attachSliderForcedBank(0, control.cc, control.id);
+        } else if (control.id.startsWith('dca2-rate-') || control.id.startsWith('dca2-level-')) {
+            attachSliderForcedBank(1, control.cc, control.id);
         } else if (control.id === 'dcw-sustain-point') {
             attachSliderForcedBank(0, control.cc, control.id, (val) => `DCW 1 SUSTAIN: ${getSustainPointNumber(val)}`);
         } else if (control.id === 'dcw-end-point') {
@@ -660,41 +688,52 @@ function onMIDISuccess(midiAccess) {
         if (activeIndicator) activeIndicator.classList.add('active');
     });
 
-    // Add sustain point indicator for DCA RATE
+    // Add sustain point indicator for DCA ENV 1
     document.getElementById('dca-sustain-point').addEventListener('input', (e) => {
         const susValue = parseInt(e.target.value);
         const susNumber = getSustainPointNumber(susValue);
-        
-        // Remove active class from all dca sustain indicators
-        document.querySelectorAll('.dca-sustain-indicator').forEach(indicator => {
+        document.querySelectorAll('.dca1-sustain-indicator').forEach(indicator => {
             indicator.classList.remove('active');
         });
-        
-        // Add active class to the corresponding rate indicator (if sus is 1-7 for DCA)
-        // DCA sustain point returns 0-6 in the datalist, so we need to check if it maps correctly
         if (susNumber !== '0') {
-            const activeIndicator = document.querySelector(`.dca-sustain-indicator[data-rate="${susNumber}"]`);
-            if (activeIndicator) {
-                activeIndicator.classList.add('active');
-            }
+            const activeIndicator = document.querySelector(`.dca1-sustain-indicator[data-rate="${susNumber}"]`);
+            if (activeIndicator) activeIndicator.classList.add('active');
         }
     });
 
-    // Add end point indicator for DCA RATE
+    // Add end point indicator for DCA ENV 1
     document.getElementById('dca-end-point').addEventListener('input', (e) => {
         const endValue = parseInt(e.target.value);
         const endNumber = getPitchEndPointNumber(endValue);
-        
-        // Remove active class from all dca end indicators
-        document.querySelectorAll('.dca-end-indicator').forEach(indicator => {
+        document.querySelectorAll('.dca1-end-indicator').forEach(indicator => {
             indicator.classList.remove('active');
         });
-        
-        // Add active class to the corresponding rate indicator (rates 2-8)
-        const activeIndicator = document.querySelector(`.dca-end-indicator[data-rate="${endNumber}"]`);
-        if (activeIndicator) {
-            activeIndicator.classList.add('active');
+        const activeIndicator = document.querySelector(`.dca1-end-indicator[data-rate="${endNumber}"]`);
+        if (activeIndicator) activeIndicator.classList.add('active');
+    });
+
+    // Add sustain point indicator for DCA ENV 2
+    document.getElementById('dca2-sustain-point').addEventListener('input', (e) => {
+        const susValue = parseInt(e.target.value);
+        const susNumber = getSustainPointNumber(susValue);
+        document.querySelectorAll('.dca2-sustain-indicator').forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        if (susNumber !== '0') {
+            const activeIndicator = document.querySelector(`.dca2-sustain-indicator[data-rate="${susNumber}"]`);
+            if (activeIndicator) activeIndicator.classList.add('active');
         }
+    });
+
+    // Add end point indicator for DCA ENV 2
+    document.getElementById('dca2-end-point').addEventListener('input', (e) => {
+        const endValue = parseInt(e.target.value);
+        const endNumber = getPitchEndPointNumber(endValue);
+        document.querySelectorAll('.dca2-end-indicator').forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        const activeIndicator = document.querySelector(`.dca2-end-indicator[data-rate="${endNumber}"]`);
+        if (activeIndicator) activeIndicator.classList.add('active');
     });
 
     // Add sustain point indicator for DCW ENV 1
