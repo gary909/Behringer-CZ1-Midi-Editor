@@ -579,6 +579,8 @@ function onMIDISuccess(midiAccess) {
             attachSlider(control.cc, control.id, (val) => `DETUNE OCT: ${getDetuneOctName(val)}`);
         } else if (control.id === 'detune-polarity') {
             attachSlider(control.cc, control.id, (val) => `DETUNE POL: ${getDetunePolarityName(val)}`);
+        } else if (['dco1-dcw-keyfollow', 'dco1-dcw-keyfollow-lineoffset', 'dco1-dca-keyfollow', 'dco1-dca-keyfollow-lineoffset'].includes(control.id)) {
+            attachSlider(control.cc, control.id, (val) => `KEY FOLLOW: ${val >= 65 ? 'ON' : 'OFF'}`);
         } else {
             attachSlider(control.cc, control.id);
         }
@@ -826,6 +828,9 @@ function onMIDISuccess(midiAccess) {
     // Initialize pot controls
     initPotControls();
 
+    // Initialize key follow toggle buttons
+    initKeyFollowButtons();
+
     // Initialize line select indicator circles
     initLineIndicator();
 
@@ -909,6 +914,29 @@ function initLineIndicator() {
     
     // Update on slider change
     lineSelect.addEventListener('input', updateIndicator);
+}
+
+// --- KEY FOLLOW CHECKBOX INITIALIZATION ---
+function initKeyFollowButtons() {
+    const kfIds = [
+        'dco1-dcw-keyfollow',
+        'dco1-dcw-keyfollow-lineoffset',
+        'dco1-dca-keyfollow',
+        'dco1-dca-keyfollow-lineoffset'
+    ];
+
+    kfIds.forEach(id => {
+        const input = document.getElementById(id);
+        const checkbox = document.querySelector(`.keyfollow-checkbox[data-input="${id}"]`);
+        if (!input || !checkbox) return;
+
+        checkbox.checked = parseInt(input.value) >= 65;
+
+        checkbox.addEventListener('change', () => {
+            input.value = checkbox.checked ? 127 : 0;
+            input.dispatchEvent(new Event('input'));
+        });
+    });
 }
 
 // --- POT CONTROL INITIALIZATION ---
