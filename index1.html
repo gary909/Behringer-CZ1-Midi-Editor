@@ -561,6 +561,26 @@ Line 1+1: DCO 1 is doubled (Detune available)">
         <!-- DCW ENV 1 -->
         <div class="control-box vertical-sliders noisy dcw-rate-small">
             <h3>DCW ENV 1</h3>
+            <div class="parameter-column moved-params-pot-group">
+                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow">
+                    <label for="dco1-dcw-keyfollow">KEY<br>FOLLOW</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dcw-keyfollow" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow Range">
+                    <label for="dco1-dcw-keyfollow-range">KEY-F<br>RANGE</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dcw-keyfollow-range" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                         <div class="parameter-row" title="DCW Sustain Point">
                 <label for="dcw-sustain-point">SUS</label>
                 <input type="range" id="dcw-sustain-point" min="0" max="127" value="0" list="dcw-sustain-point-list">
@@ -724,31 +744,27 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     </div>
                 </div>
             </div>
-            <div class="parameter-column moved-params-pot-group">
-                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow">
-                    <label for="dco1-dcw-keyfollow">KEY<br>FOLLOW</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dco1-dcw-keyfollow" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow Range">
-                    <label for="dco1-dcw-keyfollow-range">KEYF<br>RANGE</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dco1-dcw-keyfollow-range" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- DCW ENV 2 -->
         <div class="control-box vertical-sliders noisy dcw-rate-small">
             <h3>DCW ENV 2</h3>
+            <div class="parameter-column moved-params-pot-group">
+                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow Line-offset">
+                    <label for="dco1-dcw-keyfollow-lineoffset">KEY<br>FOLLOW</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dcw-keyfollow-lineoffset" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob"><div class="pot-indicator"></div></div>
+                    </div>
+                </div>
+                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow Range Line-offset">
+                    <label for="dco1-dcw-keyfollow-range-lineoffset">KEY-F<br>RANGE</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dcw-keyfollow-range-lineoffset" min="0" max="127" value="0" class="dcw-rate-slider">
+                        <div class="pot-knob"><div class="pot-indicator"></div></div>
+                    </div>
+                </div>
+            </div>
             <div class="parameter-row" title="DCW 2 Sustain Point">
                 <label for="dcw2-sustain-point">SUS</label>
                 <input type="range" id="dcw2-sustain-point" min="0" max="127" value="0" list="dcw2-sustain-point-list">
@@ -879,22 +895,6 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     </div>
                 </div>
             </div>
-            <div class="parameter-column moved-params-pot-group">
-                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow Line-offset">
-                    <label for="dco1-dcw-keyfollow-lineoffset">KF LINE<br>OFFSET</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dco1-dcw-keyfollow-lineoffset" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob"><div class="pot-indicator"></div></div>
-                    </div>
-                </div>
-                <div class="parameter-row pot-control" title="DCO 1 DCW Keyfollow Range Line-offset">
-                    <label for="dco1-dcw-keyfollow-range-lineoffset">K-FOL<br>R-OFS</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dco1-dcw-keyfollow-range-lineoffset" min="0" max="127" value="0" class="dcw-rate-slider">
-                        <div class="pot-knob"><div class="pot-indicator"></div></div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- DCA LEVEL -->
@@ -933,6 +933,26 @@ Line 1+1: DCO 1 is doubled (Detune available)">
         <!-- DCA ENV 1 -->
         <div class="control-box vertical-sliders noisy dca-rate-small">
             <h3>DCA ENV 1</h3>
+            <div class="parameter-column moved-params-pot-group">
+                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow">
+                    <label for="dco1-dca-keyfollow">KEY<br>FOLLOW</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dca-keyfollow" min="0" max="127" value="0" class="dca-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow Range">
+                    <label for="dco1-dca-keyfollow-range">KEY-F<br>RANGE</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dca-keyfollow-range" min="0" max="127" value="0" class="dca-rate-slider">
+                        <div class="pot-knob">
+                            <div class="pot-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                         <div class="parameter-row" title="DCA Sustain Point">
                 <label for="dca-sustain-point">SUS</label>
                 <input type="range" id="dca-sustain-point" min="0" max="127" value="0" list="dca-sustain-point-list">
@@ -1087,31 +1107,27 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     </div>
                 </div>
             </div>
-            <div class="parameter-column moved-params-pot-group">
-                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow">
-                    <label for="dco1-dca-keyfollow">KEY<br>FOLLOW</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dco1-dca-keyfollow" min="0" max="127" value="0" class="dca-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow Range">
-                    <label for="dco1-dca-keyfollow-range">KEYF<br>RANGE</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dco1-dca-keyfollow-range" min="0" max="127" value="0" class="dca-rate-slider">
-                        <div class="pot-knob">
-                            <div class="pot-indicator"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- DCA ENV 2 -->
         <div class="control-box vertical-sliders noisy dca-rate-small">
             <h3>DCA ENV 2</h3>
+            <div class="parameter-column moved-params-pot-group">
+                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow Line-offset">
+                    <label for="dco1-dca-keyfollow-lineoffset">KEY<br>FOLLOW</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dca-keyfollow-lineoffset" min="0" max="127" value="0" class="dca-rate-slider">
+                        <div class="pot-knob"><div class="pot-indicator"></div></div>
+                    </div>
+                </div>
+                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow Range Line-offset">
+                    <label for="dco1-dca-keyfollow-range-lineoffset">KEY-F<br>RANGE</label>
+                    <div class="pot-wrapper">
+                        <input type="range" id="dco1-dca-keyfollow-range-lineoffset" min="0" max="127" value="0" class="dca-rate-slider">
+                        <div class="pot-knob"><div class="pot-indicator"></div></div>
+                    </div>
+                </div>
+            </div>
             <div class="parameter-row" title="DCA 2 Sustain Point">
                 <label for="dca2-sustain-point">SUS</label>
                 <input type="range" id="dca2-sustain-point" min="0" max="127" value="0" list="dca2-sustain-point-list">
@@ -1238,22 +1254,6 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     <label for="dca2-level-8">LVL 8</label>
                     <div class="pot-wrapper">
                         <input type="range" id="dca2-level-8" min="0" max="127" value="0" class="dca-rate-slider">
-                        <div class="pot-knob"><div class="pot-indicator"></div></div>
-                    </div>
-                </div>
-            </div>
-            <div class="parameter-column moved-params-pot-group">
-                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow Line-offset">
-                    <label for="dco1-dca-keyfollow-lineoffset">KF LINE<br>OFFSET</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dco1-dca-keyfollow-lineoffset" min="0" max="127" value="0" class="dca-rate-slider">
-                        <div class="pot-knob"><div class="pot-indicator"></div></div>
-                    </div>
-                </div>
-                <div class="parameter-row pot-control" title="DCO 1 DCA Keyfollow Range Line-offset">
-                    <label for="dco1-dca-keyfollow-range-lineoffset">K-FOL<br>R-OFS</label>
-                    <div class="pot-wrapper">
-                        <input type="range" id="dco1-dca-keyfollow-range-lineoffset" min="0" max="127" value="0" class="dca-rate-slider">
                         <div class="pot-knob"><div class="pot-indicator"></div></div>
                     </div>
                 </div>
