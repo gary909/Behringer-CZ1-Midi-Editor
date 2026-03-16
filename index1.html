@@ -926,7 +926,14 @@ Line 1+1: DCO 1 is doubled (Detune available)">
 
         <!-- DCA ENV 1 -->
         <div class="control-box vertical-sliders noisy dca-rate-small">
-            <h3 id="dca-env1-heading" title="DCA (Amplitude): Controls the standard volume or amplitude of the sound stage. A value of 0 is no sound, and 99 is maximum volume.">DCA ENV 1</h3>
+            <h3 id="dca-env1-heading" title="DCA (Amplitude):
+Controls the standard volume or amplitude of the sound stage. 
+A value of 0 is no sound, and 99 is maximum volume.
+            
+RA (RATE): 
+Specifies the slope or angle of a stage, ranging from 0 to 99. 
+Higher values create steeper inclines, resulting in instantaneous changes. 
+Lower values create gentler inclines, resulting in gradual changes over time">DCA ENV 1</h3>
             <div class="parameter-column moved-params-pot-group">
                 <div class="parameter-row keyfollow-btn-control" title="DCO 1 DCA Keyfollow">
                     <label for="kf-check-dco1-dca-keyfollow">KEY<br>FOLLOW</label>
@@ -1101,7 +1108,14 @@ Line 1+1: DCO 1 is doubled (Detune available)">
 
         <!-- DCA ENV 2 -->
         <div class="control-box vertical-sliders noisy dca-rate-small">
-            <h3 id="dca-env2-heading" title="DCA (Amplitude): Controls the standard volume or amplitude of the sound stage. A value of 0 is no sound, and 99 is maximum volume.">DCA ENV 2</h3>
+            <h3 id="dca-env2-heading" title="DCA (Amplitude):
+Controls the standard volume or amplitude of the sound stage. 
+A value of 0 is no sound, and 99 is maximum volume.
+            
+RA (RATE): 
+Specifies the slope or angle of a stage, ranging from 0 to 99. 
+Higher values create steeper inclines, resulting in instantaneous changes. 
+Lower values create gentler inclines, resulting in gradual changes over time">DCA ENV 2</h3>
             <div class="parameter-column moved-params-pot-group">
                 <div class="parameter-row keyfollow-btn-control" title="DCO 1 DCA Keyfollow Line-offset">
                     <label for="kf-check-dco1-dca-keyfollow-lineoffset">KEY<br>FOLLOW</label>
@@ -1116,7 +1130,8 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     </div>
                 </div>
             </div>
-            <div class="parameter-row" title="DCA 2 Sustain Point">
+            <div class="parameter-row" title="DCA 2 Sustain Point:
+Sets the sustain point of the envelope.">
                 <label for="dca2-sustain-point">SUS</label>
                 <input type="range" id="dca2-sustain-point" min="0" max="127" value="0" list="dca2-sustain-point-list">
                 <datalist id="dca2-sustain-point-list">
@@ -1129,7 +1144,9 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     <option value="127" label="6"></option>
                 </datalist>
             </div>
-            <div class="parameter-row" title="DCA 2 End Point">
+            <div class="parameter-row" title="DCA 2 End Point:
+Sets the end or release stage of the envelope
+(determining the final behavior of the sound after the key is released)">
                 <label for="dca2-end-point">END</label>
                 <input type="range" id="dca2-end-point" min="0" max="127" value="0" list="dca2-end-point-list">
                 <datalist id="dca2-end-point-list">
