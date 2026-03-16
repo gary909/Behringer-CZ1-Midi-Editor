@@ -248,8 +248,9 @@ Line 1+1: DCO 1 is doubled (Detune available)">
         
         <!-- PITCH RATE -->
         <div class="control-box vertical-sliders noisy pitch-rate-small">
-            <h3 id="pitch-env1-heading" title="DCO (Pitch): Affects the pitch of the note. A value of 0 is the stable original pitch, while higher values cause the note to glide to progressively higher pitches. A maximum value of 99 provides a 6-octave modulation range.">PITCH ENV 1</h3>
-            <div class="parameter-row" title="Pitch Sustain Point">
+            <h3 id="pitch-env1-heading" title="DCO (Pitch): Affects the pitch of the note. A value of 0 is the stable original pitch, while higher values cause the note to glide to progressively higher pitches. A maximum value of 99 provides a 6-octave modulation range.">DCO PITCH ENV 1</h3>
+            <div class="parameter-row" title="DCO Pitch Sustain Point:
+Sets the sustain point of the envelope.">
                 <label for="pitch-sustain-point">SUS</label>
                 <input type="range" id="pitch-sustain-point" min="0" max="127" value="0" list="pitch-sustain-point-list">
                 <datalist id="pitch-sustain-point-list">
@@ -263,7 +264,9 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     <option value="127" label="7"></option>
                 </datalist>
             </div>
-                        <div class="parameter-row" title="Pitch End Point">
+                        <div class="parameter-row" title="DCO Pitch End Point:
+Sets the end or release stage of the envelope
+(determining the final behavior of the sound after the key is released)">
                 <label for="pitch-end-point">END</label>
                 <input type="range" id="pitch-end-point" min="0" max="127" value="0" list="pitch-end-point-list">
                 <datalist id="pitch-end-point-list">
@@ -409,7 +412,8 @@ Line 1+1: DCO 1 is doubled (Detune available)">
         <!-- PITCH ENV 2 -->
         <div class="control-box vertical-sliders noisy pitch-rate-small">
             <h3 id="pitch-env2-heading" title="DCO (Pitch): Affects the pitch of the note. A value of 0 is the stable original pitch, while higher values cause the note to glide to progressively higher pitches. A maximum value of 99 provides a 6-octave modulation range.">PITCH ENV 2</h3>
-            <div class="parameter-row" title="Pitch 2 Sustain Point">
+            <div class="parameter-row" title="DCO Pitch Sustain Point:
+Sets the sustain point of the envelope.">
                 <label for="pitch2-sustain-point">SUS</label>
                 <input type="range" id="pitch2-sustain-point" min="0" max="127" value="0" list="pitch2-sustain-point-list">
                 <datalist id="pitch2-sustain-point-list">
@@ -423,7 +427,9 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     <option value="127" label="7"></option>
                 </datalist>
             </div>
-            <div class="parameter-row" title="Pitch 2 End Point">
+            <div class="parameter-row" title="DCO Pitch End Point:
+Sets the end or release stage of the envelope
+(determining the final behavior of the sound after the key is released)">
                 <label for="pitch2-end-point">END</label>
                 <input type="range" id="pitch2-end-point" min="0" max="127" value="0" list="pitch2-end-point-list">
                 <datalist id="pitch2-end-point-list">
@@ -577,7 +583,8 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     </div>
                 </div>
             </div>
-                        <div class="parameter-row" title="DCW Sustain Point">
+                        <div class="parameter-row" title="DCW Sustain Point:
+Sets the sustain point of the envelope.">
                 <label for="dcw-sustain-point">SUS</label>
                 <input type="range" id="dcw-sustain-point" min="0" max="127" value="0" list="dcw-sustain-point-list">
                 <datalist id="dcw-sustain-point-list">
@@ -590,7 +597,9 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     <option value="127" label="6"></option>
                 </datalist>
             </div>
-            <div class="parameter-row" title="DCW End Point">
+            <div class="parameter-row" title="DCW End Point:
+Sets the end or release stage of the envelope
+(determining the final behavior of the sound after the key is released)">
                 <label for="dcw-end-point">END</label>
                 <input type="range" id="dcw-end-point" min="0" max="127" value="0" list="dcw-end-point-list">
                 <datalist id="dcw-end-point-list">
@@ -759,7 +768,8 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     </div>
                 </div>
             </div>
-            <div class="parameter-row" title="DCW 2 Sustain Point">
+            <div class="parameter-row" title="DCW Sustain Point:
+Sets the sustain point of the envelope.">
                 <label for="dcw2-sustain-point">SUS</label>
                 <input type="range" id="dcw2-sustain-point" min="0" max="127" value="0" list="dcw2-sustain-point-list">
                 <datalist id="dcw2-sustain-point-list">
@@ -772,7 +782,9 @@ Line 1+1: DCO 1 is doubled (Detune available)">
                     <option value="127" label="6"></option>
                 </datalist>
             </div>
-            <div class="parameter-row" title="DCW 2 End Point">
+            <div class="parameter-row" title="DCW End Point:
+Sets the end or release stage of the envelope
+(determining the final behavior of the sound after the key is released)">
                 <label for="dcw2-end-point">END</label>
                 <input type="range" id="dcw2-end-point" min="0" max="127" value="0" list="dcw2-end-point-list">
                 <datalist id="dcw2-end-point-list">
@@ -950,7 +962,8 @@ Lower values create gentler inclines, resulting in gradual changes over time">DC
                     </div>
                 </div>
             </div>
-                        <div class="parameter-row" title="DCA Sustain Point">
+                        <div class="parameter-row" title="DCA Sustain Point:
+Sets the sustain point of the envelope.">
                 <label for="dca-sustain-point">SUS</label>
                 <input type="range" id="dca-sustain-point" min="0" max="127" value="0" list="dca-sustain-point-list">
                 <datalist id="dca-sustain-point-list">
@@ -963,7 +976,9 @@ Lower values create gentler inclines, resulting in gradual changes over time">DC
                     <option value="127" label="6"></option>
                 </datalist>
             </div>
-            <div class="parameter-row" title="DCA End Point">
+            <div class="parameter-row" title="DCA End Point:
+Sets the end or release stage of the envelope
+(determining the final behavior of the sound after the key is released)">
                 <label for="dca-end-point">END</label>
                 <input type="range" id="dca-end-point" min="0" max="127" value="0" list="dca-end-point-list">
                 <datalist id="dca-end-point-list">
