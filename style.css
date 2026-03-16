@@ -1007,6 +1007,14 @@ input[type="range"] {
     max-width: 220px;
 }
 
+/* DETUNE FINE — temporarily disabled (causes hardware crash) */
+.detune-fine-disabled {
+    opacity: 0.7;
+    /* cursor: not-allowed; */
+    position: relative;
+}
+
+
 /* DCO 2 box size */
 .dco2-max-width {
     max-width: 460px;

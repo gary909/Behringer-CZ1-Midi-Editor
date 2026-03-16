@@ -274,7 +274,7 @@ const ALL_PATCH_CONTROLS = [
     { id: 'detune-polarity', cc: CC_DETUNE_POLARITY, value: 0 },
     { id: 'detune-oct', cc: CC_DETUNE_OCT, value: 0 },
     { id: 'detune-note', cc: CC_DETUNE_NOTE, value: 0 },
-    { id: 'detune-fine', cc: CC_DETUNE_FINE, value: 0 },
+    // { id: 'detune-fine', cc: CC_DETUNE_FINE, value: 0 }, // DISABLED — causes hardware crash (Behringer support contacted)
     
     // DCO 2
     { id: 'dco1-wf1-lineoffset', cc: CC_DCO1_WF1_LINEOFFSET, value: 0 },
@@ -579,6 +579,9 @@ function onMIDISuccess(midiAccess) {
             attachSlider(control.cc, control.id, (val) => `DETUNE OCT: ${getDetuneOctName(val)}`);
         } else if (control.id === 'detune-polarity') {
             attachSlider(control.cc, control.id, (val) => `DETUNE POL: ${getDetunePolarityName(val)}`);
+        } else if (control.id === 'detune-fine') {
+            // DISABLED — causes hardware crash (Behringer support contacted)
+            // Skip attaching MIDI send; slider is greyed out in HTML/CSS
         } else if (['dco1-dcw-keyfollow', 'dco1-dcw-keyfollow-lineoffset', 'dco1-dca-keyfollow', 'dco1-dca-keyfollow-lineoffset'].includes(control.id)) {
             attachSlider(control.cc, control.id, (val) => `KEY FOLLOW: ${val >= 65 ? 'ON' : 'OFF'}`);
         } else {
