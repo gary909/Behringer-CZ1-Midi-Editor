@@ -106,7 +106,7 @@
         
         <!-- DCO 1 -->
         <div class="control-box vertical-sliders noisy">
-            <h3>DCO 1</h3>
+            <h3 id="dco1-heading" title="DCO 1 choose the waveforms here">DCO 1</h3>
             <div class="waveform-display">
                 <span class="waveform-label">WAVEFORMS</span>
                 <img src="media/waveforms.svg" alt="Waveforms" class="waveform-grid">
@@ -203,7 +203,7 @@ Line 1+1: DCO 1 is doubled (Detune available)">
 
         <!-- DCO 2 -->
         <div class="control-box vertical-sliders noisy dco2-max-width">
-            <h3 title="DCO 2 has a ring mod and noise available: on the synth, click 'DCO 2', scroll to 'MOD'  and choose between 'off', 'ring' or 'noise'">DCO 2</h3>
+            <h3 id="dco2-heading" title="DCO 2 has a ring mod and noise available (but not via this editor as the midi info is not supplied by Behringer): on the synth, click 'DCO 2', scroll to 'MOD'  and choose between 'off', 'ring' or 'noise'">DCO 2</h3>
             <div class="waveform-display">
                 <span class="waveform-label">WAVEFORMS</span>
                 <img src="media/waveforms.svg" alt="Waveforms" class="waveform-grid">
@@ -248,7 +248,7 @@ Line 1+1: DCO 1 is doubled (Detune available)">
         
         <!-- PITCH RATE -->
         <div class="control-box vertical-sliders noisy pitch-rate-small">
-            <h3>PITCH ENV 1</h3>
+            <h3 id="pitch-env1-heading" title="DCO (Pitch): Affects the pitch of the note. A value of 0 is the stable original pitch, while higher values cause the note to glide to progressively higher pitches. A maximum value of 99 provides a 6-octave modulation range.">PITCH ENV 1</h3>
             <div class="parameter-row" title="Pitch Sustain Point">
                 <label for="pitch-sustain-point">SUS</label>
                 <input type="range" id="pitch-sustain-point" min="0" max="127" value="0" list="pitch-sustain-point-list">
@@ -408,7 +408,7 @@ Line 1+1: DCO 1 is doubled (Detune available)">
 
         <!-- PITCH ENV 2 -->
         <div class="control-box vertical-sliders noisy pitch-rate-small">
-            <h3>PITCH ENV 2</h3>
+            <h3 id="pitch-env2-heading" title="DCO (Pitch): Affects the pitch of the note. A value of 0 is the stable original pitch, while higher values cause the note to glide to progressively higher pitches. A maximum value of 99 provides a 6-octave modulation range.">PITCH ENV 2</h3>
             <div class="parameter-row" title="Pitch 2 Sustain Point">
                 <label for="pitch2-sustain-point">SUS</label>
                 <input type="range" id="pitch2-sustain-point" min="0" max="127" value="0" list="pitch2-sustain-point-list">
@@ -560,7 +560,7 @@ Line 1+1: DCO 1 is doubled (Detune available)">
 
         <!-- DCW ENV 1 -->
         <div class="control-box vertical-sliders noisy dcw-rate-small">
-            <h3>DCW ENV 1</h3>
+            <h3 id="dcw-env1-heading" title="DCW (Timbre): Determines the degree of Phase Distortion applied. 0 results in a basic sine wave, while 99 outputs a fully distorted waveshape matching the one selected for the DCO (e.g. a sawtooth wave)">DCW ENV 1</h3>
             <div class="parameter-column moved-params-pot-group">
                 <div class="parameter-row keyfollow-btn-control" title="DCO 1 DCW Keyfollow">
                     <label for="kf-check-dco1-dcw-keyfollow">KEY<br>FOLLOW</label>
@@ -744,7 +744,7 @@ Line 1+1: DCO 1 is doubled (Detune available)">
 
         <!-- DCW ENV 2 -->
         <div class="control-box vertical-sliders noisy dcw-rate-small">
-            <h3>DCW ENV 2</h3>
+            <h3 id="dcw-env2-heading" title="DCW (Timbre): Determines the degree of Phase Distortion applied. 0 results in a basic sine wave, while 99 outputs a fully distorted waveshape matching the one selected for the DCO (e.g. a sawtooth wave)">DCW ENV 2</h3>
             <div class="parameter-column moved-params-pot-group">
                 <div class="parameter-row keyfollow-btn-control" title="DCO 1 DCW Keyfollow Line-offset">
                     <label for="kf-check-dco1-dcw-keyfollow-lineoffset">KEY<br>FOLLOW</label>
@@ -926,7 +926,7 @@ Line 1+1: DCO 1 is doubled (Detune available)">
 
         <!-- DCA ENV 1 -->
         <div class="control-box vertical-sliders noisy dca-rate-small">
-            <h3>DCA ENV 1</h3>
+            <h3 id="dca-env1-heading" title="DCA (Amplitude): Controls the standard volume or amplitude of the sound stage. A value of 0 is no sound, and 99 is maximum volume.">DCA ENV 1</h3>
             <div class="parameter-column moved-params-pot-group">
                 <div class="parameter-row keyfollow-btn-control" title="DCO 1 DCA Keyfollow">
                     <label for="kf-check-dco1-dca-keyfollow">KEY<br>FOLLOW</label>
@@ -1101,7 +1101,7 @@ Line 1+1: DCO 1 is doubled (Detune available)">
 
         <!-- DCA ENV 2 -->
         <div class="control-box vertical-sliders noisy dca-rate-small">
-            <h3>DCA ENV 2</h3>
+            <h3 id="dca-env2-heading" title="DCA (Amplitude): Controls the standard volume or amplitude of the sound stage. A value of 0 is no sound, and 99 is maximum volume.">DCA ENV 2</h3>
             <div class="parameter-column moved-params-pot-group">
                 <div class="parameter-row keyfollow-btn-control" title="DCO 1 DCA Keyfollow Line-offset">
                     <label for="kf-check-dco1-dca-keyfollow-lineoffset">KEY<br>FOLLOW</label>
@@ -1324,7 +1324,7 @@ Line 1+1: DCO 1 is doubled (Detune available)">
 
         <!-- DETUNE -->
         <div class="control-box vertical-sliders noisy detune-max-width">
-            <h3 title="Detune effects DCO 2. It can only be used if LINE SELECT 1+2 or 1+1 is selected">DETUNE</h3>
+            <h3 id="detune-heading" title="Detune effects DCO 2. It can only be used if LINE SELECT 1+2 or 1+1 is selected">DETUNE</h3>
             <div class="parameter-row" title="Detune Polarity">
                 <div class="circle-labels">
                     <span>DN</span>

@@ -901,6 +901,53 @@ function initLineIndicator() {
                 circle.classList.remove('active');
             }
         });
+
+        // Update DCO 1 heading based on line select position
+        const dco1Heading = document.getElementById('dco1-heading');
+        const dco1Inactive = value >= 43 && value <= 84;
+        const line1Headings = [
+            dco1Heading,
+            document.getElementById('pitch-env1-heading'),
+            document.getElementById('dcw-env1-heading'),
+            document.getElementById('dca-env1-heading'),
+        ];
+        line1Headings.forEach(el => {
+            if (el) {
+                if (dco1Inactive) {
+                    el.classList.add('module-inactive');
+                } else {
+                    el.classList.remove('module-inactive');
+                }
+            }
+        });
+
+        // Update DCO 2 headings — active for positions 2 (43-84) and 1+2 (85-126), inactive for 1 (0-42) and 1+1 (127)
+        const dco2Inactive = value <= 42 || value === 127;
+        const line2Headings = [
+            document.getElementById('dco2-heading'),
+            document.getElementById('pitch-env2-heading'),
+            document.getElementById('dcw-env2-heading'),
+            document.getElementById('dca-env2-heading'),
+        ];
+        line2Headings.forEach(el => {
+            if (el) {
+                if (dco2Inactive) {
+                    el.classList.add('module-inactive');
+                } else {
+                    el.classList.remove('module-inactive');
+                }
+            }
+        });
+
+        // Update DETUNE heading — active for 1+2 (85-126) and 1+1 (127), inactive for 1 (0-42) and 2 (43-84)
+        const detuneHeading = document.getElementById('detune-heading');
+        if (detuneHeading) {
+            if (value <= 84) {
+                detuneHeading.classList.add('module-inactive');
+            } else {
+                detuneHeading.classList.remove('module-inactive');
+            }
+        }
     };
     
     // Make each circle clickable — snaps slider to its value

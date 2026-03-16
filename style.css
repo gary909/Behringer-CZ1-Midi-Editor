@@ -393,7 +393,7 @@ p {
     margin-left: 5px;
 }
 
-.active:after {
+.accordion-header.active:after {
     content: "\2212"; /* Minus sign */
 }
 
@@ -478,6 +478,11 @@ p {
     margin-top: 0;
     margin-bottom: 5px;
     background-color: #380454;
+    transition: color 0.4s ease;
+}
+
+.control-box h3.module-inactive {
+    color: grey;
 }
 
 body.privacy-page #controls {
