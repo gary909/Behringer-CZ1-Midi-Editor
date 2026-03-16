@@ -294,9 +294,9 @@ const ALL_PATCH_CONTROLS = [
     { id: 'dco1-dca-keyfollow-range-lineoffset', cc: CC_DCO1_DCA_KEYFOLLOW_RANGE_LINEOFFSET, value: 0 },
     
     // DCA Level
-    { id: 'dca-sustain-point', cc: CC_DCA_SUSTAIN_POINT, value: 0 },
+    { id: 'dca-sustain-point', cc: CC_DCA_SUSTAIN_POINT, value: 19 },
     { id: 'dca-end-point', cc: CC_DCA_END_POINT, value: 0 },
-    { id: 'dca-level-1', cc: CC_DCA_LEVEL_0, value: 0 },
+    { id: 'dca-level-1', cc: CC_DCA_LEVEL_0, value: 127 },
     { id: 'dca-level-2', cc: CC_DCA_LEVEL_1, value: 0 },
     { id: 'dca-level-3', cc: CC_DCA_LEVEL_2, value: 0 },
     { id: 'dca-level-4', cc: CC_DCA_LEVEL_3, value: 0 },
@@ -306,8 +306,8 @@ const ALL_PATCH_CONTROLS = [
     { id: 'dca-level-8', cc: CC_DCA_LEVEL_7, value: 0 },
     
     // DCA Rate
-    { id: 'dca-rate-1', cc: CC_DCA_RATE_0, value: 0 },
-    { id: 'dca-rate-2', cc: CC_DCA_RATE_1, value: 0 },
+    { id: 'dca-rate-1', cc: CC_DCA_RATE_0, value: 127 },
+    { id: 'dca-rate-2', cc: CC_DCA_RATE_1, value: 65 },
     { id: 'dca-rate-3', cc: CC_DCA_RATE_2, value: 0 },
     { id: 'dca-rate-4', cc: CC_DCA_RATE_3, value: 0 },
     { id: 'dca-rate-5', cc: CC_DCA_RATE_4, value: 0 },
@@ -336,7 +336,7 @@ const ALL_PATCH_CONTROLS = [
     { id: 'dca2-rate-8', cc: CC_DCA_RATE_7, value: 0 },
 
     // Pitch Level
-    { id: 'pitch-sustain-point', cc: CC_PITCH_SUSTAIN_POINT, value: 0 },
+    { id: 'pitch-sustain-point', cc: CC_PITCH_SUSTAIN_POINT, value: 19 },
     { id: 'pitch-end-point', cc: CC_PITCH_END_POINT, value: 0 },
     { id: 'pitch-level-1', cc: CC_PITCH_LEVEL_0, value: 0 },
     { id: 'pitch-level-2', cc: CC_PITCH_LEVEL_1, value: 0 },
@@ -348,7 +348,7 @@ const ALL_PATCH_CONTROLS = [
     { id: 'pitch-level-8', cc: CC_PITCH_LEVEL_7, value: 0 },
     
     // Pitch Rate
-    { id: 'pitch-rate-1', cc: CC_PITCH_RATE_0, value: 0 },
+    { id: 'pitch-rate-1', cc: CC_PITCH_RATE_0, value: 65 },
     { id: 'pitch-rate-2', cc: CC_PITCH_RATE_1, value: 0 },
     { id: 'pitch-rate-3', cc: CC_PITCH_RATE_2, value: 0 },
     { id: 'pitch-rate-4', cc: CC_PITCH_RATE_3, value: 0 },
@@ -378,10 +378,10 @@ const ALL_PATCH_CONTROLS = [
     { id: 'pitch2-rate-8', cc: CC_PITCH_RATE_7, value: 0 },
 
     // DCW Level
-    { id: 'dcw-sustain-point', cc: CC_DCW_SUSTAIN_POINT, value: 0 },
+    { id: 'dcw-sustain-point', cc: CC_DCW_SUSTAIN_POINT, value: 19 },
     { id: 'dcw-end-point', cc: CC_DCW_END_POINT, value: 0 },
-    { id: 'dcw-level-1', cc: CC_DCW_LEVEL_0, value: 0 },
-    { id: 'dcw-level-2', cc: CC_DCW_LEVEL_1, value: 0 },
+    { id: 'dcw-level-1', cc: CC_DCW_LEVEL_0, value: 127 },
+    { id: 'dcw-level-2', cc: CC_DCW_LEVEL_1, value: 65 },
     { id: 'dcw-level-3', cc: CC_DCW_LEVEL_2, value: 0 },
     { id: 'dcw-level-4', cc: CC_DCW_LEVEL_3, value: 0 },
     { id: 'dcw-level-5', cc: CC_DCW_LEVEL_4, value: 0 },
@@ -390,7 +390,7 @@ const ALL_PATCH_CONTROLS = [
     { id: 'dcw-level-8', cc: CC_DCW_LEVEL_7, value: 0 },
     
     // DCW Rate
-    { id: 'dcw-rate-1', cc: CC_DCW_RATE_0, value: 0 },
+    { id: 'dcw-rate-1', cc: CC_DCW_RATE_0, value: 126 },
     { id: 'dcw-rate-2', cc: CC_DCW_RATE_1, value: 0 },
     { id: 'dcw-rate-3', cc: CC_DCW_RATE_2, value: 0 },
     { id: 'dcw-rate-4', cc: CC_DCW_RATE_3, value: 0 },
@@ -427,11 +427,11 @@ const ALL_PATCH_CONTROLS = [
     // Filter EG
     { id: 'filter-attack', cc: CC_FILTER_ATTACK, value: 0 },
     { id: 'filter-decay', cc: CC_FILTER_DECAY, value: 0 },
-    { id: 'filter-sustain', cc: CC_FILTER_SUSTAIN, value: 0 },
+    { id: 'filter-sustain', cc: CC_FILTER_SUSTAIN, value: 127 },
     { id: 'filter-release', cc: CC_FILTER_RELEASE, value: 0 },
     
     // Filter
-    { id: 'filter-cutoff', cc: CC_FILTER_CUTOFF, value: 0 },
+    { id: 'filter-cutoff', cc: CC_FILTER_CUTOFF, value: 127 },
     { id: 'filter-resonance', cc: CC_FILTER_RESONANCE, value: 0 },
     { id: 'filter-env-amount', cc: CC_FILTER_ENV_AMOUNT, value: 0 },
     
@@ -1001,26 +1001,64 @@ function connectToSelectedOutput(portId, midiAccess) {
 }
 
 function sendMidiCC(cc, val) {
-    if (midiOutput) midiOutput.send([0xB0, cc, val]);
+    if (midiOutput && !sendMidiCC._suppress) midiOutput.send([0xB0, cc, val]);
+}
+
+// Determine which bank a control needs (1 for ENV 2/DCO 2 line-offset params, 0 otherwise)
+function getControlBank(id) {
+    if (id.startsWith('dca2-') || id.startsWith('pitch2-') || id.startsWith('dcw2-')) return 1;
+    return 0;
+}
+
+function sendPatchSequentially(controls, getValueFn) {
+    let currentBank = -1;
+    let i = 0;
+    const DELAY = 10; // ms between messages
+
+    function sendNext() {
+        if (i >= controls.length) {
+            // Restore bank to match current line select
+            const lineSelectEl = document.getElementById('line-select');
+            if (lineSelectEl) {
+                const lineVal = parseInt(lineSelectEl.value);
+                const restoredBank = (lineVal >= 43 && lineVal <= 84) ? 1 : 0;
+                sendMidiCC(CC_BANK_SELECT, restoredBank);
+            }
+            return;
+        }
+        const p = controls[i];
+        const el = document.getElementById(p.id);
+        if (!el) { i++; sendNext(); return; }
+
+        const val = getValueFn(p, el);
+        el.value = val;
+        // Update visual indicators without triggering MIDI sends from event listeners
+        sendMidiCC._suppress = true;
+        el.dispatchEvent(new Event('input'));
+        sendMidiCC._suppress = false;
+
+        const neededBank = getControlBank(p.id);
+        if (neededBank !== currentBank) {
+            sendMidiCC(CC_BANK_SELECT, neededBank);
+            currentBank = neededBank;
+        }
+
+        sendMidiCC(p.cc, val);
+        i++;
+        setTimeout(sendNext, DELAY);
+    }
+
+    sendNext();
 }
 
 function initPatch() {
-    ALL_PATCH_CONTROLS.forEach(p => {
-        const el = document.getElementById(p.id);
-        if (!el) return;
-        el.value = p.value;
-        sendMidiCC(p.cc, p.value);
-    });
+    sendPatchSequentially(ALL_PATCH_CONTROLS, (p) => p.value);
 }
 
 function randomPatch() {
-    ALL_PATCH_CONTROLS.forEach(p => {
-        const el = document.getElementById(p.id);
-        if (!el) return;
+    sendPatchSequentially(ALL_PATCH_CONTROLS, (p, el) => {
         const max = parseInt(el.max) || 127;
-        const val = Math.floor(Math.random() * (max + 1));
-        el.value = val;
-        sendMidiCC(p.cc, val);
+        return Math.floor(Math.random() * (max + 1));
     });
 }
 
