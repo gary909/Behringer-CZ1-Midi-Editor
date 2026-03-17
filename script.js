@@ -1109,6 +1109,94 @@ function randomPatch() {
     });
 }
 
+// --- BOX RANDOM ---
+const BOX_CONTROLS = {
+    'dco1': ['dco1-wf1', 'dco2-wf2', 'dco1-dcw'],
+    'dco2': ['dco1-wf1-lineoffset', 'dco1-wf2-lineoffset', 'dco1-dcw-lineoffset'],
+    'pitch-env1': [
+        'pitch-sustain-point', 'pitch-end-point',
+        'pitch-rate-1', 'pitch-level-1', 'pitch-rate-2', 'pitch-level-2',
+        'pitch-rate-3', 'pitch-level-3', 'pitch-rate-4', 'pitch-level-4',
+        'pitch-rate-5', 'pitch-level-5', 'pitch-rate-6', 'pitch-level-6',
+        'pitch-rate-7', 'pitch-level-7', 'pitch-rate-8', 'pitch-level-8'
+    ],
+    'pitch-env2': [
+        'pitch2-sustain-point', 'pitch2-end-point',
+        'pitch2-rate-1', 'pitch2-level-1', 'pitch2-rate-2', 'pitch2-level-2',
+        'pitch2-rate-3', 'pitch2-level-3', 'pitch2-rate-4', 'pitch2-level-4',
+        'pitch2-rate-5', 'pitch2-level-5', 'pitch2-rate-6', 'pitch2-level-6',
+        'pitch2-rate-7', 'pitch2-level-7', 'pitch2-rate-8', 'pitch2-level-8'
+    ],
+    'dcw-env1': [
+        'dco1-dcw-keyfollow', 'dco1-dcw-keyfollow-range',
+        'dcw-sustain-point', 'dcw-end-point',
+        'dcw-rate-1', 'dcw-level-1', 'dcw-rate-2', 'dcw-level-2',
+        'dcw-rate-3', 'dcw-level-3', 'dcw-rate-4', 'dcw-level-4',
+        'dcw-rate-5', 'dcw-level-5', 'dcw-rate-6', 'dcw-level-6',
+        'dcw-rate-7', 'dcw-level-7', 'dcw-rate-8', 'dcw-level-8'
+    ],
+    'dcw-env2': [
+        'dco1-dcw-keyfollow-lineoffset', 'dco1-dcw-keyfollow-range-lineoffset',
+        'dcw2-sustain-point', 'dcw2-end-point',
+        'dcw2-rate-1', 'dcw2-level-1', 'dcw2-rate-2', 'dcw2-level-2',
+        'dcw2-rate-3', 'dcw2-level-3', 'dcw2-rate-4', 'dcw2-level-4',
+        'dcw2-rate-5', 'dcw2-level-5', 'dcw2-rate-6', 'dcw2-level-6',
+        'dcw2-rate-7', 'dcw2-level-7', 'dcw2-rate-8', 'dcw2-level-8'
+    ],
+    'dca-env1': [
+        'dco1-dca-keyfollow', 'dco1-dca-keyfollow-range',
+        'dca-sustain-point', 'dca-end-point',
+        'dca-rate-1', 'dca-level-1', 'dca-rate-2', 'dca-level-2',
+        'dca-rate-3', 'dca-level-3', 'dca-rate-4', 'dca-level-4',
+        'dca-rate-5', 'dca-level-5', 'dca-rate-6', 'dca-level-6',
+        'dca-rate-7', 'dca-level-7', 'dca-rate-8', 'dca-level-8'
+    ],
+    'dca-env2': [
+        'dco1-dca-keyfollow-lineoffset', 'dco1-dca-keyfollow-range-lineoffset',
+        'dca2-sustain-point', 'dca2-end-point',
+        'dca2-rate-1', 'dca2-level-1', 'dca2-rate-2', 'dca2-level-2',
+        'dca2-rate-3', 'dca2-level-3', 'dca2-rate-4', 'dca2-level-4',
+        'dca2-rate-5', 'dca2-level-5', 'dca2-rate-6', 'dca2-level-6',
+        'dca2-rate-7', 'dca2-level-7', 'dca2-rate-8', 'dca2-level-8'
+    ],
+    'vibrato': ['vibrato-wave', 'vibrato-rate', 'vibrato-depth', 'vibrato-delay', 'vibrato-sync', 'vibrato-sync-rate'],
+    'lfo': ['lfo1-wave', 'lfo1-rate', 'lfo1-amount'],
+    'detune': ['detune-polarity', 'detune-oct', 'detune-note'],
+    'filter': ['filter-cutoff', 'filter-resonance', 'filter-env-amount'],
+    'filter-eg': ['filter-attack', 'filter-decay', 'filter-sustain', 'filter-release']
+};
+
+function randomiseBox(boxId) {
+    const ids = BOX_CONTROLS[boxId];
+    if (!ids) return;
+    const controls = ALL_PATCH_CONTROLS.filter(c => ids.includes(c.id));
+    sendPatchSequentially(controls, (p, el) => {
+        const max = parseInt(el.max) || 127;
+        return Math.floor(Math.random() * (max + 1));
+    });
+}
+
+function initBox(boxId) {
+    const ids = BOX_CONTROLS[boxId];
+    if (!ids) return;
+    const controls = ALL_PATCH_CONTROLS.filter(c => ids.includes(c.id));
+    sendPatchSequentially(controls, (p) => p.value);
+}
+
+document.querySelectorAll('.box-random-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        randomiseBox(btn.dataset.box);
+    });
+});
+
+document.querySelectorAll('.box-init-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        initBox(btn.dataset.box);
+    });
+});
+
 // Function to get waveform index (0-7) from MIDI value
 function getWaveformIndex(val) {
     if (val >= 0 && val <= 18) return 0; // SAWTOOTH
