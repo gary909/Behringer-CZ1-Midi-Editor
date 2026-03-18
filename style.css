@@ -635,6 +635,16 @@ body.privacy-page #controls .control-box {
     flex-shrink: 0;
 }
 
+#preset-name-display {
+    color: #EBA85B;
+    font-family: 'VT323', monospace;
+    font-size: 1.4em;
+    letter-spacing: 0.1em;
+    text-align: center;
+    min-height: 1.4em;
+    margin-top: 4px;
+}
+
 input[type="checkbox"] {
     accent-color: #3C496B; /* Replace with your preferred hex color */
     width: 16px;
@@ -706,7 +716,7 @@ input[type="checkbox"] {
 }
 
 /* Style for the buttons themselves */
-#init-patch-button, #random-patch-button {
+#init-patch-button, #random-patch-button, #preset-patch-button, #bass-patch-button {
     background-color: #313236;
     color: #ebe1d7;
     font-family: 'VT323', monospace;
@@ -719,7 +729,7 @@ input[type="checkbox"] {
     transition: background-color 0.1s;
 }
 
-#init-patch-button:hover, #random-patch-button:hover {
+#init-patch-button:hover, #random-patch-button:hover, #preset-patch-button:hover, #bass-patch-button:hover {
     background-color: #349db4; 
 }
 

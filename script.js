@@ -842,6 +842,8 @@ function onMIDISuccess(midiAccess) {
 
     document.getElementById('init-patch-button')?.addEventListener('click', initPatch);
     document.getElementById('random-patch-button')?.addEventListener('click', randomPatch);
+    document.getElementById('preset-patch-button')?.addEventListener('click', cyclePreset);
+    document.getElementById('bass-patch-button')?.addEventListener('click', () => applyPreset(BASS_PRESET));
 }
 
 // --- DETUNE POLARITY LED INDICATOR INITIALIZATION ---
@@ -1100,6 +1102,8 @@ function sendPatchSequentially(controls, getValueFn) {
 
 function initPatch() {
     sendPatchSequentially(ALL_PATCH_CONTROLS, (p) => p.value);
+    clearPresetDisplay();
+    restoreDeviceName();
 }
 
 function randomPatch() {
@@ -1107,7 +1111,342 @@ function randomPatch() {
         const max = parseInt(el.max) || 127;
         return Math.floor(Math.random() * (max + 1));
     });
+    clearPresetDisplay();
+    restoreDeviceName();
 }
+
+// --- PRESETS ---
+const PRESETS = [
+    {
+        name: 'SYNTH',
+        params: {
+            'dco1-wf1': 0,
+            'dco2-wf2': 91,
+            'dco1-dcw': 11,
+            'line-select': 0,
+            'vibrato-wave': 0,
+            'vibrato-rate': 66,
+            'vibrato-sync': 0,
+            'vibrato-sync-rate': 0,
+            'vibrato-depth': 0,
+            'vibrato-delay': 0,
+            'detune-polarity': 0,
+            'detune-oct': 0,
+            'detune-note': 0,
+            'dco1-wf1-lineoffset': 0,
+            'dco1-wf2-lineoffset': 0,
+            'dco1-dcw-lineoffset': 0,
+            'dco1-dcw-keyfollow': 0,
+            'dco1-dcw-keyfollow-range': 0,
+            'dco1-dcw-keyfollow-lineoffset': 0,
+            'dco1-dcw-keyfollow-range-lineoffset': 0,
+            'dco1-dca-keyfollow': 0,
+            'dco1-dca-keyfollow-range': 0,
+            'dco1-dca-keyfollow-lineoffset': 0,
+            'dco1-dca-keyfollow-range-lineoffset': 0,
+            'dca-sustain-point': 37,
+            'dca-end-point': 43,
+            'dca-level-1': 127,
+            'dca-level-2': 49,
+            'dca-level-3': 90,
+            'dca-level-4': 41,
+            'dca-level-5': 0,
+            'dca-level-6': 0,
+            'dca-level-7': 0,
+            'dca-level-8': 0,
+            'dca-rate-1': 77,
+            'dca-rate-2': 34,
+            'dca-rate-3': 88,
+            'dca-rate-4': 44,
+            'dca-rate-5': 0,
+            'dca-rate-6': 0,
+            'dca-rate-7': 0,
+            'dca-rate-8': 0,
+            'dca2-sustain-point': 0,
+            'dca2-end-point': 0,
+            'dca2-level-1': 0,
+            'dca2-level-2': 0,
+            'dca2-level-3': 0,
+            'dca2-level-4': 0,
+            'dca2-level-5': 0,
+            'dca2-level-6': 0,
+            'dca2-level-7': 0,
+            'dca2-level-8': 0,
+            'dca2-rate-1': 0,
+            'dca2-rate-2': 0,
+            'dca2-rate-3': 0,
+            'dca2-rate-4': 0,
+            'dca2-rate-5': 0,
+            'dca2-rate-6': 0,
+            'dca2-rate-7': 0,
+            'dca2-rate-8': 0,
+            'pitch-sustain-point': 0,
+            'pitch-end-point': 0,
+            'pitch-level-1': 0,
+            'pitch-level-2': 0,
+            'pitch-level-3': 0,
+            'pitch-level-4': 0,
+            'pitch-level-5': 0,
+            'pitch-level-6': 0,
+            'pitch-level-7': 0,
+            'pitch-level-8': 0,
+            'pitch-rate-1': 55,
+            'pitch-rate-2': 0,
+            'pitch-rate-3': 0,
+            'pitch-rate-4': 0,
+            'pitch-rate-5': 0,
+            'pitch-rate-6': 0,
+            'pitch-rate-7': 0,
+            'pitch-rate-8': 0,
+            'pitch2-sustain-point': 0,
+            'pitch2-end-point': 0,
+            'pitch2-level-1': 0,
+            'pitch2-level-2': 0,
+            'pitch2-level-3': 0,
+            'pitch2-level-4': 0,
+            'pitch2-level-5': 0,
+            'pitch2-level-6': 0,
+            'pitch2-level-7': 0,
+            'pitch2-level-8': 0,
+            'pitch2-rate-1': 0,
+            'pitch2-rate-2': 0,
+            'pitch2-rate-3': 0,
+            'pitch2-rate-4': 0,
+            'pitch2-rate-5': 0,
+            'pitch2-rate-6': 0,
+            'pitch2-rate-7': 0,
+            'pitch2-rate-8': 0,
+            'dcw-sustain-point': 55,
+            'dcw-end-point': 43,
+            'dcw-level-1': 85,
+            'dcw-level-2': 54,
+            'dcw-level-3': 29,
+            'dcw-level-4': 0,
+            'dcw-level-5': 0,
+            'dcw-level-6': 0,
+            'dcw-level-7': 0,
+            'dcw-level-8': 0,
+            'dcw-rate-1': 30,
+            'dcw-rate-2': 22,
+            'dcw-rate-3': 20,
+            'dcw-rate-4': 27,
+            'dcw-rate-5': 0,
+            'dcw-rate-6': 0,
+            'dcw-rate-7': 0,
+            'dcw-rate-8': 0,
+            'dcw2-sustain-point': 0,
+            'dcw2-end-point': 0,
+            'dcw2-level-1': 0,
+            'dcw2-level-2': 0,
+            'dcw2-level-3': 0,
+            'dcw2-level-4': 0,
+            'dcw2-level-5': 0,
+            'dcw2-level-6': 0,
+            'dcw2-level-7': 0,
+            'dcw2-level-8': 0,
+            'dcw2-rate-1': 0,
+            'dcw2-rate-2': 0,
+            'dcw2-rate-3': 0,
+            'dcw2-rate-4': 0,
+            'dcw2-rate-5': 0,
+            'dcw2-rate-6': 0,
+            'dcw2-rate-7': 0,
+            'dcw2-rate-8': 0,
+            'lfo1-wave': 0,
+            'lfo1-amount': 7,
+            'lfo1-rate': 5,
+            'filter-attack': 93,
+            'filter-decay': 52,
+            'filter-sustain': 57,
+            'filter-release': 65,
+            'filter-cutoff': 56,
+            'filter-resonance': 97,
+            'filter-env-amount': 31,
+            'chorus-rate': 0,
+            'chorus-depth': 0
+        }
+    }
+];
+
+let currentPresetIndex = -1;
+
+function clearPresetDisplay() {
+    currentPresetIndex = -1;
+}
+
+function restoreDeviceName() {
+    const statusElement = document.getElementById('midi-output-select');
+    if (statusElement && statusElement.options[statusElement.selectedIndex]) {
+        statusElement.options[statusElement.selectedIndex].textContent = originalMidiStatusText;
+    }
+}
+
+function applyPreset(preset) {
+    const presetValues = preset.params;
+    sendPatchSequentially(ALL_PATCH_CONTROLS, (p) => {
+        return Object.prototype.hasOwnProperty.call(presetValues, p.id) ? presetValues[p.id] : 0;
+    });
+    const statusElement = document.getElementById('midi-output-select');
+    if (statusElement && statusElement.options[statusElement.selectedIndex]) {
+        originalMidiStatusText = preset.name;
+        statusElement.options[statusElement.selectedIndex].textContent = preset.name;
+    }
+}
+
+function cyclePreset() {
+    currentPresetIndex = (currentPresetIndex + 1) % PRESETS.length;
+    applyPreset(PRESETS[currentPresetIndex]);
+}
+
+const BASS_PRESET = {
+    name: 'BASS',
+    params: {
+        'dco1-wf1': 37,
+        'dco2-wf2': 55,
+        'dco1-dcw': 0,
+        'line-select': 0,
+        'vibrato-wave': 0,
+        'vibrato-rate': 65,
+        'vibrato-sync': 29,
+        'vibrato-sync-rate': 0,
+        'vibrato-depth': 0,
+        'vibrato-delay': 55,
+        'detune-polarity': 0,
+        'detune-oct': 0,
+        'detune-note': 0,
+        'dco1-wf1-lineoffset': 0,
+        'dco1-wf2-lineoffset': 0,
+        'dco1-dcw-lineoffset': 65,
+        'dco1-dcw-keyfollow': 100,
+        'dco1-dcw-keyfollow-range': 0,
+        'dco1-dcw-keyfollow-lineoffset': 0,
+        'dco1-dcw-keyfollow-range-lineoffset': 0,
+        'dco1-dca-keyfollow': 65,
+        'dco1-dca-keyfollow-range': 100,
+        'dco1-dca-keyfollow-lineoffset': 0,
+        'dco1-dca-keyfollow-range-lineoffset': 0,
+        'dca-sustain-point': 37,
+        'dca-end-point': 22,
+        'dca-level-1': 127,
+        'dca-level-2': 0,
+        'dca-level-3': 0,
+        'dca-level-4': 0,
+        'dca-level-5': 0,
+        'dca-level-6': 0,
+        'dca-level-7': 0,
+        'dca-level-8': 0,
+        'dca-rate-1': 127,
+        'dca-rate-2': 44,
+        'dca-rate-3': 59,
+        'dca-rate-4': 0,
+        'dca-rate-5': 0,
+        'dca-rate-6': 0,
+        'dca-rate-7': 0,
+        'dca-rate-8': 0,
+        'dca2-sustain-point': 0,
+        'dca2-end-point': 0,
+        'dca2-level-1': 0,
+        'dca2-level-2': 0,
+        'dca2-level-3': 0,
+        'dca2-level-4': 0,
+        'dca2-level-5': 0,
+        'dca2-level-6': 0,
+        'dca2-level-7': 0,
+        'dca2-level-8': 0,
+        'dca2-rate-1': 0,
+        'dca2-rate-2': 0,
+        'dca2-rate-3': 0,
+        'dca2-rate-4': 0,
+        'dca2-rate-5': 0,
+        'dca2-rate-6': 0,
+        'dca2-rate-7': 0,
+        'dca2-rate-8': 0,
+        'pitch-sustain-point': 0,
+        'pitch-end-point': 0,
+        'pitch-level-1': 84,
+        'pitch-level-2': 0,
+        'pitch-level-3': 0,
+        'pitch-level-4': 0,
+        'pitch-level-5': 0,
+        'pitch-level-6': 0,
+        'pitch-level-7': 0,
+        'pitch-level-8': 0,
+        'pitch-rate-1': 127,
+        'pitch-rate-2': 70,
+        'pitch-rate-3': 0,
+        'pitch-rate-4': 0,
+        'pitch-rate-5': 0,
+        'pitch-rate-6': 0,
+        'pitch-rate-7': 0,
+        'pitch-rate-8': 0,
+        'pitch2-sustain-point': 0,
+        'pitch2-end-point': 0,
+        'pitch2-level-1': 0,
+        'pitch2-level-2': 0,
+        'pitch2-level-3': 0,
+        'pitch2-level-4': 0,
+        'pitch2-level-5': 0,
+        'pitch2-level-6': 0,
+        'pitch2-level-7': 0,
+        'pitch2-level-8': 0,
+        'pitch2-rate-1': 0,
+        'pitch2-rate-2': 0,
+        'pitch2-rate-3': 0,
+        'pitch2-rate-4': 0,
+        'pitch2-rate-5': 0,
+        'pitch2-rate-6': 0,
+        'pitch2-rate-7': 0,
+        'pitch2-rate-8': 0,
+        'dcw-sustain-point': 55,
+        'dcw-end-point': 43,
+        'dcw-level-1': 116,
+        'dcw-level-2': 85,
+        'dcw-level-3': 52,
+        'dcw-level-4': 82,
+        'dcw-level-5': 0,
+        'dcw-level-6': 0,
+        'dcw-level-7': 0,
+        'dcw-level-8': 0,
+        'dcw-rate-1': 89,
+        'dcw-rate-2': 91,
+        'dcw-rate-3': 32,
+        'dcw-rate-4': 0,
+        'dcw-rate-5': 0,
+        'dcw-rate-6': 0,
+        'dcw-rate-7': 0,
+        'dcw-rate-8': 0,
+        'dcw2-sustain-point': 0,
+        'dcw2-end-point': 0,
+        'dcw2-level-1': 0,
+        'dcw2-level-2': 0,
+        'dcw2-level-3': 0,
+        'dcw2-level-4': 0,
+        'dcw2-level-5': 0,
+        'dcw2-level-6': 0,
+        'dcw2-level-7': 0,
+        'dcw2-level-8': 0,
+        'dcw2-rate-1': 0,
+        'dcw2-rate-2': 0,
+        'dcw2-rate-3': 0,
+        'dcw2-rate-4': 0,
+        'dcw2-rate-5': 0,
+        'dcw2-rate-6': 0,
+        'dcw2-rate-7': 0,
+        'dcw2-rate-8': 0,
+        'lfo1-wave': 0,
+        'lfo1-amount': 0,
+        'lfo1-rate': 0,
+        'filter-attack': 23,
+        'filter-decay': 37,
+        'filter-sustain': 57,
+        'filter-release': 41,
+        'filter-cutoff': 30,
+        'filter-resonance': 60,
+        'filter-env-amount': 22,
+        'chorus-rate': 33,
+        'chorus-depth': 60
+    }
+};
 
 // --- BOX RANDOM ---
 const BOX_CONTROLS = {
