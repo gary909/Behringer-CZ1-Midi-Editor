@@ -574,11 +574,11 @@ function onMIDISuccess(midiAccess) {
         } else if (control.id === 'lfo1-wave') {
             attachSlider(control.cc, control.id, (val) => `LFO WAVE: ${getLfo1WaveName(val)}`);
         } else if (control.id === 'detune-note') {
-            attachSlider(control.cc, control.id, (val) => `DETUNE: ${getDetuneNoteName(val)}`);
+            attachSliderForcedBank(1, control.cc, control.id, (val) => `DETUNE: ${getDetuneNoteName(val)}`);
         } else if (control.id === 'detune-oct') {
-            attachSlider(control.cc, control.id, (val) => `DETUNE OCT: ${getDetuneOctName(val)}`);
+            attachSliderForcedBank(1, control.cc, control.id, (val) => `DETUNE OCT: ${getDetuneOctName(val)}`);
         } else if (control.id === 'detune-polarity') {
-            attachSlider(control.cc, control.id, (val) => `DETUNE POL: ${getDetunePolarityName(val)}`);
+            attachSliderForcedBank(1, control.cc, control.id, (val) => `DETUNE POL: ${getDetunePolarityName(val)}`);
         } else if (control.id === 'detune-fine') {
             // DISABLED — causes hardware crash (Behringer support contacted)
             // Skip attaching MIDI send; slider is greyed out in HTML/CSS
