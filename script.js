@@ -2111,6 +2111,57 @@ if (footerDisclaimer && showFooterDisclaimer) {
     });
 }
 
+// --- ZOOM CONTROLS LOGIC ---
+let currentZoom = 100; // Track current zoom level as percentage
+const minZoom = 50;    // Minimum zoom level
+const maxZoom = 200;   // Maximum zoom level
+const zoomStep = 10;   // Zoom increment percentage
+
+const zoomInBtn = document.getElementById('zoom-in-btn');
+const zoomOutBtn = document.getElementById('zoom-out-btn');
+
+function setZoom(level) {
+    // Clamp zoom level between min and max
+    currentZoom = Math.max(minZoom, Math.min(maxZoom, level));
+    document.body.style.zoom = currentZoom + '%';
+    // Save zoom level to localStorage
+    localStorage.setItem('pageZoom', currentZoom);
+}
+
+if (zoomInBtn) {
+    zoomInBtn.addEventListener('click', () => {
+        setZoom(currentZoom + zoomStep);
+    });
+}
+
+if (zoomOutBtn) {
+    zoomOutBtn.addEventListener('click', () => {
+        setZoom(currentZoom - zoomStep);
+    });
+}
+
+// Restore saved zoom level on page load
+window.addEventListener('load', () => {
+    const savedZoom = localStorage.getItem('pageZoom');
+    if (savedZoom) {
+        setZoom(parseInt(savedZoom));
+    }
+});
+
+// Also support keyboard shortcuts: Ctrl/Cmd + Plus/Minus
+window.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '=')) {
+        e.preventDefault();
+        setZoom(currentZoom + zoomStep);
+    } else if ((e.ctrlKey || e.metaKey) && (e.key === '-' || e.key === '_')) {
+        e.preventDefault();
+        setZoom(currentZoom - zoomStep);
+    } else if ((e.ctrlKey || e.metaKey) && e.key === '0') {
+        e.preventDefault();
+        setZoom(100); // Reset to 100%
+    }
+});
+
 // Close menu if clicking anywhere outside the side-nav
 if (hamburger && sideNav) {
     window.addEventListener('click', (e) => {

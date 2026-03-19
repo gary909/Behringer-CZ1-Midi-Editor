@@ -270,6 +270,45 @@ p {
     text-decoration: underline;
 }
 
+/* ********** ZOOM CONTROLS STYLING ******* */
+.zoom-controls {
+    position: fixed;
+    top: 20px;
+    right: 65px;
+    cursor: pointer;
+    z-index: 1001; /* Same as hamburger menu */
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.zoom-btn {
+    width: 30px;
+    height: 30px;
+    background-color: #7992b900;
+    border: 2px solid #eaedeccf;
+    border-radius: 25px;
+    color: #eaedecd4;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    padding: 0;
+    line-height: 1;
+}
+
+.zoom-btn:hover {
+    background-color: #969696;
+    color: #EAEDEC;
+}
+
+.zoom-btn:active {
+    background-color: #6E89B0;
+}
+
 /* ********** HAMBURGER STYLING ******* */
 /* Hamburger Button */
 .hamburger-menu {
@@ -1389,7 +1428,12 @@ input[type="range"] {
 
 /* --- NEW MEDIA QUERY FOR MOBILE VIEW --- */
 @media (max-width: 768px) {
-
+    
+    /* Adjust zoom controls for mobile */
+    .zoom-controls {
+        right: 60px;
+    }
+    
     /* Floating Screen bar */
     #midi-status {
         position: fixed; /* Makes it float relative to the viewport */
