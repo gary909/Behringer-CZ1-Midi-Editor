@@ -447,7 +447,7 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1280px;
+    max-width: 1380px;
     padding: 10px;
 }
 
@@ -716,7 +716,7 @@ input[type="checkbox"] {
 }
 
 /* Style for the buttons themselves */
-#init-patch-button, #random-patch-button, #preset-patch-button, #bass-patch-button, #string-patch-button, #organ-patch-button {
+#init-patch-button, #random-patch-button, #preset-patch-button, #bass-patch-button, #string-patch-button, #organ-patch-button, #sine-patch-button {
     background-color: #313236;
     color: #ebe1d7;
     font-family: 'VT323', monospace;
@@ -729,7 +729,7 @@ input[type="checkbox"] {
     transition: background-color 0.1s;
 }
 
-#init-patch-button:hover, #random-patch-button:hover, #preset-patch-button:hover, #bass-patch-button:hover, #string-patch-button:hover, #organ-patch-button:hover {
+#init-patch-button:hover, #random-patch-button:hover, #preset-patch-button:hover, #bass-patch-button:hover, #string-patch-button:hover, #organ-patch-button:hover, #sine-patch-button:hover {
     background-color: #349db4; 
 }
 
