@@ -4,6 +4,10 @@ let midiOutput = null;
 // Variable to store the original text of the MIDI status element
 let originalMidiStatusText = '';
 
+// Line 1+1 mirroring state
+let isLine1Plus1 = false;
+let previousLineMode = 'line1';
+
 // --- MIDI CC NUMBERS CZ-1 MINI ---
 // Note: These are typical CC assignments for phase distortion synthesizers
 // Adjust based on actual CZ-1 Mini MIDI implementation
@@ -155,6 +159,69 @@ function getLineName(val) {
     if (val >= 85 && val <= 126) return 'Line 1+2';
     if (val === 127) return 'Line 1+1';
     return 'UNKNOWN';
+}
+
+// Get the line mode string from a line select value
+function getLineMode(val) {
+    if (val >= 0 && val <= 42) return 'line1';
+    if (val >= 43 && val <= 84) return 'line2';
+    if (val >= 85 && val <= 126) return 'line1+2';
+    if (val === 127) return 'line1+1';
+    return 'line1';
+}
+
+// Check if a control ID is a line 1 envelope control (PITCH/DCW/DCA ENV 1)
+function isLine1EnvControl(id) {
+    return id.startsWith('pitch-') || id.startsWith('dca-') || id.startsWith('dcw-');
+}
+
+// Send all line 1 envelope values to bank 1 (mirror line 1 → line 2 on hardware)
+function sendLine1ToLine2Burst() {
+    const controls = ALL_PATCH_CONTROLS.filter(c => isLine1EnvControl(c.id));
+    let i = 0;
+    const DELAY = 10;
+    sendMidiCC(CC_BANK_SELECT, 1);
+    function sendNext() {
+        if (i >= controls.length) {
+            sendMidiCC(CC_BANK_SELECT, 0);
+            return;
+        }
+        const el = document.getElementById(controls[i].id);
+        if (el) {
+            sendMidiCC(controls[i].cc, parseInt(el.value));
+        }
+        i++;
+        setTimeout(sendNext, DELAY);
+    }
+    sendNext();
+}
+
+// Restore line 2 envelope sliders' actual UI values to bank 1 on hardware
+function sendLine2RestoreBurst() {
+    const controls = ALL_PATCH_CONTROLS.filter(c =>
+        c.id.startsWith('pitch2-') || c.id.startsWith('dca2-') || c.id.startsWith('dcw2-')
+    );
+    let i = 0;
+    const DELAY = 10;
+    sendMidiCC(CC_BANK_SELECT, 1);
+    function sendNext() {
+        if (i >= controls.length) {
+            const lineSelectEl = document.getElementById('line-select');
+            if (lineSelectEl) {
+                const lineVal = parseInt(lineSelectEl.value);
+                const restoredBank = (lineVal >= 43 && lineVal <= 84) ? 1 : 0;
+                sendMidiCC(CC_BANK_SELECT, restoredBank);
+            }
+            return;
+        }
+        const el = document.getElementById(controls[i].id);
+        if (el) {
+            sendMidiCC(controls[i].cc, parseInt(el.value));
+        }
+        i++;
+        setTimeout(sendNext, DELAY);
+    }
+    sendNext();
 }
 
 // Map sustain point values to point numbers (0-7)
@@ -485,6 +552,11 @@ function onMIDISuccess(midiAccess) {
             const val = parseInt(e.target.value);
             sendMidiCC(CC_BANK_SELECT, bankValue);
             sendMidiCC(ccNumber, val);
+            // Mirror to bank 1 when in Line 1+1 mode (line 1 env controls)
+            if (isLine1Plus1 && bankValue === 0 && isLine1EnvControl(elementId)) {
+                sendMidiCC(CC_BANK_SELECT, 1);
+                sendMidiCC(ccNumber, val);
+            }
             // Restore Bank Select to match current Line Select
             const lineSelectEl = document.getElementById('line-select');
             if (lineSelectEl) {
@@ -527,6 +599,18 @@ function onMIDISuccess(midiAccess) {
                     // 85-126: Line 1+2 (CC 0 = 0), 127: Line 1+1 (CC 0 = 0)
                     const bankSelect = (val >= 43 && val <= 84) ? 1 : 0;
                     sendMidiCC(CC_BANK_SELECT, bankSelect);
+
+                    // Handle Line 1+1 mirroring transitions
+                    const currentMode = getLineMode(val);
+                    if (currentMode === 'line1+1' && previousLineMode !== 'line1+1') {
+                        isLine1Plus1 = true;
+                        sendLine1ToLine2Burst();
+                    } else if (currentMode !== 'line1+1' && previousLineMode === 'line1+1') {
+                        isLine1Plus1 = false;
+                        sendLine2RestoreBurst();
+                    }
+                    previousLineMode = currentMode;
+
                     statusElement.options[statusElement.selectedIndex].textContent = `LINE SELECT: ${getLineName(val)}`;
                 });
                 slider.addEventListener('mouseup', () => {
@@ -1463,7 +1547,7 @@ const ORGAN_PRESET = {
         'vibrato-sync-rate': 0,
         'vibrato-depth': 39,
         'vibrato-delay': 47,
-        'detune-polarity': 0,
+        'detune-polarity': 127,
         'detune-oct': 43,
         'detune-note': 0,
         'dco1-wf1-lineoffset': 55,
