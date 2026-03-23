@@ -486,7 +486,7 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1410px;
+    max-width: 1510px;
     padding: 10px;
 }
 
@@ -1126,7 +1126,7 @@ input[type="range"] {
 
 /* DCA ENV 1 & 2 RATE box size */
 .dca-rate-small {
-    max-width: 640px;
+    max-width: 665px;
     /* max-height: 180px; */
 }
 
@@ -1158,7 +1158,7 @@ input[type="range"] {
 
 /* DCW ENV 1 & 2 RATE box size */
 .dcw-rate-small {
-    max-width: 640px;
+    max-width: 665px;
 }
 
 /* CHORUS box size */
