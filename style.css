@@ -1,24 +1,24 @@
 html {
   height: 100%;
+  background: 
+      repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 255, 255, 0.03) 2px,
+          rgba(255, 255, 255, 0.03) 4px
+      ),
+      linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(0, 0, 0, 0.1) 100%
+      ),
+      #6987B2;
+  background-attachment: fixed;
+  box-shadow: inset 0 0 25px 10px rgba(74, 101, 141, 0.848);
 }
 
 body {
-    background: 
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 255, 255, 0.03) 2px,
-            rgba(255, 255, 255, 0.03) 4px
-        ),
-        linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.1) 0%,
-            rgba(0, 0, 0, 0.1) 100%
-        ),
-        #6987B2;
-    background-attachment: fixed;
-    box-shadow: inset 0 0 25px 10px rgba(74, 101, 141, 0.848);
     min-height: 100vh;
     margin: 0;
     font-family: Helvetica, sans-serif;
@@ -1093,7 +1093,7 @@ input[type="range"] {
 
 /* LINE SELECT box size */
 .control-box:has(#line-select) {
-    max-width: 130px;
+    max-width: 180px;
 }
 
 /* PITCH RATE box size */
@@ -1113,10 +1113,14 @@ input[type="range"] {
     position: relative;
 }
 
+/* DCO 1 box size */
+.dco1-max-width {
+    max-width: 600px;
+}
 
 /* DCO 2 box size */
 .dco2-max-width {
-    max-width: 460px;
+    max-width: 600px;
 }
 
 /* DCA LEVEL box size */
