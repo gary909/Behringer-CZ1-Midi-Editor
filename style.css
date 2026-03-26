@@ -296,7 +296,7 @@ p {
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s ease, color 0.2s ease;
-    padding: 0;
+    padding: 3px 0 0 0; /* Adjust 1st value for visual centering */
     line-height: 1;
 }
 
@@ -531,7 +531,7 @@ p {
     font-size: 10px;
     font-weight: lighter;
     border: 2px solid #5a3a6e;
-    padding: 2px 2px;
+    padding: 0px 2px;
     border-radius: 2px;
     cursor: pointer;
     /* line-height: 1.3; */
