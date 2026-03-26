@@ -742,6 +742,22 @@ input[type="checkbox"] {
     opacity: 0.9;       /* Optional: softens the image to match the UI */
 }
 
+/* Lines graphics for DCO layout */
+.lines-graphic-left,
+.lines-graphic-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    flex-shrink: 0;
+}
+
+.lines-diagram-left,
+.lines-diagram-right {
+    width: auto;
+    height: 200px;
+    opacity: 0.85;
+}
 
 
 .patch-button-group {
