@@ -1447,6 +1447,14 @@ input[type="range"] {
 }
 /* *****************End of Waveform display ***************** */
 
+/* --- HIDE LINES SVG GRAPHICS ON SMALLER SCREENS --- */
+@media (max-width: 1119px) {
+    .lines-graphic-left,
+    .lines-graphic-right {
+        display: none;
+    }
+}
+
 /* --- NEW MEDIA QUERY FOR MOBILE VIEW --- */
 @media (max-width: 768px) {
     
