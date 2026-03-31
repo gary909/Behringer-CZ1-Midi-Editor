@@ -1060,6 +1060,10 @@ function connectToSelectedOutput(portId, midiAccess) {
 }
 
 function sendMidiCC(cc, val) {
+    // Console log FINE TUNE slider values for debugging with Behringer support
+    if (cc === CC_DETUNE_FINE) {
+        console.log(`FINE TUNE: CC${cc} = ${val}`);
+    }
     if (midiOutput && !sendMidiCC._suppress) midiOutput.send([0xB0, cc, val]);
 }
 
