@@ -1,3 +1,6 @@
+// Detect which page we're on (index1.html is test page, index.html is live)
+const isTestPage = window.location.pathname.includes('index1.html');
+
 // Variable to store the selected MIDI output port
 let midiOutput = null;
 
@@ -274,7 +277,8 @@ const ALL_PATCH_CONTROLS = [
     { id: 'detune-polarity', cc: CC_DETUNE_POLARITY, value: 0 },
     { id: 'detune-oct', cc: CC_DETUNE_OCT, value: 0 },
     { id: 'detune-note', cc: CC_DETUNE_NOTE, value: 0 },
-    // { id: 'detune-fine', cc: CC_DETUNE_FINE, value: 0 }, // DISABLED — causes hardware crash (Behringer support contacted)
+    // FINE TUNE: Re-enabled for testing on index1.html only
+    ...(isTestPage ? [{ id: 'detune-fine', cc: CC_DETUNE_FINE, value: 0 }] : []),
     
     // DCO 2
     { id: 'dco1-wf1-lineoffset', cc: CC_DCO1_WF1_LINEOFFSET, value: 0 },
@@ -580,8 +584,11 @@ function onMIDISuccess(midiAccess) {
         } else if (control.id === 'detune-polarity') {
             attachSlider(control.cc, control.id, (val) => `DETUNE POL: ${getDetunePolarityName(val)}`);
         } else if (control.id === 'detune-fine') {
-            // DISABLED — causes hardware crash (Behringer support contacted)
-            // Skip attaching MIDI send; slider is greyed out in HTML/CSS
+            // Re-enabled for testing on index1.html - attach regular slider without special formatting
+            if (isTestPage) {
+                attachSlider(control.cc, control.id);
+            }
+            // On index.html (live), skip attaching MIDI send; slider is greyed out
         } else if (['dco1-dcw-keyfollow', 'dco1-dcw-keyfollow-lineoffset', 'dco1-dca-keyfollow', 'dco1-dca-keyfollow-lineoffset'].includes(control.id)) {
             attachSlider(control.cc, control.id, (val) => `KEY FOLLOW: ${val >= 65 ? 'ON' : 'OFF'}`);
         } else {
@@ -1111,6 +1118,10 @@ function initPatch() {
 
 function randomPatch() {
     sendPatchSequentially(ALL_PATCH_CONTROLS, (p, el) => {
+        // Keep detune-fine at 0 to avoid potential hardware issues
+        if (p.id === 'detune-fine') {
+            return 0;
+        }
         const max = parseInt(el.max) || 127;
         return Math.floor(Math.random() * (max + 1));
     });
@@ -1963,6 +1974,10 @@ function randomiseBox(boxId) {
     if (!ids) return;
     const controls = ALL_PATCH_CONTROLS.filter(c => ids.includes(c.id));
     sendPatchSequentially(controls, (p, el) => {
+        // Keep detune-fine at 0 to avoid potential hardware issues
+        if (p.id === 'detune-fine') {
+            return 0;
+        }
         const max = parseInt(el.max) || 127;
         return Math.floor(Math.random() * (max + 1));
     });
