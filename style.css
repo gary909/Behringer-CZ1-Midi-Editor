@@ -1,5 +1,5 @@
 html {
-  height: 100%;
+  min-height: 100%;
   background: 
       repeating-linear-gradient(
           0deg,
@@ -15,6 +15,9 @@ html {
       ),
       #6987B2;
   background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   box-shadow: inset 0 0 25px 10px rgba(74, 101, 141, 0.848);
 }
 
