@@ -1150,7 +1150,12 @@ input[type="range"] {
     padding: 2px;
 }
 
-/* Firefox vertical slider */
+/* Firefox vertical slider — override writing-mode since Firefox ignores bt-lr */
+@supports (-moz-appearance: none) {
+    .vertical-sliders .parameter-row input[type="range"] {
+        writing-mode: vertical-lr;
+    }
+}
 .vertical-sliders .parameter-row input[type="range"]::-moz-range-track {
     width: 8px;
 }

@@ -447,10 +447,14 @@ const ALL_PATCH_CONTROLS = [
 // --- INITIALIZATION ---
 if (navigator.requestMIDIAccess) {
     navigator.requestMIDIAccess().then(onMIDISuccess, onMIDIFailure);
+} else {
+    // No Web MIDI API (e.g. Firefox without extension) — still init all visuals
+    initVisuals();
 }
 
 function onMIDIFailure() {
     console.log("Could not access MIDI devices.");
+    initVisuals();
 }
 
 function onMIDISuccess(midiAccess) {
@@ -596,6 +600,11 @@ function onMIDISuccess(midiAccess) {
         }
     });
 
+    initVisuals();
+}
+
+// --- VISUAL-ONLY INITIALISATION (runs regardless of MIDI availability) ---
+function initVisuals() {
     // Add waveform indicator updates
     // Add vibrato wave indicator update
     const vibrWaveIndicator = document.getElementById('vibr-wave-indicator');
