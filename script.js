@@ -2070,12 +2070,14 @@ function openAboutModal() {
     if (!aboutModal) return;
     aboutModal.classList.remove('modal-hidden');
     aboutModal.setAttribute('aria-hidden', 'false');
+    startAboutModalSpin();
 }
 
 function closeAboutModal() {
     if (!aboutModal) return;
     aboutModal.classList.add('modal-hidden');
     aboutModal.setAttribute('aria-hidden', 'true');
+    stopAboutModalSpin();
 }
 
 // Open Menu
@@ -2293,3 +2295,34 @@ function setupNavSynth() {
 }
 
 setupNavSynth();
+
+// --- ABOUT MODAL SYNTH SPIN ---
+const _aboutModalImg = document.getElementById('about-modal-synth-img');
+let _aboutSpinAngle = 0;
+let _aboutSpinRaf = null;
+let _aboutSpinLastTime = null;
+const _ABOUT_SPEED = 30; // deg/s
+
+function _aboutSpinLoop(ts) {
+    if (_aboutSpinLastTime == null) _aboutSpinLastTime = ts;
+    const dt = (ts - _aboutSpinLastTime) / 1000;
+    _aboutSpinLastTime = ts;
+    _aboutSpinAngle = (_aboutSpinAngle + _ABOUT_SPEED * dt) % 360;
+    if (_aboutModalImg) {
+        _aboutModalImg.style.transform = `perspective(300px) rotateY(${_aboutSpinAngle}deg)`;
+    }
+    _aboutSpinRaf = requestAnimationFrame(_aboutSpinLoop);
+}
+
+function startAboutModalSpin() {
+    if (!_aboutModalImg || _aboutSpinRaf) return;
+    _aboutSpinLastTime = null;
+    _aboutSpinRaf = requestAnimationFrame(_aboutSpinLoop);
+}
+
+function stopAboutModalSpin() {
+    if (_aboutSpinRaf) {
+        cancelAnimationFrame(_aboutSpinRaf);
+        _aboutSpinRaf = null;
+    }
+}

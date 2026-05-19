@@ -176,6 +176,13 @@ p {
     margin-bottom: 12px !important;
 }
 
+#about-modal-synth-img {
+    display: block;
+    width: 50%;
+    height: auto;
+    margin: 0 auto 12px;
+}
+
 #about-modal-content a {
     color: #EBA85B;
     text-decoration: none;
